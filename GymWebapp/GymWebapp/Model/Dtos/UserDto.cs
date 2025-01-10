@@ -11,18 +11,22 @@
     public class RegisterDto : UserDto
     {
         public string Name { get; set; }
+        public string Role { get; set; }
 
     }
     public class AuthResponseDto
     {
         public string Username { get; set; }
         public string Name { get; set; }
+        public string Role { get; set; }
         public string Token { get; set; }
     }
     public class UserInfoDto
     {
         public string Username { get; set; }
-        public string Uame { get; set; }
+        public string Name { get; set; }
+        public string Role { get; set; }
+        public string Id { get; set; }
     }
     public class UserInfoChangeDto
     {
