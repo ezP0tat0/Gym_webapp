@@ -35,4 +35,9 @@
         public string Name { get; set; }
         public string Password { get; set; }
     }
+    public class RoleChangeDto
+    {
+        public int UserId { get; set; }
+        public string Role { get; set; }
+    }
 }

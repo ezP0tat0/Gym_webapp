@@ -5,6 +5,7 @@ using GymWebapp.Model.Dtos;
 using GymWebapp.Model.Data;
 using GymWebapp.Mapper;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 
 namespace GymWebapp.Controllers
@@ -29,11 +30,22 @@ namespace GymWebapp.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        [HttpPatch("toAdmin/{id}")]
-        public async Task<IActionResult> ToAdmin([FromRoute]int id)
+        [HttpPatch("RoleChange")]
+        public async Task<IActionResult> RoleChange(RoleChangeDto rl)
         {
-            await _userService.ToAdmin(id);
+            await _userService.RoleChange(rl);
             return Ok(new { message = "Sikeresen változtatva" });
+        }
+        [HttpGet()]
+        public async Task<IActionResult> getUserInfo()
+        {
+            var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (int.TryParse(userIdString, out int userId))
+            {
+                var result = await _userService.getUserInfo(userId);
+                return Ok(result);
+            }
+            else throw new Exception($"Claim User nem talált: {userIdString}");
         }
     }
 }

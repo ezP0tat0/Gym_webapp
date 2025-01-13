@@ -10,14 +10,15 @@ namespace GymWebapp.Services
     public interface IUserService
     {
         Task<List<UserInfoDto>> getAllUsers();
-        Task ToAdmin(int id);
+        Task RoleChange(RoleChangeDto rl);
+        Task<UserInfoDto> getUserInfo(int id);
     }
-    public class UserServices:IUserService
+    public class UserService:IUserService
     {
         private readonly DataContext _dataContext;
         private readonly IMapper _mapper;
 
-        public UserServices(DataContext dataContext,IMapper mapper) 
+        public UserService(DataContext dataContext,IMapper mapper) 
         {
             _dataContext = dataContext; 
             _mapper = mapper;
@@ -30,13 +31,22 @@ namespace GymWebapp.Services
 
             return response;
         }
-        public async Task ToAdmin(int id)
+        public async Task RoleChange(RoleChangeDto rl)
         {
-            var user=await _dataContext.Users.FindAsync(id);
+            var user=await _dataContext.Users.FindAsync(rl.UserId);
             if (user == null) throw new Exception("Felhasználó nem található");
 
-            user.Role = "Admin";
+            user.Role = rl.Role;
             await _dataContext.SaveChangesAsync();
+        }
+        public async Task<UserInfoDto> getUserInfo(int id)
+        {
+            var user = await _dataContext.Users.FirstOrDefaultAsync(x => x.Id == id);
+            if (user == null) throw new Exception("felhasználó nem található");
+
+            var response=_mapper.Map<UserInfoDto>(user);
+            
+            return response;
         }
     }
 }

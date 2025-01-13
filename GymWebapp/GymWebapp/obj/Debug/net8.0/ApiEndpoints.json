@@ -33,6 +33,16 @@
   },
   {
     "ContainingType": "GymWebapp.Controllers.UserController",
+    "Method": "getUserInfo",
+    "RelativePath": "api/User",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GymWebapp.Controllers.UserController",
     "Method": "getAllUser",
     "RelativePath": "api/User/allUser",
     "HttpMethod": "GET",
@@ -43,15 +53,15 @@
   },
   {
     "ContainingType": "GymWebapp.Controllers.UserController",
-    "Method": "ToAdmin",
-    "RelativePath": "api/User/toAdmin/{id}",
+    "Method": "RoleChange",
+    "RelativePath": "api/User/RoleChange",
     "HttpMethod": "PATCH",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
-        "Type": "System.Int32",
+        "Name": "rl",
+        "Type": "GymWebapp.Model.Dtos.RoleChangeDto",
         "IsRequired": true
       }
     ],

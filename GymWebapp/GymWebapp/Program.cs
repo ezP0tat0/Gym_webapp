@@ -10,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 //Interface-Controller connection
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 //autoMapper
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
