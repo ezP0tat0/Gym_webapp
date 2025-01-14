@@ -10,6 +10,8 @@ namespace GymWebapp.Mapper
         public MapperConfig() 
         {
             CreateMap<RegisterDto, User>();
+            CreateMap<ClassDto,Class>().ForMember(dest=>dest.Trainer,null);
+            CreateMap<Class, ClassDto>().ForMember(dest => dest.TrainerName, opt => opt.MapFrom(src => src.Trainer.User.Name));
         }
     }
 }
