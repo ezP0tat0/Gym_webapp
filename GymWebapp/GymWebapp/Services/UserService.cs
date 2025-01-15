@@ -12,15 +12,17 @@ namespace GymWebapp.Services
         Task<List<UserInfoDto>> getAllUsers();
         Task RoleChange(RoleChangeDto rl);
         Task<UserInfoDto> getUserInfo(int id);
+        Task DeleteUser(int id);
+        Task AddPhoneNo(string phoneNo, int id);
     }
-    public class UserService:IUserService
+    public class UserService : IUserService
     {
         private readonly DataContext _dataContext;
         private readonly IMapper _mapper;
 
-        public UserService(DataContext dataContext,IMapper mapper) 
+        public UserService(DataContext dataContext, IMapper mapper)
         {
-            _dataContext = dataContext; 
+            _dataContext = dataContext;
             _mapper = mapper;
         }
 
@@ -33,7 +35,7 @@ namespace GymWebapp.Services
         }
         public async Task RoleChange(RoleChangeDto rl)
         {
-            var user=await _dataContext.Users.FindAsync(rl.UserId);
+            var user = await _dataContext.Users.FindAsync(rl.UserId);
             if (user == null) throw new Exception("Felhasználó nem található");
 
             user.Role = rl.Role;
@@ -44,9 +46,26 @@ namespace GymWebapp.Services
             var user = await _dataContext.Users.FirstOrDefaultAsync(x => x.Id == id);
             if (user == null) throw new Exception("felhasználó nem található");
 
-            var response=_mapper.Map<UserInfoDto>(user);
-            
+            var response = _mapper.Map<UserInfoDto>(user);
+
             return response;
+        }
+        public async Task DeleteUser(int id)
+        {
+            var user = await _dataContext.Users.FirstAsync(x => x.Id == id);
+            if (user == null) throw new Exception("Felhasználó nem található");
+
+            _dataContext.Users.Remove(user);
+            await _dataContext.SaveChangesAsync();
+        }
+        public async Task AddPhoneNo(string phoneNo, int id)
+        {
+            var user = await _dataContext.Trainers.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (user == null) throw new Exception("Felhasználó nem található");
+
+            user.PhoneNumber = phoneNo;
+            await _dataContext.SaveChangesAsync();
         }
     }
 }

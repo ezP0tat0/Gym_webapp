@@ -1,4 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using GymWebapp.Services;
+using GymWebapp.Model;
+using GymWebapp.Model.Dtos;
+using GymWebapp.Model.Data;
+using GymWebapp.Mapper;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace GymWebapp.Controllers
 {
@@ -6,6 +13,65 @@ namespace GymWebapp.Controllers
     [ApiController]
     public class TicketController : Controller
     {
+        private readonly TicketService _ticketService;
+
+        public TicketController(TicketService ticketService)
+        {
+            _ticketService = ticketService;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ListAllTickets()
+        {
+            var result = await _ticketService.getAllTickets();
+            return Ok(result);
+        }
+        [HttpGet("myTickets")]
+        public async Task<IActionResult> getMyTickets()
+        {
+            var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (int.TryParse(userIdString, out int userId))
+            {
+                var result = await _ticketService.getMyTickets(userId);
+                return Ok(result);
+            }
+            else throw new Exception($"Claim User nem talált: {userIdString}");
+        }
+
+        [HttpPost("purchaseTicket/{id}")]
+        public async Task<IActionResult> PurchaseTicket(int id)
+        {
+            var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (int.TryParse(userIdString, out int userId))
+            {
+                await _ticketService.TicketPurchase(id, userId);
+                return Ok("Sikeres vásárlás");
+            }
+            else throw new Exception($"Claim User nem talált: {userIdString}");
+        }
+
+        [HttpDelete("useTicket")]
+        public async Task<IActionResult> UseTicket(int boughtTicketId)
+        {
+            var result = await _ticketService.UseTicket(boughtTicketId);
+            return Ok(result);
+        }
+
+        [Authorize(Roles ="Admin")]
+        [HttpPost("NewTicket")]
+        public async Task<IActionResult> AddNewTicket(NewTicketDto newTicket)
+        {
+            await _ticketService.AddNewTicketType(newTicket);
+            return Ok("Sikeresen hozzáadva");
+        }
+
+        [Authorize(Roles ="Admin")]
+        [HttpPatch("ChangePrice/{ticketId}")]
+        public async Task<IActionResult> ChangeTicketPrice(int ticketId,int price)
+        {
+            await _ticketService.ChangeTicketPrice(ticketId,price);
+            return Ok("Ár sikeresen megváltoztatva");
+        }
 
     }
 }

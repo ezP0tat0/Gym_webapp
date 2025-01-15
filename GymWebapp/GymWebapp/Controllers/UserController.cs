@@ -36,7 +36,7 @@ namespace GymWebapp.Controllers
             await _userService.RoleChange(rl);
             return Ok(new { message = "Sikeresen változtatva" });
         }
-        [HttpGet()]
+        [HttpGet]
         public async Task<IActionResult> getUserInfo()
         {
             var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -46,6 +46,26 @@ namespace GymWebapp.Controllers
                 return Ok(result);
             }
             else throw new Exception($"Claim User nem talált: {userIdString}");
+        }
+        [Authorize(Roles = "Admin")]
+        [HttpDelete("DeleteUser/{id}")]
+        public async Task<IActionResult> deleteUser(int userId)
+        {
+            await _userService.DeleteUser(userId);
+
+            return Ok("Sikeresen törölve");
+        }
+        [HttpPatch("AddPhoneNo")]
+        public async Task<IActionResult> AddPhoneNumber(string phoneNo)
+        {
+            var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (int.TryParse(userIdString, out int userId))
+            {
+                await _userService.AddPhoneNo(phoneNo, userId);
+                return Ok("Sikeresen hozzáadva");
+            }
+            else throw new Exception($"Claim User nem talált: {userIdString}");
+
         }
     }
 }
