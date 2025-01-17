@@ -9,6 +9,10 @@ using System.Security.Claims;
 
 namespace GymWebapp.Controllers
 {
+
+
+    // X alkalmas jegyek ?????????
+
     [Route("api/[controller]")]
     [ApiController]
     public class TicketController : Controller
@@ -53,8 +57,14 @@ namespace GymWebapp.Controllers
         [HttpDelete("useTicket")]
         public async Task<IActionResult> UseTicket(int boughtTicketId)
         {
-            var result = await _ticketService.UseTicket(boughtTicketId);
-            return Ok(result);
+            var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (int.TryParse(userIdString, out int userId))
+            {
+                var result = await _ticketService.UseTicket(boughtTicketId,userId);
+                return Ok(result);
+            }
+            else throw new Exception($"Claim User nem talált: {userIdString}");
+            
         }
 
         [Authorize(Roles ="Admin")]

@@ -10,6 +10,7 @@ namespace GymWebapp.Model
         public DbSet<Class> Classes { get; set; }
         public DbSet<TicketType> TicketTypes { get; set; }
         public DbSet<BougthTicket> BougthTickets { get; set; }
+        public DbSet<ActiveTicket> ActiveTickets { get; set; }
 
         public DataContext(DbContextOptions options) : base(options) { }
 

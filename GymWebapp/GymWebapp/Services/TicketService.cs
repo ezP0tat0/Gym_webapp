@@ -4,6 +4,7 @@ using GymWebapp.Model.Dtos;
 using GymWebapp.Mapper;
 using GymWebapp.Model.Data;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace GymWebapp.Services
 {
@@ -12,7 +13,7 @@ namespace GymWebapp.Services
         Task<List<TicketType>> getAllTickets();
         Task<List<MyTicketsDto>> getMyTickets(int userId);
         Task TicketPurchase(int ticketId, int userId);
-        Task<string> UseTicket(int BoughtTicketId);
+        Task<string> UseTicket(int BoughtTicketId, int userId);
         Task AddNewTicketType(NewTicketDto newTicket);
         Task ChangeTicketPrice(int ticketId, int price);
 
@@ -35,7 +36,7 @@ namespace GymWebapp.Services
 
         public async Task<List<MyTicketsDto>> getMyTickets(int userId)
         {
-            var myTickets=_dataContext.BougthTickets.Include(x=>x.TicketType).Include(x=>x.User).Where(x => x.UserId == userId);
+            var myTickets = _dataContext.BougthTickets.Include(x => x.TicketType).Where(x => x.UserId == userId);
             var result = _mapper.Map<List<MyTicketsDto>>(myTickets);
             return result;
         }
@@ -45,9 +46,31 @@ namespace GymWebapp.Services
 
         }
 
-        public async Task<string> UseTicket(int ticketId)
+        public async Task<string> UseTicket(int ticketId,int userId)
         {
-            return "";
+            var usedTicket = await _dataContext.BougthTickets.FindAsync(ticketId);
+            if (usedTicket == null) throw new Exception("Jegy nem található");
+
+            var AccessCode = AccessCodeGenerate();
+
+            if(usedTicket.Duration.Equals("1")) _dataContext.BougthTickets.Remove(usedTicket);
+
+            else 
+            {
+                if(!usedTicket.Duration.Contains('.')) usedTicket.Duration = $"{int.Parse(usedTicket.Duration)-1}";
+            }
+
+            var ActiveTicket = new ActiveTicket()
+            {
+                AccessCode = AccessCode,
+                UserId = userId,
+                ExpireDate = DateTime.Now.AddHours(24)
+            };
+
+            _dataContext.ActiveTickets.Add(ActiveTicket);
+            await _dataContext.SaveChangesAsync();
+
+            return AccessCode;
         }
 
         public async Task AddNewTicketType(NewTicketDto newTicket)
@@ -57,6 +80,15 @@ namespace GymWebapp.Services
         public async Task ChangeTicketPrice(int ticketId, int price)
         {
 
+        }
+
+        private string AccessCodeGenerate()
+        {
+            Random rnd = new Random();
+
+            int RandomNumber = rnd.Next(0000, 10000);
+
+            return $"{RandomNumber}";
         }
     }
 }

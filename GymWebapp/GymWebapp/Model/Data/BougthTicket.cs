@@ -17,6 +17,6 @@ namespace GymWebapp.Model.Data
         public User User { get; set; }
 
 
-        public DateTime ExpireDate { get; set; }
+        public string Duration { get; set; } //number of usage or date in string form
     }
 }
