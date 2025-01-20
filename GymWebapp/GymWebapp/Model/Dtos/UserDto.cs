@@ -40,4 +40,10 @@
         public int UserId { get; set; }
         public string Role { get; set; }
     }
+    public class TranersDto
+    {
+        public string Name { get; set; }
+        public string phoneNumber { get; set; }
+        //public string Expertise {get;set;}
+    }
 }

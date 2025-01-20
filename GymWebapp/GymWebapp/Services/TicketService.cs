@@ -43,7 +43,18 @@ namespace GymWebapp.Services
 
         public async Task TicketPurchase(int ticketId, int userId)
         {
+            //purchase change!!!!!!!!!!
+           //id,ticketID,userId, duration
+            var ticketType= await _dataContext.TicketTypes.FindAsync(ticketId);
+            var newBoughtTicket = new BougthTicket
+            {
+                TicketTypeId = ticketId,
+                UserId = userId,
+                Duration = ticketType.Duration
+            };
 
+            _dataContext.Add(newBoughtTicket);
+            await _dataContext.SaveChangesAsync();
         }
 
         public async Task<string> UseTicket(int ticketId,int userId)
@@ -75,10 +86,21 @@ namespace GymWebapp.Services
 
         public async Task AddNewTicketType(NewTicketDto newTicket)
         {
+            var newTicketType = _mapper.Map<TicketType>(newTicket);
+            
+            _dataContext.TicketTypes.Add(newTicketType);
+            await _dataContext.SaveChangesAsync();
 
         }
         public async Task ChangeTicketPrice(int ticketId, int price)
         {
+            var ticket=await  _dataContext.TicketTypes.FindAsync(ticketId);
+            
+            if (ticket == null) throw new Exception("Jegy nem található");
+
+            ticket.Price = price;
+
+            await _dataContext.SaveChangesAsync();
 
         }
 

@@ -15,6 +15,10 @@ namespace GymWebapp.Mapper
             CreateMap<BougthTicket, MyTicketsDto>().ForMember(dest => dest.TicketName, opt => opt.MapFrom(src => src.TicketType.Name))
                                                    .ForMember(dest => dest.TicketDuration, opt => opt.MapFrom(src => src.Duration))
                                                    .ForMember(dest => dest.BoughtTicketId, opt => opt.MapFrom(src => src.Id));
+
+            CreateMap<NewTicketDto, TicketType>();
+            CreateMap<Trainer, TranersDto>().ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.User.Name));
         }
+
     }
 }

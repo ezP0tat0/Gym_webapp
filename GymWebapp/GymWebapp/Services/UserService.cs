@@ -4,6 +4,7 @@ using AutoMapper;
 using GymWebapp.Mapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http.HttpResults;
+using GymWebapp.Model.Data;
 
 namespace GymWebapp.Services
 {
@@ -14,6 +15,7 @@ namespace GymWebapp.Services
         Task<UserInfoDto> getUserInfo(int id);
         Task DeleteUser(int id);
         Task AddPhoneNo(string phoneNo, int id);
+        Task<List<TranersDto>> getAllTrainers();
     }
     public class UserService : IUserService
     {
@@ -66,6 +68,13 @@ namespace GymWebapp.Services
 
             user.PhoneNumber = phoneNo;
             await _dataContext.SaveChangesAsync();
+        }
+        public async Task<List<TranersDto>> getAllTrainers()
+        {
+            var trainers = _dataContext.Trainers.Include(x => x.User).ToList();
+            var response = _mapper.Map<List<TranersDto>>(trainers);
+
+            return response;
         }
     }
 }

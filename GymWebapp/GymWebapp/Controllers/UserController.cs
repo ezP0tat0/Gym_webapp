@@ -67,5 +67,11 @@ namespace GymWebapp.Controllers
             else throw new Exception($"Claim User nem talált: {userIdString}");
 
         }
+        [HttpGet("Trainers")]
+        public async Task<IActionResult> getTrainers()
+        {
+            var response = await _userService.getAllTrainers();
+            return Ok(response);
+        }
     }
 }
