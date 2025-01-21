@@ -32,6 +32,105 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "GymWebapp.Controllers.ClassController",
+    "Method": "getClasses",
+    "RelativePath": "api/Class",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GymWebapp.Controllers.TicketController",
+    "Method": "ListAllTickets",
+    "RelativePath": "api/Ticket",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GymWebapp.Controllers.TicketController",
+    "Method": "ChangeTicketPrice",
+    "RelativePath": "api/Ticket/ChangePrice/{ticketId}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ticketId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "price",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GymWebapp.Controllers.TicketController",
+    "Method": "getMyTickets",
+    "RelativePath": "api/Ticket/myTickets",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GymWebapp.Controllers.TicketController",
+    "Method": "AddNewTicket",
+    "RelativePath": "api/Ticket/NewTicket",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newTicket",
+        "Type": "GymWebapp.Model.Dtos.NewTicketDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GymWebapp.Controllers.TicketController",
+    "Method": "PurchaseTicket",
+    "RelativePath": "api/Ticket/purchaseTicket/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GymWebapp.Controllers.TicketController",
+    "Method": "UseTicket",
+    "RelativePath": "api/Ticket/useTicket",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "boughtTicketId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "GymWebapp.Controllers.UserController",
     "Method": "getUserInfo",
     "RelativePath": "api/User",
@@ -39,6 +138,22 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GymWebapp.Controllers.UserController",
+    "Method": "AddPhoneNumber",
+    "RelativePath": "api/User/AddPhoneNo",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "phoneNo",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -53,6 +168,27 @@
   },
   {
     "ContainingType": "GymWebapp.Controllers.UserController",
+    "Method": "deleteUser",
+    "RelativePath": "api/User/DeleteUser/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "id",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GymWebapp.Controllers.UserController",
     "Method": "RoleChange",
     "RelativePath": "api/User/RoleChange",
     "HttpMethod": "PATCH",
@@ -62,6 +198,32 @@
       {
         "Name": "rl",
         "Type": "GymWebapp.Model.Dtos.RoleChangeDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GymWebapp.Controllers.UserController",
+    "Method": "getTrainers",
+    "RelativePath": "api/User/Trainers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GymWebapp.Controllers.ClassController",
+    "Method": "CreateClass",
+    "RelativePath": "newClass",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newClass",
+        "Type": "GymWebapp.Model.Dtos.ClassDto",
         "IsRequired": true
       }
     ],

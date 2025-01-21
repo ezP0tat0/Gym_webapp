@@ -1,0 +1,102 @@
+/*
+#a6e1fa
+#0e6ba8
+#0a2472
+#001c55
+#00072d
+*/
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #0e6ba8;
+    color: #a6e1fa;
+}
+.top-bar {
+    background-color: #00072d;
+    color: #a6e1fa;
+    padding: 10px 20px;
+}
+.top-bar .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+.top-bar .profile {
+    text-align: right;
+}
+.profile span {
+    margin-right: 10px;
+}
+.nav-bar {
+    display: flex;
+    background-color: #00072d;
+    justify-content: center;
+    gap: 10%;
+    padding: 0.5%
+}
+.nav-bar a {
+    color: #a6e1fa;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: inline-block;
+    border-radius: 15px;
+}
+.nav-bar a:hover {
+    background-color: #0a2472;
+    color: #a6e1fa;
+}
+.content {
+    padding: 20px;
+}
+
+    /*-------*/
+#nav {
+    height: 40px;
+    background-color: #2C64B4;
+    width: 100%;
+    margin: 0 auto;
+    }   
+#nav ul {
+    margin: 0;
+    padding: 0;
+    text-align:center;
+}
+#nav ul li {
+    margin: 0;
+    padding: 0;
+    display:inline-block;
+    position: relative;
+}
+#nav ul li a {
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+    color: ##a6e1fa;
+    text-align: center;     
+    } 
+    /*-------*/
+#mainImg
+{
+    height: 32rem;
+    width: auto;
+}
+.content
+{
+    margin:auto;
+    text-align: center;
+}
+.frontimg
+{
+    position: relative;
+}
+#frontTitle
+{
+    position: absolute;
+    top: 45%;
+    left: 32%;
+    font-size: 5rem;
+    text-shadow: 1 1 30 #00072d;
+    font-weight: bold;
+}

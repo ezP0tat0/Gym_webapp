@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profilom</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #202020;
+        }
+
+        .profile-header {
+            background-color: #465463;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .profile-header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        .profile-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 400px;
+            margin: 30px auto;
+            padding: 10px;
+        }
+
+        .profile-button {
+            padding: 15px;
+            font-size: 16px;
+            color: white;
+            background-color: #1abc9c;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease;
+        }
+
+        .profile-button:hover {
+            background-color: #16a085;
+        }
+
+        .profile-button.danger {
+            background-color: #e74c3c;
+        }
+
+        .profile-button.danger:hover {
+            background-color: #c0392b;
+        }
+        .nav-bar {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            background-color: #34495e;
+            padding: 10px;
+        }
+        .nav-bar a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            padding: 5px 10px;
+            transition: background-color 0.3s ease;
+        }
+        .nav-bar a:hover {
+            background-color: #1abc9c;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+      <!-- Navigációs sáv -->
+    <div class="nav-bar">
+        <a href="#home">Főoldal</a>
+        <a href="#services">Szolgáltatások</a>
+        <a href="#about">Rólunk</a>
+        <a href="#contact">Kapcsolat</a>
+    </div>
+
+    <!-- Profil fejléce -->
+    <div class="profile-header">
+        <h1>Üdvözlünk, Kovács Péter!</h1>
+    </div>
+
+    <!-- Profil opciók -->
+    <div class="profile-options">
+        <button class="profile-button">Személyes adatok</button>
+        <button class="profile-button">Jegyeim</button>
+        <button class="profile-button">Beállítások</button>
+        <button class="profile-button danger">Kilépés</button>
+        <button class="profile-button danger">Fiók törlése</button>
+    </div>
+</body>
+</html>

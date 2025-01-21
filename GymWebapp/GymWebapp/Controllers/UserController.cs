@@ -36,6 +36,7 @@ namespace GymWebapp.Controllers
             await _userService.RoleChange(rl);
             return Ok(new { message = "Sikeresen változtatva" });
         }
+
         [HttpGet]
         public async Task<IActionResult> getUserInfo()
         {
@@ -47,6 +48,7 @@ namespace GymWebapp.Controllers
             }
             else throw new Exception($"Claim User nem talált: {userIdString}");
         }
+
         [Authorize(Roles = "Admin")]
         [HttpDelete("DeleteUser/{id}")]
         public async Task<IActionResult> deleteUser(int userId)
@@ -55,6 +57,7 @@ namespace GymWebapp.Controllers
 
             return Ok("Sikeresen törölve");
         }
+
         [HttpPatch("AddPhoneNo")]
         public async Task<IActionResult> AddPhoneNumber(string phoneNo)
         {

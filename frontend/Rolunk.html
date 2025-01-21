@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edzőterem Adatok</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #202020;
+        }
+        .nav-bar {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            background-color: #34495e;
+            padding: 10px;
+        }
+        .nav-bar a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            padding: 5px 10px;
+            transition: background-color 0.3s ease;
+        }
+        .nav-bar a:hover {
+            background-color: #1abc9c;
+            color: white;
+        }
+        .info-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .info-container h2 {
+            text-align: center;
+            color: #333;
+        }
+        .info-container p {
+            margin: 10px 0;
+            color: #666;
+            font-size: 16px;
+        }
+        .contact-info {
+            margin-top: 20px;
+        }
+        .contact-info p {
+            font-size: 18px;
+            color: #333;
+        }
+        .contact-info .info-label {
+            font-weight: bold;
+            color: #1abc9c;
+        }
+        .hours-list {
+            margin-top: 20px;
+            padding-left: 20px;
+        }
+        .hours-list li {
+            font-size: 16px;
+            color: #333;
+        }        
+        .top-bar {
+            background-color: #2c3e50;
+            color: white;
+            padding: 10px 20px;
+        }
+        .top-bar .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .top-bar .profile {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar d-flex justify-content-between align-items-center">
+        <div class="logo">Konditerem</div>
+        <div class="profile">
+            <span>Profil</span>
+            <span>|</span>
+            <span>John Doe</span>
+        </div>
+    </div>
+    <!-- Navigációs sáv -->
+    <div class="nav-bar">
+        <a href="#home">Főoldal</a>
+        <a href="#services">Szolgáltatások</a>
+        <a href="#about">Rólunk</a>
+        <a href="#contact">Kapcsolat</a>
+    </div>
+
+    <!-- Edzőterem információk -->
+    <div class="info-container">
+        <h2>Edzőterem Adatai</h2>
+
+        <div class="contact-info">
+            <p><span class="info-label">Cím:</span> 1234 Budapest, Edzőterem utca 5.</p>
+            <p><span class="info-label">Telefonszám:</span> +36 1 234 5678</p>
+        </div>
+
+        <h3>Nyitvatartás:</h3>
+        <ul class="hours-list">
+            <li>Hétfő: 06:00 - 22:00</li>
+            <li>Kedd: 06:00 - 22:00</li>
+            <li>Szerda: 06:00 - 22:00</li>
+            <li>Csütörtök: 06:00 - 22:00</li>
+            <li>Péntek: 06:00 - 20:00</li>
+            <li>Szombat: 08:00 - 18:00</li>
+            <li>Vasárnap: Zárva</li>
+        </ul>
+        <br>
+        <h3>Történetünk</h3>
+        <p>Lorem ipsum odor amet, consectetuer adipiscing elit. Erat fringilla torquent risus justo; sapien ad. Consectetur nunc dapibus malesuada vehicula maximus. Eros pellentesque pretium taciti a vulputate felis. Elit penatibus sodales taciti scelerisque neque porta semper. Hendrerit sapien rhoncus nostra netus senectus quisque. Dolor curae cras hendrerit ultricies pretium nec mollis malesuada.
+
+            Per fusce massa ut fermentum cubilia class id torquent lobortis. Amet consequat eleifend ante nullam sagittis duis nec. Imperdiet suspendisse pulvinar vehicula non lectus etiam viverra amet amet. Curabitur curabitur habitasse senectus blandit natoque ad curae conubia ante. Fames morbi luctus; diam primis arcu eros rhoncus. Curabitur fames porta proin turpis inceptos? Per suspendisse nunc senectus vestibulum nibh platea.</p>
+    </div>
+
+</body>
+</html>
