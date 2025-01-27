@@ -3,30 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">   
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
     <link href="Style/stlye.css" rel="stylesheet">
+    
     <title>Ignite Fitness</title>
 </head>
 <body>
+    
     <!-- Felső sáv -->
-    <div class="top-bar d-flex justify-content-between align-items-center">
-        <div class="logo">Ignite Fitness</div>
-        <div class="profile">
-            <span>Profil</span>
-            <span>|</span>
-            <span>John Doe</span>
+    <!--
+
+    Iron Revolution
+    Ignite Gym
+    Forge Fitness
+    Ignite Fitness
+
+-->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Ignite Fitness</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav  mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="jegyek.html">Jegyek</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Rólunk</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Kapcsolat</a>
+            </li>
+          </ul>
         </div>
-    </div>
-    <div class="nav-bar">
-        <a href="index.html">Főoldal</a>
-        <a href="jegyek.html">Jegyek</a>
-        <a href="#about">Rólunk</a>
-        <a href="#contact">Kapcsolat</a>
-    </div>
+      </div>
+    </nav>
+
+
+    
 
     <!-- Oldal tartalom -->
+    <div class="container mt-5">
+        <div class="row">
+          <div class="col-12">
+            <br>
+            <img id="mainImg" src="/Imgs/CutMainImg.jpg" alt="MainImg">
+            <h1 id="frontTitle">Ignite Fitness</h1>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-12">    
+                <br>
+                <h1>Üdvözlünk a ..... weboldalán!</h1>
+                <p>
+                    Fedezd fel a legmodernebb edzőtermi szolgáltatásainkat, tapasztalt edzőinkkel 
+                    és barátságos közösségünkkel. Célunk, hogy segítsünk elérni fitnesz céljaidat!
+                </p>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+              <h1>Jegyeink</h1>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                  <img class="card-img-top" src="https://via.placeholder.com/300x150" alt="card image cap">
+                  <div class="card-body">
+                    <h5>title</h5>
+                    <p class="card-text">texttttttttt</p>
+                    <p class="card-text">Ár: <span>2000</span>ft</p>
+                    <a href="#" class="btn btn-primary" onclick="">vásárlás</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="card">
+                  <img class="card-img-top" src="https://via.placeholder.com/300x150" alt="card image cap">
+                  <div class="card-body">
+                    <h5>title</h5>
+                    <p class="card-text">texttttttttt</p>
+                    <p class="card-text">Ár: <span>2000</span>ft</p>
+                    <a href="#" class="btn btn-primary" onclick="">vásárlás</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="card">
+                  <img class="card-img-top" src="https://via.placeholder.com/300x150" alt="card image cap">
+                  <div class="card-body">
+                    <h5>title</h5>
+                    <p class="card-text">texttttttttt</p>
+                    <p class="card-text">Ár: <span>2000</span>ft</p>
+                    <a href="#" class="btn btn-primary" onclick="">vásárlás</a>
+                  </div>
+                </div>
+                <br>
+                <a href="jegyek.html" class="btn btn-secondary">további jegyek</a>
+              </div>
+
+                <!--
+                <div class="ticket-card">
+                    <img src="https://via.placeholder.com/300x150" alt="Jegy kép">
+                    <h3>Napijegy</h3>
+                    <p>Egész napos belépés</p>
+                    <p class="price">Ár: 3 000 Ft</p>
+                    <button class="buy-button" onclick="alert('Napijegy vásárlása!')">Vásárlás</button>
+                </div>-->
+            
+        </div>
+      </div>
+      
+      
+      
+      <!--
+
+
+        <div class="row">
+            <div>
+                
+            </div>
+        </div>
+
+
+
+
     <div class="content">
        <div class="frontimg">
            <img id="mainImg" src="/Imgs/CutMainImg.jpg" alt="MainImg">
@@ -38,7 +151,7 @@
             és barátságos közösségünkkel. Célunk, hogy segítsünk elérni fitnesz céljaidat!
         </p>
     </div>
-
+-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

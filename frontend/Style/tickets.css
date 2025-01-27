@@ -1,9 +1,29 @@
-body {
+    /*
+    body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #202020;
-        }
+        }*/
+/*
+#a6e1fa
+#0e6ba8
+#0a2472
+#001c55
+#00072d
+*/
+
+    .ticketCard
+    {
+        background-color: #a6e1fa;
+    }
+
+
+
+
+
+
+
         .ticket-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr); /* Három oszlop */
@@ -62,4 +82,3 @@ body {
         .buy-button:hover {
             background-color: #16a085;
         }
-    </style>
