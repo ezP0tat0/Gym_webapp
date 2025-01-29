@@ -13,6 +13,7 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IClassService, ClassService>();
 builder.Services.AddScoped<ITicketService, TicketService>();
+builder.Services.AddScoped<IImgService, ImgService>();
 
 //autoMapper
 builder.Services.AddAutoMapper(typeof(Program).Assembly);

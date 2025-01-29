@@ -2,13 +2,17 @@
 using GymWebapp.Model;
 using GymWebapp.Model.Data;
 using GymWebapp.Model.Dtos;
+using GymWebapp.Services;
 
 namespace GymWebapp.Mapper
 {
     public class MapperConfig : Profile
     {
-        public MapperConfig()
+        private readonly ImgService _imgService;
+        public MapperConfig( ImgService imgService)
         {
+            _imgService = imgService;
+
             CreateMap<RegisterDto, User>();
            // CreateMap<ClassDto, Class>().ForMember(dest => dest.Trainer, null);
             CreateMap<Class, ClassDto>().ForMember(dest => dest.TrainerName, opt => opt.MapFrom(src => src.Trainer.User.Name));
@@ -16,7 +20,7 @@ namespace GymWebapp.Mapper
                                                    .ForMember(dest => dest.TicketDuration, opt => opt.MapFrom(src => src.Duration))
                                                    .ForMember(dest => dest.BoughtTicketId, opt => opt.MapFrom(src => src.Id));
 
-            CreateMap<NewTicketDto, TicketType>();
+            CreateMap<NewTicketDto, TicketType>().ForMember(dest=>dest.Image,opt=>opt.MapFrom(src=>_imgService.imgToBytes(src.Image)));
             CreateMap<Trainer, TranersDto>().ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.User.Name));
         }
 

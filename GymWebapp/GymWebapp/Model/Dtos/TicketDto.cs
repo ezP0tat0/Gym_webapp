@@ -14,5 +14,6 @@
         public string Name { get; set; }
         public string Duration { get; set; }
         public int Price { get; set; }
+        public IFormFile Image { get; set; }
     }
 }

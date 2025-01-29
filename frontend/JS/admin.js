@@ -1,4 +1,32 @@
-var defaultUrl = "http://localhost:5263/api/";
+
+async function users()
+{
+
+}
+async function tickets()
+{
+    const tickets= await getData("Ticket");
+    var place=document.getElementById("content");
+    place.innerHTML="";
+    place.innerHTML+="<table class='table table-dark table-striped table-hover'> <tr><th>#</th><th>Kép</th><th>Név</th><th>Idő</th><th>Ár</th><th><th></tr>";
+
+    tickets.forEach(e => {
+        place.innerHTML+=`<tr><td><img src="response:image/jpg;base64"></td><td>${e.Id}</td><td>${e.Name}</td><td>${e.Duration}</td><td>${e.Price}</td></tr>`;
+    });
+
+    place.innerHTML+="</table>";
+}
+async function classes()
+{
+
+}
+
+
+
+
+
+
+var defaultUrl="http://localhost:5117/api/";
 
 async function postData(url = "", data = {}, needAuth = true) {
     // Default options are marked with *
@@ -14,7 +42,8 @@ async function postData(url = "", data = {}, needAuth = true) {
         redirect: "follow", // manual, *follow, error
         referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
         body: testJSON(data) ? data : JSON.stringify(data), // body data type must match "Content-Type" header
-        
+        processData: false,
+        contentType: false,
     });
     console.log(response);
     if (response.status === 401 || response.status === 403) {
@@ -27,7 +56,6 @@ async function postData(url = "", data = {}, needAuth = true) {
         return {}; // or handle the error as per your requirement
     }
 }
-
 async function getData(url = "", needAuth = true) {
     // Default options are marked with *
     const response = await fetch(defaultUrl + url, {
@@ -46,20 +74,4 @@ async function getData(url = "", needAuth = true) {
         logout();
     }
     return response.json(); // parses JSON response into native JavaScript objects
-}
-
-function testJSON(text) {
-    if (typeof text !== "string") {
-        return false;
-    }
-    try {
-        JSON.parse(text);
-        return true;
-    } catch (error) {
-        return false;
-    }
-}
-
-function logout() {
-    localStorage.clear();
 }

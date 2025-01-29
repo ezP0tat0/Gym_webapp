@@ -17,11 +17,13 @@ namespace GymWebapp.Controllers
     [ApiController]
     public class TicketController : Controller
     {
-        private readonly TicketService _ticketService;
+        private readonly ITicketService _ticketService;
+        private readonly IImgService _ImgService;
 
-        public TicketController(TicketService ticketService)
+        public TicketController(ITicketService ticketService, IImgService imgService)
         {
             _ticketService = ticketService;
+            _ImgService = imgService;
         }
 
         [HttpGet]
@@ -82,6 +84,7 @@ namespace GymWebapp.Controllers
             await _ticketService.ChangeTicketPrice(ticketId,price);
             return Ok("Ár sikeresen megváltoztatva");
         }
+
 
     }
 }

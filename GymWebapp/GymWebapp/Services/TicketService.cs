@@ -22,15 +22,19 @@ namespace GymWebapp.Services
     {
         private readonly DataContext _dataContext;
         private readonly IMapper _mapper;
+        private readonly IImgService _imgService;
 
-        public TicketService(DataContext dataContext, IMapper mapper)
+        public TicketService(DataContext dataContext, IMapper mapper, IImgService imgService)
         {
             _dataContext = dataContext;
             _mapper = mapper;
+            _imgService = imgService;
         }
         public async Task<List<TicketType>> getAllTickets()
         {
             var result = _dataContext.TicketTypes.ToList();
+            foreach (var e in result) e.Image = _imgService.getImg(Convert.ToBase64String(e.Image));
+            
             return result;
         }
 

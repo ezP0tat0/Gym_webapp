@@ -8,6 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     <link href="Style/adminStlye.css" rel="stylesheet">
+    <script src="JS/admin.js"></script>
 
     <title>Admin Page</title>
 </head>
@@ -15,9 +16,9 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col">
-                <input class="btn btn-primary" type="button" value="Felhasználók">
-                <input class="btn btn-primary" type="button" value="Jegyek">
-                <input class="btn btn-primary" type="button" value="Edzések">            
+                <input class="btn btn-primary" type="button" value="Felhasználók" onclick="users()">
+                <input class="btn btn-primary" type="button" value="Jegyek" onclick="tickets()">
+                <input class="btn btn-primary" type="button" value="Edzések" onclick="classes()">            
             </div>
         </div>
         <br>

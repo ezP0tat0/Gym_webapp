@@ -6,5 +6,6 @@
         public string Name { get; set; }
         public string Duration { get; set; } //number of usage or date in string form
         public int Price { get; set; }
+        public byte[] Image { get; set; }
     }
 }
