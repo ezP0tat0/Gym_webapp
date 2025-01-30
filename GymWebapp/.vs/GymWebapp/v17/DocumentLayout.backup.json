@@ -82,8 +82,7 @@
               "RelativeToolTip": "GymWebapp\\Services\\ImgService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-28T12:44:10.338Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-28T12:44:10.338Z"
             },
             {
               "$type": "Document",
@@ -143,8 +142,7 @@
               "RelativeToolTip": "GymWebapp\\Mapper\\MapperConfig.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAABiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-15T16:36:43.083Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-15T16:36:43.083Z"
             },
             {
               "$type": "Document",
@@ -156,8 +154,7 @@
               "RelativeToolTip": "GymWebapp\\Controllers\\UserController.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAAAmwC0AAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-15T13:58:21.842Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-15T13:58:21.842Z"
             },
             {
               "$type": "Document",
@@ -167,7 +164,7 @@
               "RelativeDocumentMoniker": "GymWebapp\\Services\\TicketService.cs",
               "ToolTip": "C:\\Users\\psely\\Documents\\GitHub\\Gym_webapp\\GymWebapp\\GymWebapp\\Services\\TicketService.cs",
               "RelativeToolTip": "GymWebapp\\Services\\TicketService.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAUwBoAAABHAAAAAAAAAA==",
+              "ViewState": "AgIAAA8AAAAAAAAAAAA0wBoAAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-15T13:58:11.567Z",
               "EditorCaption": ""
@@ -182,8 +179,7 @@
               "RelativeToolTip": "GymWebapp\\Program.cs",
               "ViewState": "AgIAAAcAAAAAAAAAAAAuwBsAAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-08T12:14:29.565Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-08T12:14:29.565Z"
             },
             {
               "$type": "Document",
@@ -195,8 +191,7 @@
               "RelativeToolTip": "GymWebapp\\Controllers\\TicketController.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAuwBYAAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-15T13:57:54.353Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-15T13:57:54.353Z"
             }
           ]
         }
