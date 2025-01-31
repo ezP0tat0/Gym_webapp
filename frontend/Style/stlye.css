@@ -116,8 +116,14 @@ ul.dropdown-menu li
 {
     padding-left: 5%;
     padding-right: 5%;
+    padding-top: 6%;
 }
 ul.dropdown-menu li a
+{
+    text-align: center;
+    border-radius: 12px;
+}
+ul.dropdown-menu li input
 {
     text-align: center;
     border-radius: 12px;

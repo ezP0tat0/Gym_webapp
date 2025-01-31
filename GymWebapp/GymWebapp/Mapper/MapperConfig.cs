@@ -9,9 +9,8 @@ namespace GymWebapp.Mapper
     public class MapperConfig : Profile
     {
         private readonly ImgService _imgService;
-        public MapperConfig( ImgService imgService)
+        public MapperConfig( )
         {
-            _imgService = imgService;
 
             CreateMap<RegisterDto, User>();
            // CreateMap<ClassDto, Class>().ForMember(dest => dest.Trainer, null);
