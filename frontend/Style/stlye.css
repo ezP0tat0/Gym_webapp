@@ -128,3 +128,36 @@ ul.dropdown-menu li input
     text-align: center;
     border-radius: 12px;
 }
+ul.dropdown-menu li div
+{
+    text-align: center;
+    border-radius: 12px;
+    padding-top: -2%;
+}
+.loginLabel
+{
+    color: #a6e1fa;
+    font-size: small;
+}
+.loginField
+{
+    background: #29292b;
+}
+#userDropdown
+{
+    width: 250px;
+}
+.loggedin
+{
+    gap: 10px;
+    padding: 8px;
+    padding-top: 0px;
+}
+.loggedin:hover
+{
+    background-color: #343a40;
+    color: #a6e1fa;
+}
+.loggedin input[type="checkbox"] {
+    pointer-events: auto;
+}

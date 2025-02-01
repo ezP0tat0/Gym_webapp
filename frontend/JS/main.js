@@ -6,22 +6,22 @@ window.onload=function()
     userDropdown();
 }
 
+
 function userDropdown()
 {
     var ul = document.getElementById("userDropdown");
     if(userData === null)
     {
-        ul.innerHTML=`  <li><input id="Password" class="dropdown-item" type="text" placeholder="felhasználónév" aria-label="Username" aria-describedby="basic-addon1"></li>
-                        <li><input id="Username" class="dropdown-item" type="password" placeholder="jelszó" aria-label="Password" aria-describedby="basic-addon1"></li>
+        ul.innerHTML=`  <li><label class="loginLabel">Felhasználónév</label><input id="Username" class="dropdown-item loginField" type="text" placeholder="felhasználónév" aria-label="Username" aria-describedby="basic-addon1"></li>
+                        <li><label class="loginLabel">Jelszó</label><input id="Password" class="dropdown-item loginField" type="password" placeholder="jelszó" aria-label="Password" aria-describedby="basic-addon1"></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" onclick="login()">bejelentkezés</a></li>
-                        <div class="input-group mb-3 ">
-                        <div class="input-group-text">
-                            <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
-                        </div>
-                        Bejelentkezve marad
-                        <input type="text" class="form-control" aria-label="Text input with checkbox">
-                        </div>`;
+                        <li>
+                            <div class="dropdown-item loggedin">
+                                <input id="stayLoggedIn" type="checkbox">
+                                <label for="stayLoggedIn">Bejelentkezve&nbsp;marad</label>
+                            </div>
+                        </li>`;
     } 
     else
     {
@@ -32,6 +32,23 @@ function userDropdown()
     }
 
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Prevent dropdown from closing when clicking inside
+    document.querySelector(".dropdown-menu").addEventListener("click", function (event) {
+        if (event.target.id !== "stayLoggedIn") {
+            event.stopPropagation();
+        }
+    });
+
+    // Ensure the checkbox works
+    document.getElementById("stayLoggedIn").addEventListener("click", function (event) {
+        event.stopPropagation(); // Stops dropdown from closing
+    });
+});
+
+
+
 function displayUserInfo()
 {
     
