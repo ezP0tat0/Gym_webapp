@@ -143,9 +143,13 @@ ul.dropdown-menu li div
 {
     background: #29292b;
 }
-#userDropdown
+#userDropdownStandard, #userDropdownOffCanvas
 {
     width: 250px;
+}
+#userDropdownOffCanvas
+{
+    margin: auto;
 }
 .loggedin
 {
@@ -160,4 +164,9 @@ ul.dropdown-menu li div
 }
 .loggedin input[type="checkbox"] {
     pointer-events: auto;
+} 
+.offcanvas.offcanvas-end {
+    width: 40%;
+    max-width: 400px; 
+    min-width: 280px;
 }

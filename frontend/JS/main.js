@@ -9,7 +9,11 @@ window.onload=function()
 
 function userDropdown()
 {
-    var ul = document.getElementById("userDropdown");
+    var ul = document.getElementById("userDropdownStandard");
+    var ulo = document.getElementById("userDropdownOffCanvas");
+
+    if(ul===null) console.log("aaaaaaaa");
+    if(ulo===null) console.log("bbbb");
     if(userData === null)
     {
         ul.innerHTML=`  <li><label class="loginLabel">Felhasználónév</label><input id="Username" class="dropdown-item loginField" type="text" placeholder="felhasználónév" aria-label="Username" aria-describedby="basic-addon1"></li>
@@ -22,6 +26,7 @@ function userDropdown()
                                 <label for="stayLoggedIn">Bejelentkezve&nbsp;marad</label>
                             </div>
                         </li>`;
+        ulo.innerHTML=ul.innerHTML;
     } 
     else
     {
@@ -29,6 +34,8 @@ function userDropdown()
                         <li><a class="dropdown-item " href="jegyeim.html">Jegyeim</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item logout" href="#" onclick="logout()">Kijelentkezés</a></li>`;
+        
+        ulo.innerHTML=ul.innerHTML;
     }
 
 }
