@@ -10,36 +10,39 @@ namespace GymWebapp.Services
 {
     public interface ITicketService
     {
-        Task<List<TicketType>> getAllTickets();
+        Task<List<TicketDto>> getAllTickets();
         Task<List<MyTicketsDto>> getMyTickets(int userId);
         Task TicketPurchase(int ticketId, int userId);
         Task<string> UseTicket(int BoughtTicketId, int userId);
         Task AddNewTicketType(NewTicketDto newTicket);
         Task ChangeTicketPrice(int ticketId, int price);
+        Task<Tuple<byte[], string>> GetImage(int id);
 
     }
     public class TicketService : ITicketService
     {
         private readonly DataContext _dataContext;
         private readonly IMapper _mapper;
-        private readonly IImgService _imgService;
 
-        public TicketService(DataContext dataContext, IMapper mapper, IImgService imgService)
+        public TicketService(DataContext dataContext, IMapper mapper)
         {
             _dataContext = dataContext;
             _mapper = mapper;
-            _imgService = imgService;
         }
-        public async Task<List<TicketType>> getAllTickets()
+        public async Task<List<TicketDto>> getAllTickets()
         {
-            var result = _dataContext.TicketTypes.ToList();
-            foreach (var e in result) e.Image = _imgService.getImg(Convert.ToBase64String(e.Image));
+            var tickets = _dataContext.TicketTypes.ToList();
+            var result = new List<TicketDto>();
             
+            foreach(var e in tickets) result.Add(_mapper.Map<TicketDto>(e));
+
             return result;
         }
 
         public async Task<List<MyTicketsDto>> getMyTickets(int userId)
         {
+            //átgondolni
+
             var myTickets = _dataContext.BougthTickets.Include(x => x.TicketType).Where(x => x.UserId == userId);
             var result = _mapper.Map<List<MyTicketsDto>>(myTickets);
             return result;
@@ -115,6 +118,17 @@ namespace GymWebapp.Services
             int RandomNumber = rnd.Next(0000, 10000);
 
             return $"{RandomNumber}";
+        }
+
+        public async Task<Tuple<byte[],string>> GetImage(int id)
+        {
+            var ticket = await _dataContext.TicketTypes.FindAsync(id);
+
+            if (ticket == null) throw new Exception("Jegy nem található");
+
+            var Img = new Tuple<byte[], string>(ticket.ImageData,ticket.ImageType);
+
+            return Img;
         }
     }
 }

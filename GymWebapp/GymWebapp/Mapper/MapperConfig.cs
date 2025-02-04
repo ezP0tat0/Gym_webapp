@@ -13,13 +13,18 @@ namespace GymWebapp.Mapper
         {
 
             CreateMap<RegisterDto, User>();
-           // CreateMap<ClassDto, Class>().ForMember(dest => dest.Trainer, null);
+
             CreateMap<Class, ClassDto>().ForMember(dest => dest.TrainerName, opt => opt.MapFrom(src => src.Trainer.User.Name));
+
             CreateMap<BougthTicket, MyTicketsDto>().ForMember(dest => dest.TicketName, opt => opt.MapFrom(src => src.TicketType.Name))
                                                    .ForMember(dest => dest.TicketDuration, opt => opt.MapFrom(src => src.Duration))
                                                    .ForMember(dest => dest.BoughtTicketId, opt => opt.MapFrom(src => src.Id));
 
-            CreateMap<NewTicketDto, TicketType>().ForMember(dest=>dest.Image,opt=>opt.MapFrom(src=>_imgService.imgToBytes(src.Image)));
+            CreateMap<NewTicketDto, TicketType>().ForMember(dest => dest.ImageData, opt => opt.MapFrom(src => _imgService.imgToBytes(src.Image).data))
+                .ForMember(dest => dest.ImageType, opt => opt.MapFrom(src => _imgService.imgToBytes(src.Image).type));
+
+            CreateMap<TicketType, TicketDto>().ForMember(dest => dest.ImgUrl, opt => opt.MapFrom(src => $"https://localhost:7157/api/Ticket/Image/{src.Id}"));
+
             CreateMap<Trainer, TranersDto>().ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.User.Name));
         }
 

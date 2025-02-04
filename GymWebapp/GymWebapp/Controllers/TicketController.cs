@@ -83,6 +83,14 @@ namespace GymWebapp.Controllers
             return Ok("Ár sikeresen megváltoztatva");
         }
 
+        [HttpGet("Image/{id}")]
+        public async Task<IActionResult> getImage(int id)
+        {
+            var ticket = await _ticketService.GetImage(id);
+
+            return File(ticket.Item1, ticket.Item2);
+        }
+
 
     }
 }

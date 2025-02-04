@@ -11,35 +11,33 @@ namespace GymWebapp.Services
 {
     public interface IImgService
     {
-        byte[] imgToBytes(IFormFile img);
-        byte[] getImg(string sBase64);
+        InnerImageDto imgToBytes(IFormFile img);
     }
     public class ImgService : IImgService
     {
         public ImgService() { }
-        public byte[] getImg(string sBase64)
-        {
-            byte[] bytes = null;
-            if (!string.IsNullOrEmpty(sBase64)) bytes=Convert.FromBase64String(sBase64);
 
-            return bytes;
-        }
-
-        public byte[] imgToBytes(IFormFile img)
+        public InnerImageDto imgToBytes(IFormFile img)
         {
             if (img.Length > 0)
             {
                 using (var ms = new MemoryStream())
                 {
                     img.CopyTo(ms);
-                    var imgBytes = ms.ToArray();
 
-                    return imgBytes;
+                    var imgData = new InnerImageDto();
+
+                    imgData.data = ms.ToArray();
+                    imgData.type = img.ContentType;
+
+                    return imgData;
                 }
 
             }
 
-            else  throw new Exception("Képet nem lehet konvertálni");
+            else throw new Exception("Képet nem lehet konvertálni");
         }
     }
+
 }
+

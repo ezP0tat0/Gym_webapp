@@ -2,6 +2,11 @@
 {
     public class TicketDto
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Duration { get; set; }
+        public int Price { get; set; }
+        public string ImgUrl { get; set; }
     }
     public class MyTicketsDto
     {
