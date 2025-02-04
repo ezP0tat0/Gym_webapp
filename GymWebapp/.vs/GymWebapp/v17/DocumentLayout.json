@@ -3,20 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\psely\\Documents\\GitHub\\Gym_webapp\\GymWebapp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{515BC9FA-3394-4083-9CC7-FBC6BE8E3F4C}|GymWebapp\\GymWebapp.csproj|c:\\users\\psely\\documents\\github\\gym_webapp\\gymwebapp\\gymwebapp\\mapper\\mapperconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{515BC9FA-3394-4083-9CC7-FBC6BE8E3F4C}|GymWebapp\\GymWebapp.csproj|solutionrelative:gymwebapp\\mapper\\mapperconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{515BC9FA-3394-4083-9CC7-FBC6BE8E3F4C}|GymWebapp\\GymWebapp.csproj|c:\\users\\psely\\documents\\github\\gym_webapp\\gymwebapp\\gymwebapp\\controllers\\ticketcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{515BC9FA-3394-4083-9CC7-FBC6BE8E3F4C}|GymWebapp\\GymWebapp.csproj|solutionrelative:gymwebapp\\controllers\\ticketcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{515BC9FA-3394-4083-9CC7-FBC6BE8E3F4C}|GymWebapp\\GymWebapp.csproj|c:\\users\\psely\\documents\\github\\gym_webapp\\gymwebapp\\gymwebapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{515BC9FA-3394-4083-9CC7-FBC6BE8E3F4C}|GymWebapp\\GymWebapp.csproj|solutionrelative:gymwebapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{515BC9FA-3394-4083-9CC7-FBC6BE8E3F4C}|GymWebapp\\GymWebapp.csproj|c:\\users\\psely\\documents\\github\\gym_webapp\\gymwebapp\\gymwebapp\\services\\ticketservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{515BC9FA-3394-4083-9CC7-FBC6BE8E3F4C}|GymWebapp\\GymWebapp.csproj|solutionrelative:gymwebapp\\services\\ticketservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{515BC9FA-3394-4083-9CC7-FBC6BE8E3F4C}|GymWebapp\\GymWebapp.csproj|c:\\users\\psely\\documents\\github\\gym_webapp\\gymwebapp\\gymwebapp\\model\\dtos\\imagedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{515BC9FA-3394-4083-9CC7-FBC6BE8E3F4C}|GymWebapp\\GymWebapp.csproj|solutionrelative:gymwebapp\\model\\dtos\\imagedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{515BC9FA-3394-4083-9CC7-FBC6BE8E3F4C}|GymWebapp\\GymWebapp.csproj|c:\\users\\psely\\documents\\github\\gym_webapp\\gymwebapp\\gymwebapp\\controllers\\ticketcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{515BC9FA-3394-4083-9CC7-FBC6BE8E3F4C}|GymWebapp\\GymWebapp.csproj|solutionrelative:gymwebapp\\controllers\\ticketcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{515BC9FA-3394-4083-9CC7-FBC6BE8E3F4C}|GymWebapp\\GymWebapp.csproj|c:\\users\\psely\\documents\\github\\gym_webapp\\gymwebapp\\gymwebapp\\mapper\\mapperconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{515BC9FA-3394-4083-9CC7-FBC6BE8E3F4C}|GymWebapp\\GymWebapp.csproj|solutionrelative:gymwebapp\\mapper\\mapperconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{515BC9FA-3394-4083-9CC7-FBC6BE8E3F4C}|GymWebapp\\GymWebapp.csproj|c:\\users\\psely\\documents\\github\\gym_webapp\\gymwebapp\\gymwebapp\\services\\ticketservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{515BC9FA-3394-4083-9CC7-FBC6BE8E3F4C}|GymWebapp\\GymWebapp.csproj|solutionrelative:gymwebapp\\services\\ticketservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{515BC9FA-3394-4083-9CC7-FBC6BE8E3F4C}|GymWebapp\\GymWebapp.csproj|c:\\users\\psely\\documents\\github\\gym_webapp\\gymwebapp\\gymwebapp\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -25,10 +29,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{515BC9FA-3394-4083-9CC7-FBC6BE8E3F4C}|GymWebapp\\GymWebapp.csproj|c:\\users\\psely\\documents\\github\\gym_webapp\\gymwebapp\\gymwebapp\\services\\imgservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{515BC9FA-3394-4083-9CC7-FBC6BE8E3F4C}|GymWebapp\\GymWebapp.csproj|solutionrelative:gymwebapp\\services\\imgservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{515BC9FA-3394-4083-9CC7-FBC6BE8E3F4C}|GymWebapp\\GymWebapp.csproj|c:\\users\\psely\\documents\\github\\gym_webapp\\gymwebapp\\gymwebapp\\model\\dtos\\imagedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{515BC9FA-3394-4083-9CC7-FBC6BE8E3F4C}|GymWebapp\\GymWebapp.csproj|solutionrelative:gymwebapp\\model\\dtos\\imagedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{515BC9FA-3394-4083-9CC7-FBC6BE8E3F4C}|GymWebapp\\GymWebapp.csproj|c:\\users\\psely\\documents\\github\\gym_webapp\\gymwebapp\\gymwebapp\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -54,7 +54,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 479,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 11,
           "Children": [
             {
               "$type": "Bookmark",
@@ -62,7 +62,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 2,
               "Title": "ImageDto.cs",
               "DocumentMoniker": "C:\\Users\\psely\\Documents\\GitHub\\Gym_webapp\\GymWebapp\\GymWebapp\\Model\\Dtos\\ImageDto.cs",
               "RelativeDocumentMoniker": "GymWebapp\\Model\\Dtos\\ImageDto.cs",
@@ -74,7 +74,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "ImgService.cs",
               "DocumentMoniker": "C:\\Users\\psely\\Documents\\GitHub\\Gym_webapp\\GymWebapp\\GymWebapp\\Services\\ImgService.cs",
               "RelativeDocumentMoniker": "GymWebapp\\Services\\ImgService.cs",
@@ -134,20 +134,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "MapperConfig.cs",
               "DocumentMoniker": "C:\\Users\\psely\\Documents\\GitHub\\Gym_webapp\\GymWebapp\\GymWebapp\\Mapper\\MapperConfig.cs",
               "RelativeDocumentMoniker": "GymWebapp\\Mapper\\MapperConfig.cs",
               "ToolTip": "C:\\Users\\psely\\Documents\\GitHub\\Gym_webapp\\GymWebapp\\GymWebapp\\Mapper\\MapperConfig.cs",
               "RelativeToolTip": "GymWebapp\\Mapper\\MapperConfig.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-15T16:36:43.083Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-15T16:36:43.083Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "UserController.cs",
               "DocumentMoniker": "C:\\Users\\psely\\Documents\\GitHub\\Gym_webapp\\GymWebapp\\GymWebapp\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "GymWebapp\\Controllers\\UserController.cs",
@@ -159,7 +158,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "TicketService.cs",
               "DocumentMoniker": "C:\\Users\\psely\\Documents\\GitHub\\Gym_webapp\\GymWebapp\\GymWebapp\\Services\\TicketService.cs",
               "RelativeDocumentMoniker": "GymWebapp\\Services\\TicketService.cs",
@@ -167,8 +166,7 @@
               "RelativeToolTip": "GymWebapp\\Services\\TicketService.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAwwBoAAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-15T13:58:11.567Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-15T13:58:11.567Z"
             },
             {
               "$type": "Document",
@@ -178,22 +176,22 @@
               "RelativeDocumentMoniker": "GymWebapp\\Program.cs",
               "ToolTip": "C:\\Users\\psely\\Documents\\GitHub\\Gym_webapp\\GymWebapp\\GymWebapp\\Program.cs",
               "RelativeToolTip": "GymWebapp\\Program.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAqwDUAAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAADoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-08T12:14:29.565Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-08T12:14:29.565Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "TicketController.cs",
               "DocumentMoniker": "C:\\Users\\psely\\Documents\\GitHub\\Gym_webapp\\GymWebapp\\GymWebapp\\Controllers\\TicketController.cs",
               "RelativeDocumentMoniker": "GymWebapp\\Controllers\\TicketController.cs",
               "ToolTip": "C:\\Users\\psely\\Documents\\GitHub\\Gym_webapp\\GymWebapp\\GymWebapp\\Controllers\\TicketController.cs",
               "RelativeToolTip": "GymWebapp\\Controllers\\TicketController.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAuwBYAAAA/AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwBMAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-15T13:57:54.353Z"
+              "WhenOpened": "2025-01-15T13:57:54.353Z",
+              "EditorCaption": ""
             }
           ]
         }

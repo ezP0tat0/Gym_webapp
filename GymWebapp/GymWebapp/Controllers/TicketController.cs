@@ -18,12 +18,10 @@ namespace GymWebapp.Controllers
     public class TicketController : Controller
     {
         private readonly ITicketService _ticketService;
-        private readonly IImgService _ImgService;
 
-        public TicketController(ITicketService ticketService, IImgService imgService)
+        public TicketController(ITicketService ticketService)
         {
             _ticketService = ticketService;
-            _ImgService = imgService;
         }
 
         [HttpGet]
