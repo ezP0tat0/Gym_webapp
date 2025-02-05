@@ -24,11 +24,18 @@ namespace GymWebapp.Controllers
         }
         [Authorize(Roles ="Admin,Trainer")]
         [HttpPost("/newClass")]
-        public async Task<IActionResult> CreateClass(ClassDto newClass)
+        public async Task<IActionResult> CreateClass(NewClassDto newClass)
         {
             await _classService.CreateClass(newClass);
 
             return Ok("Edzés sikeresen létrehozva");
+        }
+        [HttpGet("Image/{id}")]
+        public async Task<IActionResult> getImage(int id)
+        {
+            var ticket = await _classService.GetImage(id);
+
+            return File(ticket.Item1, ticket.Item2);
         }
 
     }

@@ -14,5 +14,8 @@ namespace GymWebapp.Model.Data
         [ForeignKey("Trainer")]
         public int TrainerId { get; set; }
         public Trainer Trainer { get; set; }
+
+        public byte[] ImageData { get; set; }
+        public string ImageType { get; set; }
     }
 }

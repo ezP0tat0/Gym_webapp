@@ -82,6 +82,13 @@ namespace GymWebapp.Controllers
             await _ticketService.ChangeTicketPrice(ticketId,price);
             return Ok("Ár sikeresen megváltoztatva");
         }
+        [Authorize(Roles ="Admin")]
+        [HttpPatch("ChangeImage/{ticketId}")]
+        public async Task<IActionResult> ChangeImage(int ticketId, IFormFile image)
+        {
+            await _ticketService.ChangeImage(ticketId, image);
+            return Ok("Kép sikeresen változtatva");
+        }
 
         [HttpGet("Image/{id}")]
         public async Task<IActionResult> getImage(int id)

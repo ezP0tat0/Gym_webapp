@@ -17,6 +17,7 @@ namespace GymWebapp.Services
         Task AddNewTicketType(NewTicketDto newTicket);
         Task ChangeTicketPrice(int ticketId, int price);
         Task<Tuple<byte[], string>> GetImage(int id);
+        Task ChangeImage(int id,IFormFile image);
 
     }
     public class TicketService : ITicketService
@@ -129,6 +130,20 @@ namespace GymWebapp.Services
             var Img = new Tuple<byte[], string>(ticket.ImageData,ticket.ImageType);
 
             return Img;
+        }
+
+        public async Task ChangeImage(int id, IFormFile image)
+        {
+            IImgService _imgService = new ImgService();
+            var convertedImg= _imgService.imgToBytes(image);
+
+            var ticket = await _dataContext.TicketTypes.FindAsync(id);
+            if (ticket == null) throw new Exception("Jegy nem található");
+
+            ticket.ImageData = convertedImg.data;
+            ticket.ImageType = convertedImg.type;
+
+            await _dataContext.SaveChangesAsync();
         }
     }
 }

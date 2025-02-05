@@ -8,5 +8,8 @@ namespace GymWebapp.Model.Data
         public int Id { get; set; } //Id=user?? id=foreign key?
         public User User { get; set; }
         public string PhoneNumber { get; set; }
+
+        public byte[] ImageData { get; set; }
+        public string ImageType { get; set; }
     }
 }

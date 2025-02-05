@@ -13,7 +13,9 @@ namespace GymWebapp.Services
     {
         Task<List<ClassDto>> getClasses();
         Task joinToClass(int classId, int personId);
-        Task CreateClass(ClassDto classDto);
+        Task CreateClass(NewClassDto classDto);
+        Task<Tuple<byte[], string>> GetImage(int id);
+
     }
     public class ClassService : IClassService
     {
@@ -28,7 +30,12 @@ namespace GymWebapp.Services
         public async Task<List<ClassDto>> getClasses()
         {
             var classes = await _dataContext.Classes.Include(x => x.Trainer).ThenInclude(x => x.User).ToListAsync();
-            var result = _mapper.Map<List<ClassDto>>(classes);
+
+            var result = new List<ClassDto>();
+
+            foreach (var e in classes) result.Add(_mapper.Map<ClassDto>(e)); 
+                   
+                _mapper.Map<List<ClassDto>>(classes);
 
             return result;
         }
@@ -37,7 +44,7 @@ namespace GymWebapp.Services
         {
             //új tábla?
         }
-        public async Task CreateClass(ClassDto classDto)
+        public async Task CreateClass(NewClassDto classDto)
         {
             var newClass = _mapper.Map<Class>(classDto);
             var trainer = await _dataContext.Users.FirstOrDefaultAsync(x => x.Name.Equals(classDto.TrainerName));
@@ -48,5 +55,15 @@ namespace GymWebapp.Services
             await _dataContext.SaveChangesAsync();
         }
 
+        public async Task<Tuple<byte[], string>> GetImage(int id)
+        {
+            var clas = await _dataContext.Classes.FindAsync(id);
+
+            if (clas == null) throw new Exception("A kiírt óra nem található");
+
+            var Img = new Tuple<byte[], string>(clas.ImageData, clas.ImageType);
+
+            return Img;
+        }
     }
 }

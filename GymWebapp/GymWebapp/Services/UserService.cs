@@ -16,6 +16,7 @@ namespace GymWebapp.Services
         Task DeleteUser(int id);
         Task AddPhoneNo(string phoneNo, int id);
         Task<List<TranersDto>> getAllTrainers();
+        Task<Tuple<byte[], string>> GetImage(int id);
     }
     public class UserService : IUserService
     {
@@ -41,6 +42,15 @@ namespace GymWebapp.Services
             if (user == null) throw new Exception("Felhasználó nem található");
 
             user.Role = rl.Role;
+
+            if (user.Role.Equals("Trainer"))
+            {
+                var trainer= await _dataContext.Trainers.FindAsync(user.Id);
+
+                IImgService _imgService= new ImgService();
+                var convertedImg = _imgService.imgToBytes();
+            }
+
             await _dataContext.SaveChangesAsync();
         }
         public async Task<UserInfoDto> getUserInfo(int id)
@@ -72,9 +82,24 @@ namespace GymWebapp.Services
         public async Task<List<TranersDto>> getAllTrainers()
         {
             var trainers = _dataContext.Trainers.Include(x => x.User).ToList();
-            var response = _mapper.Map<List<TranersDto>>(trainers);
+
+            var response = new List<TranersDto>();
+
+            foreach (var e in trainers) response.Add(_mapper.Map<TranersDto>(e));
+                
 
             return response;
+        }
+
+        public async Task<Tuple<byte[], string>> GetImage(int id)
+        {
+            var user = await _dataContext.Trainers.FindAsync(id);
+
+            if (user == null) throw new Exception("Trainer nem található");
+
+            var Img = new Tuple<byte[], string>(user.ImageData, user.ImageType);
+
+            return Img;
         }
     }
 }

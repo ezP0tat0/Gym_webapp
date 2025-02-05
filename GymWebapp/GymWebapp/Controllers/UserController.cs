@@ -76,5 +76,12 @@ namespace GymWebapp.Controllers
             var response = await _userService.getAllTrainers();
             return Ok(response);
         }
+        [HttpGet("Image/{id}")]
+        public async Task<IActionResult> getImage(int id)
+        {
+            var ticket = await _userService.GetImage(id);
+
+            return File(ticket.Item1, ticket.Item2);
+        }
     }
 }

@@ -12,6 +12,7 @@ namespace GymWebapp.Services
     public interface IImgService
     {
         InnerImageDto imgToBytes(IFormFile img);
+        InnerImageDto imgToBytes();
     }
     public class ImgService : IImgService
     {
@@ -36,6 +37,23 @@ namespace GymWebapp.Services
             }
 
             else throw new Exception("Képet nem lehet konvertálni");
+        }
+        public InnerImageDto imgToBytes()
+        {
+
+            var imgPath = Path.Combine(Directory.GetCurrentDirectory(), "Images", "PFP.jpg");
+
+            if (!System.IO.File.Exists(imgPath)) throw new Exception("alap kép nem található");
+
+                using (var ms = new MemoryStream(System.IO.File.ReadAllBytes(imgPath)))
+                {
+                    var imgData = new InnerImageDto();
+
+                    imgData.data = ms.ToArray();
+                    imgData.type = "image/jpeg";
+
+                    return imgData;
+                };
         }
     }
 
