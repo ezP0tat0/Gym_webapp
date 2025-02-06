@@ -3,53 +3,74 @@ var userData=JSON.parse(user);
 
 window.onload=function()
 {
+    console.log(userData);
     userDropdown();
 }
 
 
 function userDropdown()
 {
-    var ul = document.getElementById("userDropdownStandard");
+    var uls = document.getElementById("userDropdownStandard");
     var ulo = document.getElementById("userDropdownOffCanvas");
 
-    if(ul===null) console.log("aaaaaaaa");
+    if(uls===null) console.log("aaaaaaaa");
     if(ulo===null) console.log("bbbb");
     if(userData === null)
     {
-        ul.innerHTML=`  <li><label class="loginLabel">Felhasználónév</label><input id="Username" class="dropdown-item loginField" type="text" placeholder="felhasználónév" aria-label="Username" aria-describedby="basic-addon1"></li>
-                        <li><label class="loginLabel">Jelszó</label><input id="Password" class="dropdown-item loginField" type="password" placeholder="jelszó" aria-label="Password" aria-describedby="basic-addon1"></li>
+        uls.innerHTML=`  <li><label class="loginLabel">Felhasználónév</label><input id="UsernameS" class="dropdown-item loginField" type="text" placeholder="felhasználónév" aria-label="Username" aria-describedby="basic-addon1"></li>
+                        <li><label class="loginLabel">Jelszó</label><input id="PasswordS" class="dropdown-item loginField" type="password" placeholder="jelszó" aria-label="Password" aria-describedby="basic-addon1"></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" onclick="login()">bejelentkezés</a></li>
                         <li>
                             <div class="dropdown-item loggedin">
-                                <input id="stayLoggedIn" type="checkbox">
-                                <label for="stayLoggedIn">Bejelentkezve&nbsp;marad</label>
+                                <input id="stayLoggedInS" type="checkbox">
+                                <label for="stayLoggedInS">Bejelentkezve&nbsp;marad</label>
                             </div>
                         </li>`;
-        ulo.innerHTML=ul.innerHTML;
+        ulo.innerHTML=`  <li><label class="loginLabel">Felhasználónév</label><input id="UsernameO" class="dropdown-item loginField" type="text" placeholder="felhasználónév" aria-label="Username" aria-describedby="basic-addon1"></li>
+                        <li><label class="loginLabel">Jelszó</label><input id="PasswordO" class="dropdown-item loginField" type="password" placeholder="jelszó" aria-label="Password" aria-describedby="basic-addon1"></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" onclick="login()">bejelentkezés</a></li>
+                        <li>
+                            <div class="dropdown-item loggedin">
+                                <input id="stayLoggedInO" type="checkbox">
+                                <label for="stayLoggedInO">Bejelentkezve&nbsp;marad</label>
+                            </div>
+                        </li>`;
     } 
     else
     {
-        ul.innerHTML=`  <li><a class="dropdown-item" href="profil.html">Profil</a></li>
+        uls.innerHTML=`  <li><a class="dropdown-item" href="profil.html">Profil</a></li>
                         <li><a class="dropdown-item " href="jegyeim.html">Jegyeim</a></li>
+                        ${userData.role=="Admin"?`<li><a class="dropdown-item" href="adminPage.html">Admin oldal</a></li>`:""}
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item logout" href="#" onclick="logout()">Kijelentkezés</a></li>`;
+                        <li><a class="dropdown-item logout" onclick="logout()">Kijelentkezés</a></li>`;
         
-        ulo.innerHTML=ul.innerHTML;
+        
+        ulo.innerHTML=uls.innerHTML;
     }
 
 }
 
 document.addEventListener("DOMContentLoaded", function () {
     // Prevent dropdown from closing when clicking inside
-    document.querySelector(".dropdown-menu").addEventListener("click", function (event) {
-        if (event.target.id !== "stayLoggedIn") {
+    document.getElementById("userDropdownStandard").addEventListener("click",function(event){
+        if (event.target.id !== "stayLoggedInS") {
             event.stopPropagation();
         }
     });
+    document.getElementById("userDropdownOffCanvas").addEventListener("click",function(event){
+        if (event.target.id !== "stayLoggedInO") {
+            event.stopPropagation();
+        }
+    })
 
     // Ensure the checkbox works
-    document.getElementById("stayLoggedIn").addEventListener("click", function (event) {
+    document.getElementById("stayLoggedInS").addEventListener("click", function (event) {
+        event.stopPropagation(); // Stops dropdown from closing
+    });
+    
+    document.getElementById("stayLoggedInO").addEventListener("click", function (event) {
         event.stopPropagation(); // Stops dropdown from closing
     });
 });
@@ -67,6 +88,7 @@ function displayUserInfo()
 }
 function logout()
  {
+    console.log("adas");
     try
     {
         localStorage.clear();

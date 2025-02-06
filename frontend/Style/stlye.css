@@ -171,3 +171,14 @@ ul.dropdown-menu li div
     max-width: 400px; 
     min-width: 280px;
 }
+/*.row
+{
+    padding-top: 2%;
+    padding-bottom: 2%;
+}*/
+footer
+{
+    background-color: #00072d;
+    color: #a6e1fa;
+}
+

@@ -45,6 +45,6 @@
         public string Name { get; set; }
         public string phoneNumber { get; set; }
         public string ImgUrl { get; set; }
-        //public string Expertise {get;set;}
+        public string Expertise {get;set;}
     }
 }

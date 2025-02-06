@@ -1,8 +1,13 @@
 
 
 async function login() {
-    var Username = document.getElementById('Username').value;
-    var Password = document.getElementById('Password').value;
+    var UsernameS = document.getElementById('UsernameS').value;
+    var PasswordS = document.getElementById('PasswordS').value;
+    var Username = UsernameS === "" ? document.getElementById('UsernameO').value : UsernameS;
+    var Password = PasswordS === "" ? document.getElementById('PasswordO').value : PasswordS;
+    console.log(`uname:  ${Username}`);
+    console.log(`ppw:  ${Password}`);
+    
     if (isEmpty(Username) || isEmpty(Password)) {
         alert('Felhasználónév és jelszó megadása kötelező!');
     } else {
