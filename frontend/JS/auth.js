@@ -19,6 +19,7 @@ async function login() {
             .then(async (data) => {
                 if (await data.token) {
                     sessionStorage.setItem("data", JSON.stringify(data));
+                    location.reload();
                     console.log(data);
                 } else {
                     alert(await data.Message);
@@ -63,4 +64,10 @@ async function register() {
 
 function isEmpty(str) {
     return (!str || 0 === str.length);
+}
+
+function logout() {
+    sessionStorage.clear();
+    localStorage.clear();
+    location.reload();
 }

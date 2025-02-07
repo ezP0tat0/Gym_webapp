@@ -9,7 +9,7 @@ async function postData(url = "", data = {}, needAuth = true) {
         credentials: "same-origin", // include, *same-origin, omit
         headers: {
             "Content-Type": "application/json",
-            Authorization: "bearer " + (needAuth ? JSON.parse(localStorage.getItem("data")).token : null),
+            Authorization: "bearer " + (needAuth ? JSON.parse(sessionStorage.getItem("data")).token : null),
         },
         redirect: "follow", // manual, *follow, error
         referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
@@ -37,7 +37,7 @@ async function getData(url = "", needAuth = true) {
         credentials: "same-origin", // include, *same-origin, omit
         headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer " + (needAuth ? JSON.parse(localStorage.getItem("data")).token : null),
+            Authorization: "Bearer " + (needAuth ? JSON.parse(sessionStorage.getItem("data")).token : null),
         },
         redirect: "follow", // manual, *follow, error
         referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
@@ -60,6 +60,4 @@ function testJSON(text) {
     }
 }
 
-function logout() {
-    localStorage.clear();
-}
+

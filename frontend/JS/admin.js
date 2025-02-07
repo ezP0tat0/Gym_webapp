@@ -1,4 +1,8 @@
-
+var user=sessionStorage.getItem('data');
+var userData=JSON.parse(user);
+window.onload=function()
+{
+    console.log(userData);}
 async function users()
 {
 
@@ -10,24 +14,64 @@ async function tickets()
     place.innerHTML="";
     place.innerHTML+="<table class='table table-dark table-striped table-hover'> <tr><th>#</th><th>Kép</th><th>Név</th><th>Idő</th><th>Ár</th><th><th></tr>";
 
-    tickets.forEach(e => {
-        place.innerHTML+=`<tr><td><img src="response:image/jpg;base64"></td><td>${e.Id}</td><td>${e.Name}</td><td>${e.Duration}</td><td>${e.Price}</td></tr>`;
-    });
+    for(const e of tickets)
+    {
+        let imgSrc= await img(e.imgUrl);
+    
+        place.innerHTML+=`<tr><td><img src="${imgSrc}"></td><td>${e.Id}</td><td>${e.Name}</td><td>${e.Duration}</td><td>${e.Price}</td><td><a class="btn btn-dark">Módosítás</a></td></tr>`;
+    }
+    place.innerHTML+=`<tr><td colspan="7"> <a class="btn btn-dark newticket" onclick="newTicket()">új jegytípus hozzáadása</a></td></tr>`;
+    place.innerHTML+=`</table>`;
+    
+    
+}
+async function newTicket()
+{
+    const addition= document.getElementById("additional");
+    addition.innerHTML+=`
+    <form id="uploadForm">
+        <h3>Új jegy hozzáadása</h3>
+        <label>Elnevezés:</label>
+        <input type="text" id="name" required><br>
 
-    place.innerHTML+="</table>";
+        <label>Ár:</label>
+        <input type="text" id="price" required><br>
+
+        <label>Időtartalma:</label>
+        <input type="text" id="duration" required><br>
+
+        <label>Képe:</label>
+        <input type="file" id="image" accept="image/*" required><br>
+
+        <button class="btn btn-dark" type="submit">Feltöltés</button>
+    </form>`;
+    
 }
 async function classes()
 {
 
 }
 
+async function img(url) 
+{
+    console.log(url);
+    try
+    {
+        const imgResponse=await fetch(url);
 
+        const blob=await imgResponse.blob();
 
+        const blobUrl=URL.createObjectURL(blob);
 
-
-
-var defaultUrl="http://localhost:5117/api/";
-
+        return blobUrl;
+    }
+    catch(error)
+    {
+        console.error("error loading img: ",error);
+        return "";
+    }
+}
+/*
 async function postData(url = "", data = {}, needAuth = true) {
     // Default options are marked with *
     const response = await fetch(defaultUrl + url, {
@@ -74,4 +118,4 @@ async function getData(url = "", needAuth = true) {
         logout();
     }
     return response.json(); // parses JSON response into native JavaScript objects
-}
+}*/
