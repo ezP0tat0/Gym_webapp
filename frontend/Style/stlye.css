@@ -5,7 +5,65 @@
 #001c55
 #00072d
 */
+.colors
+{
+    /*3-700*/
+    color: #0B090A;
+    color: #161A1D;
+    color: #660708;
+    color: #A4161A;
+    color: #BA181B;
+    color: #E5383B;
+    color: #B1A7A6;
+    color: #D3D3D3;
+    color: #F5F3F4;
+    color: #FFFFFF;
+    color: #212529; /*bootstrap dark*/
+}
+body {
+    /*Jura , Quicksand , Anton , Rajdhani , Crete Round*/
+    font-family: "Jura", serif;
+    margin: 0;
+    padding: 0;
+    background-color: #161A1D;
+    color: #F5F3F4;
+    text-align: center;
+}
+.btnColor
+{
+    background-color: #660708;
+    border-color: #660708;
+    color: #F5F3F4;
+    font-weight: 500;
+}
+.navButton
+{
+    color: #660708;
+}
+.btnColor:hover
+{
+    background-color: #660708;
+    border-color: #660708;
+}
 
+.nameColor
+{
+    color: #A4161A;
+    font-weight: bolder;
+    font-size: 30px;
+}
+.nameColor:hover
+{
+    color: #660708;
+}
+.navColor
+{
+    color: #BA181B;
+}
+.navColor:hover
+{
+    color: #660708;
+}
 .row
 {
     margin: auto;
@@ -15,63 +73,12 @@
     margin: auto;
     text-align: center;
 }
-body {
-    
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #0e6ba8;
-    color: #a6e1fa;
-    text-align: center;
-}
-.top-bar {
-    background-color: #00072d;
-    color: #a6e1fa;
-    padding: 10px 20px;
-}
-.top-bar .logo {
-    font-size: 24px;
-    font-weight: bold;
-}
-.top-bar .profile {
-    text-align: right;
-}
-.profile span {
-    margin-right: 10px;
+.card
+{
+    background-color: #B1A7A6;
 }
 
-.content {
-    padding: 20px;
-}
 
-    /*-------*/
-/*
-    #nav {
-    height: 40px;
-    background-color: #2C64B4;
-    width: 100%;
-    margin: 0 auto;
-    }   
-#nav ul {
-    margin: 0;
-    padding: 0;
-    text-align:center;
-}
-#nav ul li {
-    margin: 0;
-    padding: 0;
-    display:inline-block;
-    position: relative;
-}
-#nav ul li a {
-    text-decoration: none;
-    padding: 10px 20px;
-    display: block;
-    color: #a6e1fa;
-    text-align: center;     
-    } 
-    */
-    /*-------*/
 #mainImg
 {
     height: auto;
@@ -171,20 +178,15 @@ ul.dropdown-menu li div
     max-width: 400px; 
     min-width: 280px;
 }
-/*.row
-{
-    padding-top: 2%;
-    padding-bottom: 2%;
-}*/
 footer
 {
-    background-color: #00072d;
-    color: #a6e1fa;
+    background-color: #212529;
+    color: #A4161A;
     padding: 3%;
 }
 h2
 {
-    color: #a6e1fa;
+    color: #F5F3F4;
 }
 h5
 {
@@ -192,9 +194,13 @@ h5
 }
 .contact
 {
-    color: #a6e1fa;
+    color: #BA181B;
     font-size: 100%;
     padding: 0;
+}
+.contact:hover
+{
+    color: #BA181B;
 }
 
 .loginLogout:hover

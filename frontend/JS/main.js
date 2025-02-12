@@ -17,8 +17,8 @@ function userDropdown()
     if(ulo===null) console.log("bbbb");
     if(userData === null)
     {
-        uls.innerHTML=`  <li><label class="loginLabel">Felhasználónév</label><input id="UsernameS" class="dropdown-item loginField" type="text" placeholder="felhasználónév" aria-label="Username" aria-describedby="basic-addon1"></li>
-                        <li><label class="loginLabel">Jelszó</label><input id="PasswordS" class="dropdown-item loginField" type="password" placeholder="jelszó" aria-label="Password" aria-describedby="basic-addon1"></li>
+        uls.innerHTML=`  <li><label class="loginLabel navButton">Felhasználónév</label><input id="UsernameS" class="dropdown-item loginField" type="text" placeholder="felhasználónév" aria-label="Username" aria-describedby="basic-addon1"></li>
+                        <li><label class="loginLabel navButton">Jelszó</label><input id="PasswordS" class="dropdown-item loginField" type="password" placeholder="jelszó" aria-label="Password" aria-describedby="basic-addon1"></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" onclick="login()">bejelentkezés</a></li>
                         <li>
@@ -27,8 +27,8 @@ function userDropdown()
                                 <label for="stayLoggedInS">Bejelentkezve&nbsp;marad</label>
                             </div>
                         </li>`;
-        ulo.innerHTML=`  <li><label class="loginLabel">Felhasználónév</label><input id="UsernameO" class="dropdown-item loginField" type="text" placeholder="felhasználónév" aria-label="Username" aria-describedby="basic-addon1"></li>
-                        <li><label class="loginLabel">Jelszó</label><input id="PasswordO" class="dropdown-item loginField" type="password" placeholder="jelszó" aria-label="Password" aria-describedby="basic-addon1"></li>
+        ulo.innerHTML=`  <li><label class="loginLabel navButton">Felhasználónév</label><input id="UsernameO" class="dropdown-item loginField" type="text" placeholder="felhasználónév" aria-label="Username" aria-describedby="basic-addon1"></li>
+                        <li><label class="loginLabel navButton">Jelszó</label><input id="PasswordO" class="dropdown-item loginField" type="password" placeholder="jelszó" aria-label="Password" aria-describedby="basic-addon1"></li>
                         <li><p class="reg"><a class="dropdown-item text-end" href="Registration.html">Regisztráció</a></p></li
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item loginLogout" onclick="login()">Bejelentkezés</a></li>
