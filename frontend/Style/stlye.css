@@ -67,6 +67,7 @@ body {
 .row
 {
     margin: auto;
+    padding-top: 2%;
 }
 .col-12
 {
@@ -110,7 +111,6 @@ body {
     margin-left: auto;
     margin-right: 2%;
 }
-
 .logout
 {
     border-radius: 12px;
@@ -144,12 +144,14 @@ ul.dropdown-menu li div
 }
 .loginLabel
 {
-    color: #a6e1fa;
-    font-size: small;
+    color: #B1A7A6;
+    font-weight: 600;
+    font-size: medium;
 }
 .loginField
 {
-    background: #29292b;
+    background: #212529;
+    color: #D3D3D3;
 }
 #userDropdownStandard, #userDropdownOffCanvas
 {
@@ -161,6 +163,9 @@ ul.dropdown-menu li div
 }
 .loggedin
 {
+    color:#B1A7A6;
+    font-weight: 600;
+    font-size: medium;
     gap: 10px;
     padding: 8px;
     padding-top: 0px;
@@ -168,7 +173,7 @@ ul.dropdown-menu li div
 .loggedin:hover
 {
     background-color: #343a40;
-    color: #a6e1fa;
+    color: #F5F3F4;
 }
 .loggedin input[type="checkbox"] {
     pointer-events: auto;
@@ -178,6 +183,38 @@ ul.dropdown-menu li div
     max-width: 400px; 
     min-width: 280px;
 }
+.loginButton
+{
+    color: #E5383B;
+    font-weight: 700;
+    font-size: large;
+}
+.loginButton:hover
+{
+    background-color: #161A1D;
+    color: #BA181B;
+}
+.checkBox
+{
+    accent-color: #660708;
+}
+.reg a:hover
+{
+    background-color: #343a40;
+    color: #F5F3F4;
+}
+.reg
+{
+    color: #B1A7A6;
+    font-weight: 600;
+    font-size: small;
+    text-align: right;
+    margin: -2%;
+    padding: 0%;
+    margin-bottom: -8%;
+}
+
+/*footer css*/
 footer
 {
     background-color: #212529;
@@ -208,17 +245,6 @@ h5
     cursor: pointer;
 }
 
-.reg a:hover
-{
-    background-color: #343a40;
-}
-.reg
-{
-    text-align: right;
-    margin: -2%;
-    padding: 0%;
-    font-size: 70%;
-}
 .newticket
 {
     margin-left: auto;

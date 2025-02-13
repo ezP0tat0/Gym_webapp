@@ -28,23 +28,32 @@ async function tickets()
 async function newTicket()
 {
     const addition= document.getElementById("additional");
+    if(addition.innerHTML==``||addition.innerHTML==null)
     addition.innerHTML+=`
     <form id="uploadForm">
-        <h3>Új jegy hozzáadása</h3>
-        <label>Elnevezés:</label>
-        <input type="text" id="name" required><br>
+                        <table>
+                            <tr>
+                                <td class="text-end"><label>Elnevezés:</label></td>
+                                <td><input class="input" type="text" id="name" required><br></td>
+                            </tr>
+                            <tr>
+                                <td class="text-end"><label >Ár:</label></td>
+                                <td><input class="input" type="number" id="price" required><br></td>
+                            </tr>
+                            <tr>
+                                <td class="text-end"><label>Időtartalma:</label></td>
+                                <td><input class="input" type="number" id="duration" required><br></td>
+                            </tr>
+                            <tr>
+                                <td class="text-end"><label>Képe:</label></td>
+                                <td><input class="ImgInput" type="file" id="image" accept="image/*" required><br></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><button class="btn " type="submit">Feltöltés</button></td>
+                            </tr>
+                        </table></form>`;
 
-        <label>Ár:</label>
-        <input type="text" id="price" required><br>
-
-        <label>Időtartalma:</label>
-        <input type="text" id="duration" required><br>
-
-        <label>Képe:</label>
-        <input type="file" id="image" accept="image/*" required><br>
-
-        <button class="btn btn-dark" type="submit">Feltöltés</button>
-    </form>`;
+    else addition.innerHTML=``;
     
 }
 async function classes()

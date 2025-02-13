@@ -1,3 +1,43 @@
+
+.colors
+{
+    /*3-700*/
+    color: #0B090A;
+    color: #161A1D;
+    color: #660708;
+    color: #A4161A;
+    color: #BA181B;
+    color: #E5383B;
+    color: #B1A7A6;
+    color: #D3D3D3;
+    color: #F5F3F4;
+    color: #FFFFFF;
+    color: #212529; /*bootstrap dark*/
+}
+body {
+    /*Jura , Quicksand , Anton , Rajdhani , Crete Round*/
+    font-family: "Jura", serif;
+    margin: 0;
+    padding: 0;
+    background-color: #161A1D;
+    color: #F5F3F4;
+    text-align: center;
+}
+.input
+{
+    width: 80%;
+    border-radius: 10px;
+    background: #212529;
+    color: #D3D3D3;
+    padding-left: 2%;
+}
+.ImgInput
+{
+    padding-left: 10%;
+    width: 100%;
+    border-radius: 10px;
+}
+
 form
 {
     font-size: 120%;
@@ -6,4 +46,23 @@ form
 form input
 {
     margin: 1%;
+}
+.btn
+{
+    background-color: #660708;
+    border-color: #660708;
+    color: #F5F3F4;
+}
+.btn:hover
+{
+    background-color: #E5383B;
+    border-color: #E5383B;
+}
+#uploadForm
+{
+    margin-top: 5%;
+}
+#uploadForm table
+{
+    margin: auto;
 }
