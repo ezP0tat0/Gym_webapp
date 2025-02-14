@@ -37,19 +37,19 @@ async function newTicket()
                                 <td><input class="input" type="text" id="name" required><br></td>
                             </tr>
                             <tr>
-                                <td class="text-end"><label >Ár:</label></td>
-                                <td><input class="input" type="number" id="price" required><br></td>
-                            </tr>
-                            <tr>
                                 <td class="text-end"><label>Időtartalma:</label></td>
                                 <td><input class="input" type="number" id="duration" required><br></td>
+                            </tr>
+                            <tr>
+                                <td class="text-end"><label >Ár:</label></td>
+                                <td><input class="input" type="number" id="price" required><br></td>
                             </tr>
                             <tr>
                                 <td class="text-end"><label>Képe:</label></td>
                                 <td><input class="ImgInput" type="file" id="image" accept="image/*" required><br></td>
                             </tr>
                             <tr>
-                                <td colspan="2"><button class="btn " type="submit">Feltöltés</button></td>
+                                <td colspan="2"><button class="btn " type="submit" onclick="uploadTicket()">Feltöltés</button></td>
                             </tr>
                         </table></form>`;
 
@@ -80,51 +80,22 @@ async function img(url)
         return "";
     }
 }
-/*
-async function postData(url = "", data = {}, needAuth = true) {
-    // Default options are marked with *
-    const response = await fetch(defaultUrl + url, {
-        method: "POST", // *GET, POST, PUT, DELETE, etc.
-        mode: "cors", // no-cors, *cors, same-origin
-        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-        credentials: "same-origin", // include, *same-origin, omit
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: "bearer " + (needAuth ? JSON.parse(localStorage.getItem("data")).token : null),
-        },
-        redirect: "follow", // manual, *follow, error
-        referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-        body: testJSON(data) ? data : JSON.stringify(data), // body data type must match "Content-Type" header
-        processData: false,
-        contentType: false,
-    });
-    console.log(response);
-    if (response.status === 401 || response.status === 403) {
-        logout();
-    }
-    try {
-        return await response.json(); // parses JSON response into native JavaScript objects
-    } catch (error) {
-        console.error("Error parsing JSON:", error);
-        return {}; // or handle the error as per your requirement
-    }
-}
-async function getData(url = "", needAuth = true) {
-    // Default options are marked with *
-    const response = await fetch(defaultUrl + url, {
-        method: "GET", // *GET, POST, PUT, DELETE, etc.
-        mode: "cors", // no-cors, *cors, same-origin
-        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-        credentials: "same-origin", // include, *same-origin, omit
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + (needAuth ? JSON.parse(localStorage.getItem("data")).token : null),
-        },
-        redirect: "follow", // manual, *follow, error
-        referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-    });
-    if (response.status === 401 || response.status === 403) {
-        logout();
-    }
-    return response.json(); // parses JSON response into native JavaScript objects
-}*/
+
+var defaultUrl= "https://localhost:7289/api/";
+
+document.getElementById("uploadForm").addEventListener("submit",async function (event) {
+   event.preventDefault(); 
+
+   let formData = new FormData();
+   formData.append("name",document.getElementById("name").value);
+   formData.append("duration",document.getElementById("duration").value);
+   formData.append("price",document.getElementById("price").value);
+   formData.append("image",document.getElementById("image").files[0]);
+
+   fetch(defaultUrl+"Ticket/NewTicket",
+    {
+        method: "POST",
+        body: formData
+    }).then(response => response.json()).then(data => { console.log(data); alert(data);})
+    .catch(error=>{console.log(error); alert(error);});
+});
