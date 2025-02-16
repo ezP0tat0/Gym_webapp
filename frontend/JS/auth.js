@@ -26,7 +26,7 @@ async function login() {
                 }
             });
     }
-
+    userDropdown();
 }
 
 async function register() {

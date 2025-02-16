@@ -82,8 +82,9 @@ async function img(url)
 }
 
 var defaultUrl= "https://localhost:7289/api/";
-
-document.getElementById("uploadForm").addEventListener("submit",async function (event) {
+var uploadForm = document.getElementById("uploadForm");
+if(uploadForm !== null)
+    uploadForm.addEventListener("submit",async function (event) {
    event.preventDefault(); 
 
    let formData = new FormData();

@@ -79,6 +79,32 @@ body {
     background-color: #B1A7A6;
 }
 
+.cardImgs
+{
+    width: 98%;
+    height: auto;
+    margin: auto;
+    margin-top: 1%;
+}
+.card-text
+{
+    font-weight: 600;
+}
+.card-body h4
+{
+    font-weight: 700;
+}
+.card-body .price
+{
+    font-size: 125%;
+    font-weight: 700;
+}
+.card-body .btn
+{
+    width: 50%;
+    height: auto;
+    font-size: large;
+}
 
 #mainImg
 {
@@ -250,3 +276,5 @@ h5
     margin-left: auto;
     margin-right: auto;
 }
+
+/*carousel*/

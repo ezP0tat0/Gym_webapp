@@ -28,7 +28,7 @@ function userDropdown()
                         </li>`;
         ulo.innerHTML=`  <li><label class="loginLabel navButton">Felhasználónév</label><input id="UsernameO" class="dropdown-item loginField" type="text" placeholder="felhasználónév" aria-label="Username" aria-describedby="basic-addon1"></li>
                         <li><label class="loginLabel navButton">Jelszó</label><input id="PasswordO" class="dropdown-item loginField" type="password" placeholder="jelszó" aria-label="Password" aria-describedby="basic-addon1"></li>
-                        <li><p class="reg"><a class="dropdown-item text-end" href="Registration.html">Regisztráció</a></p></li
+                        <li><p class="reg"><a class="dropdown-item text-end reg" href="Registration.html">Regisztráció</a></p></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item loginLogout  loginButton" onclick="login()">Bejelentkezés</a></li>
                         <li>
@@ -91,18 +91,19 @@ function displayUserInfo()
     } 
 }
 function logout()
- {
+{
     console.log("adas");
     try
     {
         localStorage.clear();
         sessionStorage.clear();
+        userDropdown();
     }
     catch(error)
     {
         console.error("logout error: ",error);
     }
- }
+}
  async function showItems() {
     var div = document.getElementById("items");
     try {
@@ -114,3 +115,6 @@ function logout()
         div.textContent = "Hiba történt az adatok lekérdezése során.";
     }
 }
+
+
+
