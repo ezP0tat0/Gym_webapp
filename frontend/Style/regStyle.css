@@ -1,0 +1,87 @@
+body
+{
+    font-family: "Jura", serif;
+    padding: 0;
+    background-color: #0B090A;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.form-container {
+    background-color: #161A1D;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    animation: slideIn 0.8s ease-in-out, borderLight 2s infinite alternate;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes borderLight {
+    from {
+        box-shadow: 0 0 20px rgba(102, 7, 8, 0.5);
+    }
+    to {
+        box-shadow: 0 0 40px rgba(229, 56, 59, 0.9);
+    }
+}
+
+.form-container h2 {
+    color: #A4161A;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 4px 0;
+    margin-bottom: 5%;
+    border: none;
+    border-radius: 12px;
+    background-color: #212529;
+}
+#submit
+{
+    margin-top: 10%;
+    background-color: #ba181b;
+    font-size: large;
+    font-weight: 600;
+}
+
+.signUpLabel
+{
+    color: #B1A7A6;
+    font-weight: 600;
+    font-size: medium;
+}
+.login-link
+{
+    color: #B1A7A6;
+}
+.login-link a
+{
+    color: #D3D3D3;
+    
+}
+.login-link a:hover
+{
+    color: #E5383B;
+}

@@ -1,4 +1,7 @@
 var user=sessionStorage.getItem('data');
+
+if(localStorage.getItem('data')!= null) user=localStorage.getItem('data');
+
 var userData=JSON.parse(user);
 var defaultUrl= "https://localhost:7289/api/";
 
@@ -18,7 +21,7 @@ function userDropdown()
     {
         uls.innerHTML=`  <form class="loginForm"><li><label class="loginLabel navButton">Felhasználónév</label><input id="UsernameS" class="dropdown-item loginField" type="text" placeholder="felhasználónév" aria-label="Username" aria-describedby="basic-addon1"></li>
                         <li><label class="loginLabel navButton">Jelszó</label><input id="PasswordS" class="dropdown-item loginField" type="password" placeholder="jelszó" aria-label="Password" aria-describedby="basic-addon1"></li>
-                        <li><p class="reg"><a class="dropdown-item text-end reg" href="Registration.html">Regisztráció</a></p></li>
+                        <li><p class="reg"><a class="dropdown-item text-end reg" href="registration.html">Regisztráció</a></p></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item loginButton" type="submit" onclick="login()">bejelentkezés</a></li>
                         <li>
@@ -29,7 +32,7 @@ function userDropdown()
                         </li></form>`;
         ulo.innerHTML=`  <form  class="loginForm"><li><label class="loginLabel navButton">Felhasználónév</label><input id="UsernameO" class="dropdown-item loginField" type="text" placeholder="felhasználónév" aria-label="Username" aria-describedby="basic-addon1"></li>
                         <li><label class="loginLabel navButton">Jelszó</label><input id="PasswordO" class="dropdown-item loginField" type="password" placeholder="jelszó" aria-label="Password" aria-describedby="basic-addon1"></li>
-                        <li><p class="reg"><a class="dropdown-item text-end reg" href="Registration.html">Regisztráció</a></p></li>
+                        <li><p class="reg"><a class="dropdown-item text-end reg" href="registration.html">Regisztráció</a></p></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item loginLogout  loginButton"  type="submit"  onclick="login()">Bejelentkezés</a></li>
                         <li>
@@ -103,7 +106,6 @@ function displayUserInfo()
 }
 function logout()
 {
-    console.log("adas");
     try
     {
         localStorage.clear();

@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\psely\\Documents\\GitHub\\Gym_webapp\\GymWebapp\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{515BC9FA-3394-4083-9CC7-FBC6BE8E3F4C}|GymWebapp\\GymWebapp.csproj|c:\\users\\psely\\documents\\github\\gym_webapp\\gymwebapp\\gymwebapp\\services\\classservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{515BC9FA-3394-4083-9CC7-FBC6BE8E3F4C}|GymWebapp\\GymWebapp.csproj|solutionrelative:gymwebapp\\services\\classservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{515BC9FA-3394-4083-9CC7-FBC6BE8E3F4C}|GymWebapp\\GymWebapp.csproj|c:\\users\\psely\\documents\\github\\gym_webapp\\gymwebapp\\gymwebapp\\mapper\\mapperconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{515BC9FA-3394-4083-9CC7-FBC6BE8E3F4C}|GymWebapp\\GymWebapp.csproj|solutionrelative:gymwebapp\\mapper\\mapperconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -62,11 +66,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 394,
-          "SelectedChildIndex": 12,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "UserController.cs",
               "DocumentMoniker": "C:\\Users\\psely\\Documents\\GitHub\\Gym_webapp\\GymWebapp\\GymWebapp\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "GymWebapp\\Controllers\\UserController.cs",
@@ -75,8 +79,7 @@
               "ViewState": "AgIAAAkAAAAAAAAAAAAqwBcAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-15T13:58:21.842Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -84,7 +87,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "ClassService.cs",
+              "DocumentMoniker": "C:\\Users\\psely\\Documents\\GitHub\\Gym_webapp\\GymWebapp\\GymWebapp\\Services\\ClassService.cs",
+              "RelativeDocumentMoniker": "GymWebapp\\Services\\ClassService.cs",
+              "ToolTip": "C:\\Users\\psely\\Documents\\GitHub\\Gym_webapp\\GymWebapp\\GymWebapp\\Services\\ClassService.cs",
+              "RelativeToolTip": "GymWebapp\\Services\\ClassService.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAxwCMAAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-21T11:08:08.911Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "TicketController.cs",
               "DocumentMoniker": "C:\\Users\\psely\\Documents\\GitHub\\Gym_webapp\\GymWebapp\\GymWebapp\\Controllers\\TicketController.cs",
               "RelativeDocumentMoniker": "GymWebapp\\Controllers\\TicketController.cs",
@@ -92,12 +108,11 @@
               "RelativeToolTip": "GymWebapp\\Controllers\\TicketController.cs",
               "ViewState": "AgIAAFMAAAAAAAAAAAAuwEcAAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-21T10:11:22.31Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-21T10:11:22.31Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Users\\psely\\Documents\\GitHub\\Gym_webapp\\GymWebapp\\GymWebapp\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "GymWebapp\\Controllers\\AuthController.cs",
@@ -105,12 +120,11 @@
               "RelativeToolTip": "GymWebapp\\Controllers\\AuthController.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-21T10:07:59.186Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-21T10:07:59.186Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "20250206130353_PicturesAndTrainerExpertiseAdded.cs",
               "DocumentMoniker": "C:\\Users\\psely\\Documents\\GitHub\\Gym_webapp\\GymWebapp\\GymWebapp\\Migrations\\20250206130353_PicturesAndTrainerExpertiseAdded.cs",
               "RelativeDocumentMoniker": "GymWebapp\\Migrations\\20250206130353_PicturesAndTrainerExpertiseAdded.cs",
@@ -122,7 +136,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Trainer.cs",
               "DocumentMoniker": "C:\\Users\\psely\\Documents\\GitHub\\Gym_webapp\\GymWebapp\\GymWebapp\\Model\\Data\\Trainer.cs",
               "RelativeDocumentMoniker": "GymWebapp\\Model\\Data\\Trainer.cs",
@@ -134,7 +148,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "ImageDto.cs",
               "DocumentMoniker": "C:\\Users\\psely\\Documents\\GitHub\\Gym_webapp\\GymWebapp\\GymWebapp\\Model\\Dtos\\ImageDto.cs",
               "RelativeDocumentMoniker": "GymWebapp\\Model\\Dtos\\ImageDto.cs",
@@ -146,7 +160,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "ImgService.cs",
               "DocumentMoniker": "C:\\Users\\psely\\Documents\\GitHub\\Gym_webapp\\GymWebapp\\GymWebapp\\Services\\ImgService.cs",
               "RelativeDocumentMoniker": "GymWebapp\\Services\\ImgService.cs",
@@ -158,7 +172,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "UserDto.cs",
               "DocumentMoniker": "C:\\Users\\psely\\Documents\\GitHub\\Gym_webapp\\GymWebapp\\GymWebapp\\Model\\Dtos\\UserDto.cs",
               "RelativeDocumentMoniker": "GymWebapp\\Model\\Dtos\\UserDto.cs",
@@ -170,7 +184,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "UserService.cs",
               "DocumentMoniker": "C:\\Users\\psely\\Documents\\GitHub\\Gym_webapp\\GymWebapp\\GymWebapp\\Services\\UserService.cs",
               "RelativeDocumentMoniker": "GymWebapp\\Services\\UserService.cs",
@@ -178,12 +192,11 @@
               "RelativeToolTip": "GymWebapp\\Services\\UserService.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAA4wCUAAABNAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-20T09:40:02.097Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-20T09:40:02.097Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "DataContext.cs",
               "DocumentMoniker": "C:\\Users\\psely\\Documents\\GitHub\\Gym_webapp\\GymWebapp\\GymWebapp\\Model\\DataContext.cs",
               "RelativeDocumentMoniker": "GymWebapp\\Model\\DataContext.cs",
@@ -195,7 +208,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "20250117124843_BoughtTicket_Change.cs",
               "DocumentMoniker": "C:\\Users\\psely\\Documents\\GitHub\\Gym_webapp\\GymWebapp\\GymWebapp\\Migrations\\20250117124843_BoughtTicket_Change.cs",
               "RelativeDocumentMoniker": "GymWebapp\\Migrations\\20250117124843_BoughtTicket_Change.cs",
@@ -207,7 +220,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "MapperConfig.cs",
               "DocumentMoniker": "C:\\Users\\psely\\Documents\\GitHub\\Gym_webapp\\GymWebapp\\GymWebapp\\Mapper\\MapperConfig.cs",
               "RelativeDocumentMoniker": "GymWebapp\\Mapper\\MapperConfig.cs",
@@ -215,12 +228,11 @@
               "RelativeToolTip": "GymWebapp\\Mapper\\MapperConfig.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAAB8AAACAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-15T16:36:43.083Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-15T16:36:43.083Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\psely\\Documents\\GitHub\\Gym_webapp\\GymWebapp\\GymWebapp\\Program.cs",
               "RelativeDocumentMoniker": "GymWebapp\\Program.cs",

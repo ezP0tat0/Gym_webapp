@@ -79,8 +79,7 @@
               "ViewState": "AgIAAAkAAAAAAAAAAAAqwBcAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-15T13:58:21.842Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -94,7 +93,7 @@
               "RelativeDocumentMoniker": "GymWebapp\\Services\\ClassService.cs",
               "ToolTip": "C:\\Users\\psely\\Documents\\GitHub\\Gym_webapp\\GymWebapp\\GymWebapp\\Services\\ClassService.cs",
               "RelativeToolTip": "GymWebapp\\Services\\ClassService.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAIwCMAAABMAAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAkwCMAAABMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-21T11:08:08.911Z",
               "EditorCaption": ""
@@ -109,8 +108,7 @@
               "RelativeToolTip": "GymWebapp\\Controllers\\TicketController.cs",
               "ViewState": "AgIAAFMAAAAAAAAAAAAuwEcAAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-21T10:11:22.31Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-21T10:11:22.31Z"
             },
             {
               "$type": "Document",
@@ -122,8 +120,7 @@
               "RelativeToolTip": "GymWebapp\\Controllers\\AuthController.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-21T10:07:59.186Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-21T10:07:59.186Z"
             },
             {
               "$type": "Document",
@@ -195,8 +192,7 @@
               "RelativeToolTip": "GymWebapp\\Services\\UserService.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAA4wCUAAABNAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-20T09:40:02.097Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-20T09:40:02.097Z"
             },
             {
               "$type": "Document",
@@ -232,8 +228,7 @@
               "RelativeToolTip": "GymWebapp\\Mapper\\MapperConfig.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAAB8AAACAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-15T16:36:43.083Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-15T16:36:43.083Z"
             },
             {
               "$type": "Document",
