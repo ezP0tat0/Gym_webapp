@@ -8,7 +8,7 @@ namespace GymWebapp.Mapper
 {
     public class MapperConfig : Profile
     {
-        private readonly ImgService _imgService;
+        private readonly ImgService _imgService=new ImgService();
         public MapperConfig()
         {
 
@@ -18,7 +18,7 @@ namespace GymWebapp.Mapper
                                            .ForMember(dest => dest.ImageType, opt => opt.MapFrom(src => _imgService.imgToBytes(src.image).type));
 
             CreateMap<Class, ClassDto>().ForMember(dest => dest.TrainerName, opt => opt.MapFrom(src => src.Trainer.User.Name))
-                                        .ForMember(dest => dest.ImgUrl, opt => opt.MapFrom(src => $"https://localhost:7157/api/Class/Image/{src.Id}"));
+                                        .ForMember(dest => dest.ImgUrl, opt => opt.MapFrom(src => $"https://localhost:7289/api/Class/Image/{src.Id}"));
 
 
             //ticket conversions
@@ -29,10 +29,11 @@ namespace GymWebapp.Mapper
             CreateMap<NewTicketDto, TicketType>().ForMember(dest => dest.ImageData, opt => opt.MapFrom(src => _imgService.imgToBytes(src.Image).data))
                                                  .ForMember(dest => dest.ImageType, opt => opt.MapFrom(src => _imgService.imgToBytes(src.Image).type));
 
-            CreateMap<TicketType, TicketDto>().ForMember(dest => dest.ImgUrl, opt => opt.MapFrom(src => $"https://localhost:7157/api/Ticket/Image/{src.Id}"));
+            CreateMap<TicketType, TicketDto>().ForMember(dest => dest.ImgUrl, opt => opt.MapFrom(src => $"https://localhost:7289/api/Ticket/Image/{src.Id}"));
 
 
             //User converisons
+            CreateMap<User, UserInfoDto>();
             CreateMap<RegisterDto, User>();
 
             CreateMap<Trainer, TranersDto>().ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.User.Name))

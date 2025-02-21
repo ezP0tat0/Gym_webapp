@@ -1,5 +1,6 @@
 var user=sessionStorage.getItem('data');
 var userData=JSON.parse(user);
+var defaultUrl= "https://localhost:7289/api/";
 
 window.onload=function()
 {
@@ -15,28 +16,39 @@ function userDropdown()
 
     if(userData === null)
     {
-        uls.innerHTML=`  <li><label class="loginLabel navButton">Felhasználónév</label><input id="UsernameS" class="dropdown-item loginField" type="text" placeholder="felhasználónév" aria-label="Username" aria-describedby="basic-addon1"></li>
+        uls.innerHTML=`  <form class="loginForm"><li><label class="loginLabel navButton">Felhasználónév</label><input id="UsernameS" class="dropdown-item loginField" type="text" placeholder="felhasználónév" aria-label="Username" aria-describedby="basic-addon1"></li>
                         <li><label class="loginLabel navButton">Jelszó</label><input id="PasswordS" class="dropdown-item loginField" type="password" placeholder="jelszó" aria-label="Password" aria-describedby="basic-addon1"></li>
                         <li><p class="reg"><a class="dropdown-item text-end reg" href="Registration.html">Regisztráció</a></p></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item loginButton" onclick="login()">bejelentkezés</a></li>
+                        <li><a class="dropdown-item loginButton" type="submit" onclick="login()">bejelentkezés</a></li>
                         <li>
                             <div class="dropdown-item loggedin">
                                 <input class="checkBox" id="stayLoggedInS" type="checkbox">
                                 <label for="stayLoggedInS">Bejelentkezve&nbsp;marad</label>
                             </div>
-                        </li>`;
-        ulo.innerHTML=`  <li><label class="loginLabel navButton">Felhasználónév</label><input id="UsernameO" class="dropdown-item loginField" type="text" placeholder="felhasználónév" aria-label="Username" aria-describedby="basic-addon1"></li>
+                        </li></form>`;
+        ulo.innerHTML=`  <form  class="loginForm"><li><label class="loginLabel navButton">Felhasználónév</label><input id="UsernameO" class="dropdown-item loginField" type="text" placeholder="felhasználónév" aria-label="Username" aria-describedby="basic-addon1"></li>
                         <li><label class="loginLabel navButton">Jelszó</label><input id="PasswordO" class="dropdown-item loginField" type="password" placeholder="jelszó" aria-label="Password" aria-describedby="basic-addon1"></li>
                         <li><p class="reg"><a class="dropdown-item text-end reg" href="Registration.html">Regisztráció</a></p></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item loginLogout  loginButton" onclick="login()">Bejelentkezés</a></li>
+                        <li><a class="dropdown-item loginLogout  loginButton"  type="submit"  onclick="login()">Bejelentkezés</a></li>
                         <li>
                             <div class="dropdown-item loggedin">
                                 <input class="checkBox" id="stayLoggedInO" type="checkbox">
                                 <label for="stayLoggedInO">Bejelentkezve&nbsp;marad</label>
                             </div>
-                        </li>`;
+                        </li></form>`;
+
+        //login with enter
+        const loginform=document.getElementsByClassName("loginForm");
+        
+        for(const e of loginform) e.addEventListener("keyup",async function(event){
+            if(event.keyCode === 13)
+            {
+                event.preventDefault();
+                login();
+            }
+        })
     } 
     else
     {
@@ -51,7 +63,6 @@ function userDropdown()
     }
 
 }
-
 document.addEventListener("DOMContentLoaded", function () {
     // Prevent dropdown from closing when clicking inside
     document.getElementById("userDropdownStandard").addEventListener("click",function(event){
@@ -104,17 +115,31 @@ function logout()
         console.error("logout error: ",error);
     }
 }
- async function showItems() {
-    var div = document.getElementById("items");
-    try {
-        const data = await getData("Item");
-        console.log(data);
-        div.innerHTML = createList(data);
-    } catch (error) {
-        console.log("Adatbekérési hiba: " + error);
-        div.textContent = "Hiba történt az adatok lekérdezése során.";
-    }
+async function showTickets() 
+{
+    var div = document.getElementById("tickets");
+
+    
 }
 
+async function img(url) 
+{
+    console.log(url);
+    try
+    {
+        const imgResponse=await fetch(url);
+
+        const blob=await imgResponse.blob();
+
+        const blobUrl=URL.createObjectURL(blob);
+
+        return blobUrl;
+    }
+    catch(error)
+    {
+        console.error("error loading img: ",error);
+        return "";
+    }
+}
 
 

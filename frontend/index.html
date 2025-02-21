@@ -138,51 +138,10 @@
               <h1>Jegyek</h1>
           </div>
         </div>
-
-        <div class="row d-none d-lg-flex">
-            <div class="col">
-                <div class="card">
-                  <img class="card-img-top card cardImgs" src="Imgs/1alk.jpg" alt="card image cap">
-                  <div class="card-body">
-                    <h4>1 Alkalmas</h4>
-                    <p class="card-text">Egyszeri bejutásra jogosít fel.</p>
-                    <p class="card-text price">Ár: <span>2000</span>ft</p>
-                    <a href="#" class="btn btn-primary btnColor" onclick="">vásárlás</a>
-                  </div>
-                </div>
-              </div>
-
+        <div id="tickets">
+          <!--normal screen 3 cards-->
+          <div class="row d-none d-lg-flex">
               <div class="col">
-                <div class="card">
-                  <img class="card-img-top  cardImgs" src="Imgs/1alk.jpg" alt="card image cap">
-                  <div class="card-body">
-                    <h5>title</h5>
-                    <p class="card-text">texttttttttt</p>
-                    <p class="card-text">Ár: <span>2000</span>ft</p>
-                    <a href="#" class="btn btn-primary btnColor" onclick="">vásárlás</a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col">
-                <div class="card">
-                  <img class="card-img-top  cardImgs" src="Imgs/1alk.jpg" alt="card image cap">
-                  <div class="card-body">
-                    <h5>title</h5>
-                    <p class="card-text">texttttttttt</p>
-                    <p class="card-text">Ár: <span>2000</span>ft</p>
-                    <a href="#" class="btn btn-primary btnColor" onclick="">vásárlás</a>
-                  </div>
-                </div>
-              </div>
-        </div>
-
-        <!--
-        <div class="row">
-          <div class="col">
-            <div id="carouselExampleFade" class="carousel slide carousel-fade">
-              <div class="carousel-inner">
-                <div class="carousel-item active">
                   <div class="card">
                     <img class="card-img-top card cardImgs" src="Imgs/1alk.jpg" alt="card image cap">
                     <div class="card-body">
@@ -193,40 +152,82 @@
                     </div>
                   </div>
                 </div>
-                <div class="carousel-item">
+
+                <div class="col">
                   <div class="card">
-                    <img class="card-img-top card cardImgs" src="Imgs/1alk.jpg" alt="card image cap">
+                    <img class="card-img-top card  cardImgs" src="Imgs/1alk.jpg" alt="card image cap">
                     <div class="card-body">
-                      <h4>12 Alkalmas</h4>
-                      <p class="card-text">Egyszeri bejutásra jogosít fel.</p>
+                      <h4>title</h4>
+                      <p class="card-text">texttttttttt</p>
                       <p class="card-text price">Ár: <span>2000</span>ft</p>
                       <a href="#" class="btn btn-primary btnColor" onclick="">vásárlás</a>
                     </div>
                   </div>
                 </div>
-                <div class="carousel-item">
+
+                <div class="col">
                   <div class="card">
                     <img class="card-img-top card cardImgs" src="Imgs/1alk.jpg" alt="card image cap">
                     <div class="card-body">
-                      <h4>3 Alkalmas</h4>
-                      <p class="card-text">Egyszeri bejutásra jogosít fel.</p>
+                      <h4>title</h4>
+                      <p class="card-text">texttttttttt</p>
                       <p class="card-text price">Ár: <span>2000</span>ft</p>
                       <a href="#" class="btn btn-primary btnColor" onclick="">vásárlás</a>
                     </div>
                   </div>
                 </div>
+          </div>
+          <!--smaller screen card carousel-->
+          <div class="row d-lg-none">
+            <div class="col">
+              <div id="carousel" class="carousel slide">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <div class="card carouselCard">
+                      <img class="card-img-top card cardImgs" src="Imgs/1alk.jpg" alt="card image cap">
+                      <div class="card-body">
+                        <h4>1 Alkalmas</h4>
+                        <p class="card-text">Egyszeri bejutásra jogosít fel.</p>
+                        <p class="card-text price">Ár: <span>2000</span>ft</p>
+                        <a href="#" class="btn btn-primary btnColor" onclick="">vásárlás</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <div class="card carouselCard">
+                      <img class="card-img-top card cardImgs" src="Imgs/1alk.jpg" alt="card image cap">
+                      <div class="card-body">
+                        <h4>1 Alkalmas</h4>
+                        <p class="card-text">Egyszeri bejutásra jogosít fel.</p>
+                        <p class="card-text price">Ár: <span>2000</span>ft</p>
+                        <a href="#" class="btn btn-primary btnColor" onclick="">vásárlás</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <div class="card carouselCard">
+                      <img class="card-img-top card cardImgs" src="Imgs/1alk.jpg" alt="card image cap">
+                      <div class="card-body">
+                        <h4>1 Alkalmas</h4>
+                        <p class="card-text">Egyszeri bejutásra jogosít fel.</p>
+                        <p class="card-text price">Ár: <span>2000</span>ft</p>
+                        <a href="#" class="btn btn-primary btnColor" onclick="">vásárlás</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
               </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
             </div>
           </div>
-        </div>-->
+        </div>
 
         <!--Button to tickets.html-->
         <div class="row">

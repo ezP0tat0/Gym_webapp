@@ -278,3 +278,25 @@ h5
 }
 
 /*carousel*/
+
+#carousel
+{
+    height: 20rem;
+    width: auto;
+    margin-bottom: 15%;
+}
+@media only screen and (max-width: 775px) 
+{
+ #carousel
+ {
+    margin-bottom: 20%;
+ }   
+
+}
+.carouselCard
+{
+    margin: auto;
+    width: 42%;
+    min-width: 16rem;
+    height: auto;
+}

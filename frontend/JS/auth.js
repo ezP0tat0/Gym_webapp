@@ -24,9 +24,8 @@ async function login() {
                 } else {
                     alert(await data.Message);
                 }
-            });
+            }).catch(y=>{console.log(y);});
     }
-    userDropdown();
 }
 
 async function register() {

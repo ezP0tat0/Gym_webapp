@@ -69,7 +69,7 @@ namespace GymWebapp.Controllers
 
         [Authorize(Roles ="Admin")]
         [HttpPost("NewTicket")]
-        public async Task<IActionResult> AddNewTicket(NewTicketDto newTicket)
+        public async Task<IActionResult> AddNewTicket([FromForm]NewTicketDto newTicket)
         {
             await _ticketService.AddNewTicketType(newTicket);
             return Ok("Sikeresen hozzáadva");

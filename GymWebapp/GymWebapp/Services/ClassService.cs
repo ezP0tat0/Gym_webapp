@@ -33,9 +33,7 @@ namespace GymWebapp.Services
 
             var result = new List<ClassDto>();
 
-            foreach (var e in classes) result.Add(_mapper.Map<ClassDto>(e)); 
-                   
-                _mapper.Map<List<ClassDto>>(classes);
+            foreach (var e in classes) result.Add(_mapper.Map<ClassDto>(e));
 
             return result;
         }

@@ -33,7 +33,10 @@ namespace GymWebapp.Services
         public async Task<List<UserInfoDto>> getAllUsers()
         {
             var users = await _dataContext.Users.ToListAsync();
-            var response = _mapper.Map<List<UserInfoDto>>(users);
+            var response = new List<UserInfoDto>();
+
+            foreach(var e in users) response.Add(_mapper.Map<UserInfoDto>(e));
+
 
             return response;
         }
