@@ -1,9 +1,57 @@
+
+TO DO:
+  Backend:
+    -getMyClasses
+    -class felvétel tábla
+    -ticket purchase
+    -felhasználókat hozzáadni
+    -ticketeket hozzáadni
+    -classokat létrehozni
+    -auth controller átalakítás?
+    -user ban?
+
+  Frontend:
+    -főoldal serverről kapott adatokkal töltse be az oldalt
+    -külön oldalakat megcsinálni
+    -admin oldalon gombok
+    -tokent cookie-ba tenni
+
+
+
+
+
+
+
+
+
 SZÍN
 https://coolors.co/palette/0b090a-161a1d-660708-a4161a-ba181b-e5383b-b1a7a6-d3d3d3-f5f3f4-ffffff
 
 edzőkenk kép
 
 font jura  Quicksand  Anton  Rajdhani  crete round
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

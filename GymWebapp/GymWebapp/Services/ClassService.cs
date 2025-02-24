@@ -40,7 +40,16 @@ namespace GymWebapp.Services
 
         public async Task joinToClass(int classId, int personId)
         {
-            //új tábla?
+            var boughtTickets = _dataContext.BougthTickets.Where(x => x.TicketType.Name.Equals("Edzés jegy"));
+
+            if (!boughtTickets.Any()) throw new Exception("Nincs jegyed edzésfelvételhez");
+
+            boughtTickets.First().Duration = Convert.ToString(int.Parse(boughtTickets.First().Duration)-1);
+
+            if(boughtTickets.First().Duration.Equals(0))
+                _dataContext.BougthTickets.Remove(boughtTickets.First());
+
+            _dataContext.SaveChanges();
         }
         public async Task CreateClass(NewClassDto classDto)
         {

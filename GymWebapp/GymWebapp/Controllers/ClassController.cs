@@ -2,6 +2,7 @@
 using GymWebapp.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace GymWebapp.Controllers
 {
@@ -29,6 +30,19 @@ namespace GymWebapp.Controllers
             await _classService.CreateClass(newClass);
 
             return Ok("Edzés sikeresen létrehozva");
+        }
+        [HttpPost("/Join")]
+        public async Task<IActionResult> JoinClass(int classId)
+        {
+            var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (int.TryParse(userIdString, out int userId))
+            {
+                await _classService.joinToClass(classId, userId);
+
+                return Ok("Sikeres csatlakozás");
+            }
+            else throw new Exception($"Claim User nem talált: {userIdString}");
+
         }
         [HttpGet("Image/{id}")]
         public async Task<IActionResult> getImage(int id)
