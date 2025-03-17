@@ -243,6 +243,7 @@ ul.dropdown-menu li div
 /*footer css*/
 footer
 {
+    margin-top: auto;
     background-color: #212529;
     color: #A4161A;
     padding: 3%;

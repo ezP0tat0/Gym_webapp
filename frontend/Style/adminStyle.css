@@ -24,6 +24,8 @@ body {
     text-align: center;
 }
 
+
+
 /* top-left border-radius */
 table tr:first-child th:first-child 
 {
@@ -82,19 +84,19 @@ table td img
 form
 {
     font-size: 120%;
-    
+    margin: auto;
 }
 form input
 {
     margin: 1%;
 }
-.btn
+.UserTicketClass .btn
 {
     background-color: #660708;
     border-color: #660708;
     color: #F5F3F4;
 }
-.btn:hover
+.UserTicketClass .btn:hover
 {
     background-color: #E5383B;
     border-color: #E5383B;
@@ -106,4 +108,10 @@ form input
 #uploadForm table
 {
     margin: auto;
+}
+#additional
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

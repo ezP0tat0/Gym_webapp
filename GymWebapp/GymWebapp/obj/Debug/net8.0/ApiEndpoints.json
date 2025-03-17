@@ -315,6 +315,22 @@
   },
   {
     "ContainingType": "GymWebapp.Controllers.ClassController",
+    "Method": "JoinClass",
+    "RelativePath": "Join",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "classId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GymWebapp.Controllers.ClassController",
     "Method": "CreateClass",
     "RelativePath": "newClass",
     "HttpMethod": "POST",

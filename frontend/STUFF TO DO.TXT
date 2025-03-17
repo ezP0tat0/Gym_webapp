@@ -2,7 +2,6 @@
 TO DO:
   Backend:
     -getMyClasses
-    -class felvétel tábla
     -ticket purchase
     -felhasználókat hozzáadni
     -ticketeket hozzáadni

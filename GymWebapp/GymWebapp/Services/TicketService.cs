@@ -43,8 +43,7 @@ namespace GymWebapp.Services
         public async Task<List<MyTicketsDto>> getMyTickets(int userId)
         {
             //átgondolni
-
-            var myTickets = _dataContext.BougthTickets.Include(x => x.TicketType).Where(x => x.UserId == userId);
+            var myTickets = _dataContext.BougthTickets.Include(x => x.TicketType).Where(x => x.UserId == userId && !x.Duration.Equals("0"));
             var result = _mapper.Map<List<MyTicketsDto>>(myTickets);
             return result;
         }
@@ -72,12 +71,8 @@ namespace GymWebapp.Services
 
             var AccessCode = AccessCodeGenerate();
 
-            if(usedTicket.Duration.Equals("1")) _dataContext.BougthTickets.Remove(usedTicket);
-
-            else 
-            {
-                if(!usedTicket.Duration.Contains('.')) usedTicket.Duration = $"{int.Parse(usedTicket.Duration)-1}";
-            }
+            if(!usedTicket.Duration.Contains('.')) usedTicket.Duration = $"{int.Parse(usedTicket.Duration)-1}";
+            
 
             var ActiveTicket = new ActiveTicket()
             {

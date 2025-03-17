@@ -3,7 +3,69 @@ var userData=JSON.parse(user);
 window.onload=function()
 {
     console.log(userData);
+    userDropdown();
 }
+
+function userDropdown()
+{
+    var uls = document.getElementById("userDropdownStandard");
+    var ulo = document.getElementById("userDropdownOffCanvas");
+
+    if(userData === null)
+    {
+        uls.innerHTML=`  <form class="loginForm"><li><label class="loginLabel navButton">Felhasználónév</label><input id="UsernameS" class="dropdown-item loginField" type="text" placeholder="felhasználónév" aria-label="Username" aria-describedby="basic-addon1"></li>
+                        <li><label class="loginLabel navButton">Jelszó</label><input id="PasswordS" class="dropdown-item loginField" type="password" placeholder="jelszó" aria-label="Password" aria-describedby="basic-addon1"></li>
+                        <li><p class="reg"><a class="dropdown-item text-end reg" href="registration.html">Regisztráció</a></p></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item loginButton" type="submit" onclick="login()">bejelentkezés</a></li>
+                        <li>
+                            <div class="dropdown-item loggedin">
+                                <input class="checkBox" id="stayLoggedInS" type="checkbox">
+                                <label for="stayLoggedInS">Bejelentkezve&nbsp;marad</label>
+                            </div>
+                        </li></form>`;
+        ulo.innerHTML=`  <form  class="loginForm"><li><label class="loginLabel navButton">Felhasználónév</label><input id="UsernameO" class="dropdown-item loginField" type="text" placeholder="felhasználónév" aria-label="Username" aria-describedby="basic-addon1"></li>
+                        <li><label class="loginLabel navButton">Jelszó</label><input id="PasswordO" class="dropdown-item loginField" type="password" placeholder="jelszó" aria-label="Password" aria-describedby="basic-addon1"></li>
+                        <li><p class="reg"><a class="dropdown-item text-end reg" href="registration.html">Regisztráció</a></p></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item loginLogout  loginButton"  type="submit"  onclick="login()">Bejelentkezés</a></li>
+                        <li>
+                            <div class="dropdown-item loggedin">
+                                <input class="checkBox" id="stayLoggedInO" type="checkbox">
+                                <label for="stayLoggedInO">Bejelentkezve&nbsp;marad</label>
+                            </div>
+                        </li></form>`;
+
+    
+    } 
+    else
+    {
+        uls.innerHTML=`  <li><a class="dropdown-item" href="profil.html">Profil</a></li>
+                        <li><a class="dropdown-item " href="jegyeim.html">Jegyeim</a></li>
+                        ${userData.role=="Admin"?`<li><a class="dropdown-item" href="adminPage.html">Admin oldal</a></li>`:""}
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item logout" onclick="logout()">Kijelentkezés</a></li>`;
+        
+        
+        ulo.innerHTML=uls.innerHTML;
+    }
+
+}
+function logout()
+{
+    try
+    {
+        localStorage.clear();
+        sessionStorage.clear();
+        userDropdown();
+        window.location.href="index.html";
+    }
+    catch(error)
+    {
+        console.error("logout error: ",error);
+    }
+}
+
 
 async function users()
 {
@@ -28,6 +90,9 @@ async function users()
 
 async function tickets()
 {
+    const addition= document.getElementById("additional");
+    addition.innerHTML="";
+
     const tickets= await getData("Ticket");
     var place=document.getElementById("content");
     place.innerHTML="";
@@ -80,39 +145,6 @@ async function newTicketForm()
 }
 
 
-
-//uploadForm for tickets
-const observerT = new MutationObserver(() => {
-    const uploadForm = document.getElementById("uploadFormT");
-    if (uploadForm) 
-    {
-        uploadForm.addEventListener("submit", async function (event) {
-            event.preventDefault();
-
-            let formData = new FormData();
-            formData.append("Name", document.getElementById("name").value);
-            formData.append("Duration", document.getElementById("duration").value);
-            formData.append("Price", document.getElementById("price").value);
-            formData.append("Image", document.getElementById("image").files[0]);
-
-            console.log(formData.getAll("Name"));
-            const response = fetch(defaultUrl+"Ticket/NewTicket",{
-                method: "POST",
-                headers:{
-                    Authorization: "bearer " + JSON.parse(sessionStorage.getItem("data")).token
-                },
-                body: formData
-
-            });
-
-            console.log(response);
-        });
-        // Mark the form to prevent duplicate listeners
-        uploadForm.dataset.listenerAdded = "true";
-    }
-});
-// Start observing changes in the document body
-observerT.observe(document.body, { childList: true, subtree: true });
 
 
 
@@ -176,40 +208,6 @@ function newClassForm()
 
     else addition.innerHTML=``;
 }
-const observerC = new MutationObserver(() => {
-    const uploadForm = document.getElementById("uploadFormC");
-    if (uploadForm) 
-    {
-        uploadForm.addEventListener("submit", async function (event) {
-            event.preventDefault();
-
-            let formData = new FormData();
-            formData.append("Name", document.getElementById("name").value);
-            formData.append("Duration", document.getElementById("duration").value);
-            formData.append("Price", document.getElementById("price").value);
-            formData.append("Image", document.getElementById("image").files[0]);
-
-            console.log(formData.getAll("Name"));
-            const response = fetch(defaultUrl+"Ticket/NewTicket",{
-                method: "POST",
-                headers:{
-                    Authorization: "bearer " + JSON.parse(sessionStorage.getItem("data")).token
-                },
-                body: formData
-
-            });
-
-            console.log(response);
-        });
-        // Mark the form to prevent duplicate listeners
-        uploadForm.dataset.listenerAdded = "true";
-    }
-});
-// Start observing changes in the document body
-observerC.observe(document.body, { childList: true, subtree: true });
-
-
-
 //img to blob
 async function img(url) 
 {
@@ -230,3 +228,44 @@ async function img(url)
         return "";
     }
 }
+
+const observer = new MutationObserver(() => {
+    const uploadForm = document.getElementById("uploadFormT")?document.getElementById("uploadFormT"):document.getElementById("uploadFormC");
+
+    if(uploadForm!==null)
+    {
+        if (uploadForm.id==="uploadFormT") 
+        {
+            console.log(uploadForm.id);
+            uploadForm.addEventListener("submit", async function (event) {
+                event.preventDefault();
+
+                let formData = new FormData();
+                formData.append("Name", document.getElementById("name").value);
+                formData.append("Duration", document.getElementById("duration").value);
+                formData.append("Price", document.getElementById("price").value);
+                formData.append("Image", document.getElementById("image").files[0]);
+
+                console.log(formData.getAll("Name"));
+                const response = fetch(defaultUrl+"Ticket/NewTicket",{
+                    method: "POST",
+                    headers:{
+                        Authorization: "bearer " + JSON.parse(sessionStorage.getItem("data")).token
+                    },
+                    body: formData
+
+                });
+
+                console.log(response);
+            });
+            // Mark the form to prevent duplicate listeners
+            uploadForm.dataset.listenerAdded = "true";
+        }
+        else if(uploadForm.id==="uploadFormC")
+        {
+            console.log(uploadForm.id);
+        }
+    }
+});
+// Start observing changes in the document body
+observer.observe(document.body, { childList: true, subtree: true });
