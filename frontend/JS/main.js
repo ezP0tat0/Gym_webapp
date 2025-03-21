@@ -9,6 +9,9 @@ window.onload=function()
 {
     console.log(userData);
     userDropdown();
+    showTickets();
+    showTrainers();
+    showClasses();
 }
 
 
@@ -93,17 +96,16 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-
-
 function displayUserInfo()
 {
-    
     if(user)
     {
         document.getElementById("profileData").innerHTML=
         `</br>${userData.username} </br>`;
     } 
 }
+
+
 function logout()
 {
     try
@@ -120,8 +122,242 @@ function logout()
 async function showTickets() 
 {
     var div = document.getElementById("tickets");
+    var displayNo=3;
 
+    /*
+                <div class="col">
+                  <div class="card">
+                    <img class="card-img-top card cardImgs" src="Imgs/1alk.jpg" alt="card image cap">
+                    <div class="card-body">
+                      <h4>1 Alkalmas</h4>
+                      <p class="card-text">Egyszeri bejutásra jogosít fel.</p>
+                      <p class="card-text price">Ár: <span>2000</span>ft</p>
+                      <a href="#" class="btn btn-primary btnColor" onclick="">vásárlás</a>
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+                <div class="carousel-item active">
+                    <div class="card carouselCard">
+                      <img class="card-img-top card cardImgs" src="Imgs/1alk.jpg" alt="card image cap">
+                      <div class="card-body">
+                        <h4>1 Alkalmas</h4>
+                        <p class="card-text">Egyszeri bejutásra jogosít fel.</p>
+                        <p class="card-text price">Ár: <span>2000</span>ft</p>
+                        <a href="#" class="btn btn-primary btnColor" onclick="">vásárlás</a>
+                      </div>
+                    </div>
+                  </div>
+
+    */
+
+    var tickets=await getData("Ticket",false);
+    var standardOut=`<div class="row d-none d-lg-flex">`;
+    var carouselOut=`<div class="row d-lg-none"><div class="col"> <div id="carousel" class="carousel slide"><div class="carousel-inner">`;
+
+    console.log(tickets);
+
+    for(var i=0;i<displayNo;i++)
+    {
+        let imgSrc= await img(tickets[i].imgUrl);
+        standardOut+=`
+                <div class="col">
+                  <div class="card">
+                    <img class="card-img-top card cardImgs" src="${imgSrc}" alt="card image cap">
+                    <div class="card-body">
+                      <h4>${tickets[i].name}</h4>
+                      <!--<p class="card-text">${tickets[i].description}</p>-->
+                      <p class="card-text price">Ár: ${tickets[i].price} ft</p>
+                      <a href="#" class="btn btn-primary btnColor" onclick="">vásárlás</a>
+                    </div>
+                  </div>
+                </div>
+        `;
+
+        carouselOut+=`
+                <div class="carousel-item ${i==0?"active":""}">
+                    <div class="card carouselCard">
+                      <img class="card-img-top card cardImgs" src="${imgSrc}" alt="card image cap">
+                      <div class="card-body">
+                        <h4>${tickets[i].name}</h4>
+                      <!--<p class="card-text">${tickets[i].description}</p>-->
+                      <p class="card-text price">Ár: ${tickets[i].price} ft</p>
+                        <a href="#" class="btn btn-primary btnColor" onclick="">vásárlás</a>
+                      </div>
+                    </div>
+                  </div>
+        `;
+    }
+    standardOut+=`</div>`;
+    carouselOut+=`
+            </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+            </div>
+          </div>`;
+
+          div.innerHTML=standardOut+carouselOut;
+}
+
+async function showTrainers()
+{
+  var div = document.getElementById("trainers");
+  
+  
+  var trainers=await getData("User/Trainers",false);
+  var displayNo=trainers.length >=  3  ? 3 : trainers.length;
+
+  if(trainers.length===0)
+  {
+    div.innerHTML=`<h2>Nincs regisztrált edző a nyilvántartásban</h2>`;
+    return;
+  }
+  else
+  {
+    var standardOut=`<div class="row d-none d-lg-flex">`;
+    var carouselOut=`<div class="row d-lg-none"><div class="col"> <div id="carouselT" class="carousel slide"><div class="carousel-inner">`;
     
+    for(var i=0;i<displayNo;i++)
+    {
+      let imgSrc= await img(tickets[i].imgUrl);
+
+        standardOut+=`
+                <div class="col">
+                  <div class="card">
+                    <img class="card-img-top card cardImgs" src="${imgSrc}" alt="card image cap">         
+                    <div class="card-body">
+                      <h5 id="name1">${trainers[i].name}</h5>
+                      <p id="expertise1" class="card-text">${trainers[i].expertise}</p>
+                      <p id="phoneNo1" class="card-text">2424234<a href="tel:${trainers[i].phoneNumber}">${trainers[i].phoneNumber}</a></p>
+                    </div>
+                  </div>
+                </div>
+        `;
+        carouselOut=`
+                    <div class="carousel-item  ${i==0?"active":""}">
+                      <div class="card carouselCard">
+                        <img class="card-img-top card cardImgs" src="${imgSrc}" alt="card image cap">         
+                        <div class="card-body">
+                          <h5 id="name1">${trainers[i].name}</h5>
+                          <p id="expertise1" class="card-text">${trainers[i].expertise}</p>
+                          <p id="phoneNo1" class="card-text">2424234<a href="tel:${trainers[i].phoneNumber}">${trainers[i].phoneNumber}</a></p>
+                        </div>
+                      </div>
+                    </div>
+        `;
+    }
+    standardOut+=`</div>`;
+    carouselOut+=`
+            </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselT" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselT" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+            </div>
+          </div>`;
+  
+  }
+
+  div.innerHTML=standardOut+carouselOut;
+
+}
+
+async function showClasses()
+{
+  /*
+                <div class="col">
+                  <div class="card">
+                    <img id="classImg1" class="card-img-top" src="https://via.placeholder.com/300x150" alt="card image cap">
+                    <div class="card-body">
+                      <h5 id="className1">Név</h5>
+                      <p id="classTheme1" class="card-text">tematika</p>
+                      <p id="classTrainer1" class="card-texr">Edző neve</p>
+                      <a href="#" class="btn btn-primary btnColor" onclick="">jelentkezés</a>
+                    </div>
+                  </div>
+                </div>
+   */
+  var div = document.getElementById("classes");
+  
+  
+  var classes=await getData("Class",false);
+  var displayNo=classes.length >=  3  ? 3 : classes.length;
+  if(classes.length===0)
+  {
+    div.innerHTML=`<h2>Jelenleg nincs kiírt edzés</h2>`;
+    return;
+  }
+  else
+  {
+    var standardOut=`<div class="row d-none d-lg-flex">`;
+    var carouselOut=`<div class="row d-lg-none"><div class="col"> <div id="carouselC" class="carousel slide"><div class="carousel-inner">`;
+    
+    for(var i=0;i<displayNo;i++)
+    {
+      let imgSrc= await img(classes[i].imgUrl);
+
+      standardOut+=`
+                <div class="col">
+                  <div class="card">
+                    <img class="card-img-top card cardImgs" src="${imgSrc}" alt="card image cap">         
+                    <div class="card-body">
+                      <h5 id="className1">${classes[i].name}</h5>
+                      <p id="classTheme1" class="card-text">${classes[i].description}</p>
+                      <p id="classTrainer1" class="card-text">${classes[i].trainerName}</p>
+                      <p class="card-text">${classes[i].date}</p>
+                      <a href="#" class="btn btn-primary btnColor" onclick="">jelentkezés</a>
+                    </div>
+                  </div>
+                </div>
+      `;
+
+      carouselOut+=`
+                   <div class="carousel-item  ${i==0?"active":""}">
+                      <div class="card carouselCard">
+                        <img class="card-img-top card cardImgs" src="${imgSrc}" alt="card image cap">         
+                        <div class="card-body">
+                          <h5 id="className1">${classes[i].name}</h5>
+                          <p id="classTheme1" class="card-text">${classes[i].description}</p>
+                          <p id="classTrainer1" class="card-text">${classes[i].trainerName}</p>
+                          <p class="card-text">${classes[i].date}</p>
+                          <a href="#" class="btn btn-primary btnColor" onclick="">jelentkezés</a>
+                        </div>
+                      </div>
+                    </div>
+      `;
+    }
+    standardOut+=`</div>`;
+    carouselOut+=`
+    </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselC" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselC" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+            </div>
+          </div>`;
+
+  }
+  div.innerHTML=standardOut+carouselOut;
 }
 
 async function img(url) 
@@ -143,5 +379,9 @@ async function img(url)
         return "";
     }
 }
+
+
+
+
 
 

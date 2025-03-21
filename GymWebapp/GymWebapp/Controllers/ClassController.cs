@@ -24,14 +24,14 @@ namespace GymWebapp.Controllers
             return Ok(result);
         }
         [Authorize(Roles ="Admin,Trainer")]
-        [HttpPost("/newClass")]
+        [HttpPost("newClass")]
         public async Task<IActionResult> CreateClass(NewClassDto newClass)
         {
             await _classService.CreateClass(newClass);
 
             return Ok("Edzés sikeresen létrehozva");
         }
-        [HttpPost("/Join")]
+        [HttpPost("Join")]
         public async Task<IActionResult> JoinClass(int classId)
         {
             var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
