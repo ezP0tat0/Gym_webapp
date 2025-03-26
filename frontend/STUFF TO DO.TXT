@@ -1,4 +1,12 @@
 
+
+edzések és edzők egy odlalon vagy külön?
+
+
+
+
+
+
 TO DO:
   Backend:
     -getMyClasses

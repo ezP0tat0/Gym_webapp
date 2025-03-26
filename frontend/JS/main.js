@@ -9,9 +9,13 @@ window.onload=function()
 {
     console.log(userData);
     userDropdown();
-    showTickets();
-    showTrainers();
-    showClasses();
+    if(window.location.pathname.split('/').slice(-1)!="index.html") ShowOptions();
+    else
+    {
+      showTickets();
+      showTrainers();
+      showClasses();
+    }
 }
 
 
@@ -104,8 +108,6 @@ function displayUserInfo()
         `</br>${userData.username} </br>`;
     } 
 }
-
-
 function logout()
 {
     try
@@ -358,6 +360,132 @@ async function showClasses()
 
   }
   div.innerHTML=standardOut+carouselOut;
+}
+
+async function ShowOptions()
+{
+  const page = window.location.pathname.split('/').slice(-1);
+  var div = document.getElementById("content");
+  var content=``;
+
+  //get the right api path based on the page
+  var apiPath;
+  switch(page[0])
+  {
+    case "tickets.html":
+      apiPath="Ticket";
+      break;
+    case "classes.html":
+      apiPath="Class";
+      break;
+    case "trainers.html":
+      apiPath="User/Trainers";
+      break;
+    default:
+      div.innerHTML=`<h2><b>Hiba az oldal betöltésekor</b></h2>`;
+      return;
+  }
+
+  //var classes=await getData("Class",false);
+  //var trainers=await getData("User/Trainers",false);
+  //var div = document.getElementById("tickets");
+  var data=await getData(apiPath,false);
+
+  //check if there is any data to display
+  var noOfData=data.length;
+  if(noOfData===0)
+  {
+    switch(page)
+  {
+    case "tickets.html":
+      content=`<h2>Nem sikerült jegyeket betölteni</h2>`;
+      break;
+    case "classes.html":
+      content=`<h2>Nincs kiírt edzés</h2>`;
+      break;
+    case "trainers.html":
+      content=`<h2>Nincs regisztrált edző</h2>`;
+      break;
+    default:
+      div.innerHTML=`<h2><b>Hiba az oldal adatok betöltésekor</b></h2>`;
+      return;
+  }
+  }
+  else
+  {
+    var addedToContent=0
+    var NoOfRows=noOfData/3;
+    content+=``;
+    for(var i=0;i<NoOfRows;i++)
+    {
+      content+=`<div class="row">`;
+      for(var j=0;j<3;j++)
+      {
+        if(addedToContent==noOfData) break;
+        content+=await addCorrectCard(data[addedToContent],page[0]);
+        addedToContent++;
+      }
+      content+=`</div>`;
+    }
+    div.innerHTML=content;
+  }
+}
+
+async function addCorrectCard(data,page)
+{
+  let imgSrc=await img(data.imgUrl);
+  switch(page)
+  {
+    case 'tickets.html':
+      var content=``;
+        content+=`<div class="col">
+                <div class="card">
+                    <img class="card-img-top card cardImgs" src="${imgSrc}" alt="card image cap">
+                    <div class="card-body">
+                      <h4>${data.name}</h4>
+                      <!--<p class="card-text">${data.description}</p>-->
+                      <p class="card-text price">Ár: ${data.price} ft</p>
+                      <a href="#" class="btn btn-primary btnColor" onclick="">vásárlás</a>
+                    </div>
+                  </div>
+                </div>
+        `;
+      break;
+    case "classes.html":
+      var content=``;
+      content+=`
+                <div class="col">
+                  <div class="card">
+                    <img class="card-img-top card cardImgs" src="${imgSrc}" alt="card image cap">         
+                    <div class="card-body">
+                      <h5 id="className1">${data.name}</h5>
+                      <p id="classTheme1" class="card-text">${data.description}</p>
+                      <p id="classTrainer1" class="card-text">${data.trainerName}</p>
+                      <p class="card-text">${data.date}</p>
+                      <a href="#" class="btn btn-primary btnColor" onclick="">jelentkezés</a>
+                    </div>
+                  </div>
+                </div>
+      `;
+    case "trainers.html":
+      var content=``;
+      content+=`
+                <div class="col">
+                  <div class="card">
+                    <img class="card-img-top card cardImgs" src="${imgSrc}" alt="card image cap">         
+                    <div class="card-body">
+                      <h5 id="name1">${data.name}</h5>
+                      <p id="expertise1" class="card-text">${data.expertise}</p>
+                      <p id="phoneNo1" class="card-text">2424234<a href="tel:${data.phoneNumber}">${trainers[i].phoneNumber}</a></p>
+                    </div>
+                  </div>
+                </div>
+        `;
+    default:
+      console.log("Unsupported page: ",page);
+      return "";
+  }
+  return content;
 }
 
 async function img(url) 

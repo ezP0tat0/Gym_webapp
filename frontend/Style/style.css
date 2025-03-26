@@ -29,6 +29,19 @@ body {
     color: #F5F3F4;
     text-align: center;
 }
+.container
+{
+    margin-top: 9vh;
+    width: 95%;
+    height: 100%;
+}
+@media only screen and (max-width: 350px) 
+{
+    .container
+    {
+        margin-top: 13vh;
+    }
+}
 .btnColor
 {
     background-color: #660708;
@@ -69,7 +82,7 @@ body {
     margin: auto;
     padding-top: 2%;
 }
-.col-12
+.col
 {
     margin: auto;
     text-align: center;
@@ -77,6 +90,11 @@ body {
 .card
 {
     background-color: #B1A7A6;
+    min-width: 15em;
+    max-width: 20em;
+    margin: 5%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .cardImgs
@@ -112,9 +130,8 @@ body {
     width: 100%;
     border-radius: 12px;
 }
-.content
+#content 
 {
-    margin:auto;
     text-align: center;
 }
 .frontimg
@@ -247,6 +264,8 @@ footer
     background-color: #212529;
     color: #A4161A;
     padding: 3%;
+    position: sticky;
+    top:100vh
 }
 h2
 {
@@ -291,8 +310,7 @@ h5
  #carousel, #carouselT, #carouselC
  {
     margin-bottom: 25%;
- }   
-
+ }
 }
 .carouselCard
 {

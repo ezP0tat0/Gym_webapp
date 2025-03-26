@@ -58,6 +58,68 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "GymWebapp.Controllers.ClassController",
+    "Method": "JoinClass",
+    "RelativePath": "api/Class/Join",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "classId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GymWebapp.Controllers.ClassController",
+    "Method": "CreateClass",
+    "RelativePath": "api/Class/newClass",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Date",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "Price",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "TrainerName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "image",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "GymWebapp.Controllers.TicketController",
     "Method": "ListAllTickets",
     "RelativePath": "api/Ticket",
@@ -311,68 +373,6 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "GymWebapp.Controllers.ClassController",
-    "Method": "JoinClass",
-    "RelativePath": "Join",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "classId",
-        "Type": "System.Int32",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "GymWebapp.Controllers.ClassController",
-    "Method": "CreateClass",
-    "RelativePath": "newClass",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "Id",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "Name",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Description",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Date",
-        "Type": "System.DateTime",
-        "IsRequired": false
-      },
-      {
-        "Name": "Price",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "TrainerName",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "image",
-        "Type": "Microsoft.AspNetCore.Http.IFormFile",
-        "IsRequired": false
-      }
-    ],
     "ReturnTypes": []
   }
 ]
