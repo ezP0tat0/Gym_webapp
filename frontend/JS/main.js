@@ -9,8 +9,9 @@ window.onload=function()
 {
     console.log(userData);
     userDropdown();
-    if(window.location.pathname.split('/').slice(-1)!="index.html") ShowOptions();
-    else
+    var currentWindow=window.location.pathname.split('/').slice(-1);
+    if(currentWindow[0] != "index.html" && currentWindow[0]!= "aboutUs.html") ShowCards();
+    else if(currentWindow[0] == "index.html")
     {
       showTickets();
       showTrainers();
@@ -362,7 +363,7 @@ async function showClasses()
   div.innerHTML=standardOut+carouselOut;
 }
 
-async function ShowOptions()
+async function ShowCards()
 {
   const page = window.location.pathname.split('/').slice(-1);
   var div = document.getElementById("content");
@@ -389,27 +390,27 @@ async function ShowOptions()
   //var classes=await getData("Class",false);
   //var trainers=await getData("User/Trainers",false);
   //var div = document.getElementById("tickets");
-  var data=await getData(apiPath,false);
+  var data=await getData(apiPath,false); 
 
   //check if there is any data to display
   var noOfData=data.length;
   if(noOfData===0)
   {
-    switch(page)
-  {
-    case "tickets.html":
-      content=`<h2>Nem sikerült jegyeket betölteni</h2>`;
-      break;
-    case "classes.html":
-      content=`<h2>Nincs kiírt edzés</h2>`;
-      break;
-    case "trainers.html":
-      content=`<h2>Nincs regisztrált edző</h2>`;
-      break;
-    default:
-      div.innerHTML=`<h2><b>Hiba az oldal adatok betöltésekor</b></h2>`;
-      return;
-  }
+    switch(page[0])
+    {
+      case "tickets.html":
+        content=`<h2>Nem sikerült jegyeket betölteni</h2>`;
+        break;
+      case "classes.html":
+        content=`<h2>Nincs kiírt edzés</h2>`;
+        break;
+      case "trainers.html":
+        content=`<h2>Nincs regisztrált edző</h2>`;
+        break;
+      default:
+        div.innerHTML=`<h2><b>Hiba az oldal adatok betöltésekor</b></h2>`;
+        return;
+    }
   }
   else
   {
@@ -427,8 +428,8 @@ async function ShowOptions()
       }
       content+=`</div>`;
     }
-    div.innerHTML=content;
   }
+  div.innerHTML=content;
 }
 
 async function addCorrectCard(data,page)

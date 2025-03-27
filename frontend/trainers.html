@@ -3,144 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!--<link href="Style/stlye.css" rel="stylesheet">-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <title>Edzők</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #202020;
-        }
-        .nav-bar {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            background-color: #34495e;
-            padding: 10px;
-        }
-        .nav-bar a {
-            text-decoration: none;
-            color: white;
-            font-size: 18px;
-            padding: 5px 10px;
-            transition: background-color 0.3s ease;
-        }
-        .nav-bar a:hover {
-            background-color: #1abc9c;
-            color: white;
-        }
-        .trainer-list {
-            padding: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .trainer {
-            background-color: white;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            padding: 15px;
-            display: flex;
-            align-items: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        .trainer img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            margin-right: 15px;
-        }
-        .trainer-info {
-            display: flex;
-            flex-direction: column;
-        }
-        .trainer-info h3 {
-            margin: 0 0 5px 0;
-            font-size: 20px;
-            color: #333;
-        }
-        .trainer-info p {
-            margin: 0;
-            color: #666;
-        }
-        .top-bar {
-            background-color: #2c3e50;
-            color: white;
-            padding: 10px 20px;
-        }
-        .top-bar .logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
-        .top-bar .profile {
-            text-align: right;
-        }
-    </style>
+    
+     <link href="Style/style.css" rel="stylesheet">
+    
+    <title>Edzések</title>       
 </head>
 <body>
-    <div class="top-bar d-flex justify-content-between align-items-center">
-        <div class="logo">Konditerem</div>
-        <div class="profile">
-            <span>Profil</span>
-            <span>|</span>
-            <span>John Doe</span>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+
+    <div class="container-fluid">
+      <a class="navbar-brand nameColor" href="index.html">Ignite Fitness</a>
+
+      <!--
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      -->
+
+      <!--offcanvas toggle button-->
+      <button class="navbar-toggler d-md-none navButton" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!--standard navbar-->
+      <div class="collapse navbar-collapse" id="navbarNav">
+
+        <ul class="navbar-nav mt-2 mt-lg-0">
+          <li class="nav-item">
+            <a class="nav-link navColor" href="tickets.html">Jegyek</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link navColor" href="classes.html">Edzések</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link navColor" href="trainers.html">Edzők</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link navColor" href="aboutUs.html">Rólunk</a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav  ms-auto">
+          <li class="nav-item">
+            <div class="dropdown">
+              <a class="btn dropdown-toggle nav-link" href="#" type="button" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1.6rem" height="1.6rem" fill="#BA181B" class="bi bi-person" viewBox="2 2 14 14">
+                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+                </svg>
+            </a>
+            <ul id="userDropdownStandard" class="dropdown-menu  dropdown-menu-dark dropdown-menu-end"  data-bs-auto-close="false" aria-expanded="false">
+              
+            </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <!--offcanvas navbar-->
+      <div class="offcanvas offcanvas-end bg-dark text-white d-md-none" tabindex="-1" id="offcanvasNavbar">
+        <div class="offcanvas-header">
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link navColor" href="tickets.html">Jegyek</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link navColor" href="classes.html">Edzések</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link navColor" href="trainers.html">Edzők</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link navColor" href="aboutUs.html">Rólunk</a>
+              </li>
+            </ul>
+            <hr class="bg-white">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="btn dropdown-toggle nav-link" href="#" type="button" data-bs-toggle="dropdown">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1.6rem" height="1.6rem" fill="#BA181B" class="bi bi-person" viewBox="2 2 14 14">
+                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+                        </svg>
+                    </a>
+                    <ul id="userDropdownOffCanvas" class="dropdown-menu  dropdown-menu-dark dropdown-menu-end"  data-bs-auto-close="false" aria-expanded="false">
+              
+                    </ul>
+                </li>
+            </ul>
         </div>
     </div>
 
-    <!-- Navigációs sáv -->
-    <div class="nav-bar">
-        <a href="#home">Főoldal</a>
-        <a href="#services">Szolgáltatások</a>
-        <a href="#about">Rólunk</a>
-        <a href="#contact">Kapcsolat</a>
     </div>
+    
+</nav>
 
-    <!-- Tartalom: Edzők listája -->
-    <div class="trainer-list">
-        <div class="trainer">
-            <img src="https://via.placeholder.com/80" alt="Edző képe">
-            <div class="trainer-info">
-                <h3>John Doe</h3>
-                <p>Erőnléti edző, specializáció: súlyemelés</p>
-                <p>elérhetőség: tel. +36343453434</p>
-            </div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Edzések</h1>
         </div>
-        <div class="trainer">
-            <img src="https://via.placeholder.com/80" alt="Edző képe">
-            <div class="trainer-info">
-                <h3>Jane Smith</h3>
-                <p>Fitnesz edző, specializáció: kardió és alakformálás</p>
-                <p>elérhetőség: tel. +36343453434</p>
-            </div>
+      </div>
+      <div class="row" id="content">
+        
+      </div>
+</div>
+    
+
+    <footer class="row footer-dark mt-5 border-top border-danger">
+        <div class="col">
+          <a href="/" class="d-flex align-items-right mb-3 link-body-emphasis text-decoration-none">
+            <h2 class=" nameColor">Ignite Fitness</h2>
+          </a>
         </div>
-        <div class="trainer">
-            <img src="https://via.placeholder.com/80" alt="Edző képe">
-            <div class="trainer-info">
-                <h3>Chris Johnson</h3>
-                <p>Táplálkozási tanácsadó és személyi edző</p>
-                <p>elérhetőség: tel. +36343453434</p>
-            </div>
+    
+        <div class="col">
+          <h5>Oldalak</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="index.html" class="nav-link contact">Főoldal</a></li>
+            <li class="nav-item mb-2"><a href="tickets.html" class="nav-link contact">Jegyek</a></li>
+            <li class="nav-item mb-2"><a href="classes.html" class="nav-link contact">Edzések</a></li>
+            <li class="nav-item mb-2"><a href="trainers.html" class="nav-link contact">Edzők</a></li>
+            <li class="nav-item mb-2"><a href="aboutUs.html" class="nav-link contact">Rólunk</a></li>
+          </ul>
         </div>
-        <div class="trainer">
-            <img src="https://via.placeholder.com/80" alt="Edző képe">
-            <div class="trainer-info">
-                <h3>Emily Davis</h3>
-                <p>Jóga és pilates oktató</p>
-                <p>elérhetőség: tel. +36343453434</p>
-            </div>
+    
+        <div class="col">
+          <h5>Elérhetőségek:</h5> 
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="tel:+36205646464" class="nav-link contact">tel.: +36205646464</a></li>
+            <li class="nav-item mb-2"><a href="mailto:IgniteFitness@gmail.com" class="nav-link contact">IgniteFitness@gmail.com</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link contact">Instagram</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link contact">Facebook</a></li>
+          </ul>
         </div>
-        <div class="trainer">
-            <img src="https://via.placeholder.com/80" alt="Edző képe">
-            <div class="trainer-info">
-                <h3>Michael Brown</h3>
-                <p>Crossfit és funkcionális edzés specialista</p>
-                <p>elérhetőség: tel. +36343453434</p>
-            </div>
-        </div>
-    </div>
+    </footer>
+  
+  
+  
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+      <script src="JS/main.js"></script>
+      <script src="JS/auth.js"></script>
+      <script src="JS/api.js"></script>
 </body>
 </html>

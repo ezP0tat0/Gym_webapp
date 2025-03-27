@@ -319,3 +319,73 @@ h5
     min-width: 16rem;
     height: auto;
 }
+
+.openTitle h2
+{
+    color: #A4161A;
+    font-weight: 700;
+    font-size: 2rem;
+}
+.openTitle
+{
+    margin-top: 0%;
+}
+.openTime
+{
+    margin-top: 2%;
+    font-size: 1.4rem;
+}
+.openTime table
+{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.noWrap
+{
+    white-space: nowrap;
+}
+.time
+{
+    text-align: end;
+}
+.address h2
+{
+    color: #A4161A;
+    font-weight: 700;
+    font-size: 2rem;
+}
+.contact
+{
+    margin-top: 2%;
+}
+.contactDetails
+{
+    margin-top: 3%;
+    font-size: 1.4rem;
+    text-align: start;
+}
+.contactDetails a
+{
+    color:white;
+}
+.contact h2
+{
+    color: #A4161A;
+    font-weight: 700;
+    font-size: 2rem;
+}
+.social
+{
+    text-decoration: none;
+}
+.social:hover
+{
+    color: #BA181B;
+}
+.aboutTitle h1
+{
+    color: #A4161A;
+    font-weight: 700;
+    font-size: 3rem;
+}
