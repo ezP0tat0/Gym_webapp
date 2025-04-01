@@ -21,4 +21,12 @@
         public int Price { get; set; }
         public IFormFile Image { get; set; }
     }
+    public class NewPrice
+    {
+        public int Price { get; set; }
+    }
+    public class NewPicture
+    {
+        public IFormFile Image { get; set; }
+    }
 }

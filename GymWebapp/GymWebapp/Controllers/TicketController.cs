@@ -77,16 +77,16 @@ namespace GymWebapp.Controllers
 
         [Authorize(Roles ="Admin")]
         [HttpPatch("ChangePrice/{ticketId}")]
-        public async Task<IActionResult> ChangeTicketPrice(int ticketId,int price)
+        public async Task<IActionResult> ChangeTicketPrice(int ticketId,[FromBody]NewPrice price)
         {
-            await _ticketService.ChangeTicketPrice(ticketId,price);
+            await _ticketService.ChangeTicketPrice(ticketId,price.Price);
             return Ok("Ár sikeresen megváltoztatva");
         }
         [Authorize(Roles ="Admin")]
         [HttpPatch("ChangeImage/{ticketId}")]
-        public async Task<IActionResult> ChangeImage(int ticketId, IFormFile image)
+        public async Task<IActionResult> ChangeImage(int ticketId, [FromBody]NewPicture image)
         {
-            await _ticketService.ChangeImage(ticketId, image);
+            await _ticketService.ChangeImage(ticketId, image.Image);
             return Ok("Kép sikeresen változtatva");
         }
 

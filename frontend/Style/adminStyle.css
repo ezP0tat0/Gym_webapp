@@ -115,3 +115,14 @@ form input
     justify-content: center;
     align-items: center;
 }
+
+.changeBtn
+{
+    background-color: #161A1D;
+    color: #F5F3F4;
+}
+.changeBtn:hover
+{
+    background-color: #0B090A;
+    color: #F5F3F4;
+}

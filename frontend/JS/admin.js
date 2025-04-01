@@ -102,8 +102,7 @@ async function tickets()
     for(const e of tickets)
     {
         let imgSrc= await img(e.imgUrl);
-    
-        table+=`<tr><td>${e.id}</td><td><img src="${imgSrc}"></td><td>${e.name}</td><td>${e.duration}</td><td>${e.price}</td><td><a class="btn btn-dark">Módosítás</a></td></tr>`;
+        table+=`<tr><td>${e.id}</td><td><img src="${imgSrc}"></td><td>${e.name}</td><td>${e.duration}</td><td>${e.price}</td><td><a class="btn changeBtn" onclick="ChangeTicket(${e.id},'${e.name}',${e.duration},${e.price})">Módosítás</a></td></tr>`;
     }
 
     table+=`<tr><td colspan="7"> <a class="btn btn-dark newticket" onclick="newTicketForm()">új jegytípus hozzáadása</a></td></tr>`;
@@ -229,8 +228,47 @@ async function img(url)
     }
 }
 
+async function ChangeTicket(id,name,duration, price)   
+{
+    const addition= document.getElementById("additional");
+    if(addition.innerHTML==``||addition.innerHTML==null)
+    addition.innerHTML+=`
+    <form id="updateFormT">
+                        <table>
+                            <tr>
+                                <td class="text-end"><label>Sorszám:</label></td>
+                                <td id="id">${id}</td>
+                            </tr>
+                            <tr>
+                                <td class="text-end"><label>Elnevezés:</label></td>
+                                <td>${name}</td>
+                            </tr>
+                            <tr>
+                                <td class="text-end"><label>Időtartalma:</label></td>
+                                <td>${duration}</td>
+                            </tr>
+                            <tr>
+                                <td class="text-end"><label >Ár:</label></td>
+                                <td><input class="input" type="number" id="price" name="${price}" value="${price}"></td>
+                            </tr>
+                            <tr>
+                                <td class="text-end"><label>Képe:</label></td>
+                                <td><input class="ImgInput" type="file" id="image" accept="image/*" </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><button class="btn " type="submit">Feltöltés</button></td>
+                            </tr>
+                        </table></form>`;
+
+    else addition.innerHTML=``;
+}
+
+
+
+
+
 const observer = new MutationObserver(() => {
-    const uploadForm = document.getElementById("uploadFormT")?document.getElementById("uploadFormT"):document.getElementById("uploadFormC");
+    const uploadForm = document.getElementById("uploadFormT")?document.getElementById("uploadFormT"):document.getElementById("uploadFormC")?document.getElementById("uploadFormC"):document.getElementById("updateFormT");
 
     if(uploadForm!==null)
     {
@@ -240,23 +278,7 @@ const observer = new MutationObserver(() => {
             uploadForm.addEventListener("submit", async function (event) {
                 event.preventDefault();
 
-                let formData = new FormData();
-                formData.append("Name", document.getElementById("name").value);
-                formData.append("Duration", document.getElementById("duration").value);
-                formData.append("Price", document.getElementById("price").value);
-                formData.append("Image", document.getElementById("image").files[0]);
-
-                console.log(formData.getAll("Name"));
-                const response = fetch(defaultUrl+"Ticket/NewTicket",{
-                    method: "POST",
-                    headers:{
-                        Authorization: "bearer " + JSON.parse(sessionStorage.getItem("data")).token
-                    },
-                    body: formData
-
-                });
-
-                console.log(response);
+                await uploadTicket();
             });
             // Mark the form to prevent duplicate listeners
             uploadForm.dataset.listenerAdded = "true";
@@ -265,7 +287,70 @@ const observer = new MutationObserver(() => {
         {
             console.log(uploadForm.id);
         }
+        else if(uploadForm.id==="updateFormT")
+        {
+            console.log(uploadForm.id);
+            //if(document.getElementById("image").files.length==0) console.log("nem lett kép");
+            uploadForm.addEventListener("submit", async function (event) {
+                event.preventDefault();
+                await updateTicket(document.getElementById("id").innerHTML, document.getElementById("price").value,document.getElementById("price").name,document.getElementById("image").files);
+            });
+
+            uploadForm.dataset.listenerAdded = "true";
+
+        }
     }
 });
+
+async function uploadTicket()
+{
+    let formData = new FormData();
+    formData.append("Name", document.getElementById("name").value);
+    formData.append("Duration", document.getElementById("duration").value);
+    formData.append("Price", document.getElementById("price").value);
+    formData.append("Image", document.getElementById("image").files[0]);
+
+    console.log(formData.getAll("Name"));
+    const response = fetch(defaultUrl+"Ticket/NewTicket",{
+        method: "POST",
+        headers:{
+            Authorization: "bearer " + JSON.parse(sessionStorage.getItem("data")).token
+        },
+        body: formData
+
+    });
+
+    console.log(response);
+}
+
+async function updateTicket(id,newPrice,oldPrice,file)
+{
+    console.log(id,newPrice,oldPrice,file);
+    if(newPrice!=oldPrice)
+    {
+        const response = await fetch(defaultUrl+"Ticket/ChangePrice/"+id,{
+            method: "PATCH",
+            headers:{
+                "Content-Type": "application/json",
+                Authorization: "bearer " + JSON.parse(sessionStorage.getItem("data")).token
+            },
+            body: JSON.stringify({price:newPrice})
+        });
+
+        console.log(response);
+    }
+    if(file.lenght>0)
+    {
+        const response = await fetch(defaultUrl+"Ticket/ChangeImage/"+id,{
+            method: "PATCH",
+            headers:{
+                Authorization: "bearer " + JSON.parse(sessionStorage.getItem("data")).token
+            },
+            body: file[0]
+        });
+    }
+
+    location.reload();
+}
 // Start observing changes in the document body
 observer.observe(document.body, { childList: true, subtree: true });

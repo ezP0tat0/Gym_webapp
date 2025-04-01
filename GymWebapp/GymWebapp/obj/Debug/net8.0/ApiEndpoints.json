@@ -144,8 +144,8 @@
       },
       {
         "Name": "image",
-        "Type": "Microsoft.AspNetCore.Http.IFormFile",
-        "IsRequired": false
+        "Type": "GymWebapp.Model.Dtos.NewPicture",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -165,8 +165,8 @@
       },
       {
         "Name": "price",
-        "Type": "System.Int32",
-        "IsRequired": false
+        "Type": "GymWebapp.Model.Dtos.NewPrice",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
