@@ -12,6 +12,8 @@ namespace GymWebapp.Model
         public DbSet<BougthTicket> BougthTickets { get; set; }
         public DbSet<ActiveTicket> ActiveTickets { get; set; }
         public DbSet<ClassAttendee> classAttendees { get; set; }
+        public DbSet<Exercise> Exercises { get; set; }
+        public DbSet<Log> Logs { get; set; }
 
         public DataContext(DbContextOptions options) : base(options) { }
 
