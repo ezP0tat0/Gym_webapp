@@ -80,11 +80,72 @@ async function users()
 
     for(const e of users)
     {
-        table+=`<tr><td>${e.id}</td><td>${e.username}</td><td>${e.name}</td><td>${e.role}</td><td><a class="btn btn-dark">Módosítás</a></td></tr>`;
+        table+=`<tr><td>${e.id}</td><td>${e.username}</td><td>${e.name}</td><td>${addSelect(e.id,e.role)}</td><td><input id="changeButton_${e.id}" onclick='ChangeRoleInit("changeButton_${e.id}","role_${e.id}")' type="button" value="Módosítás"></td></tr>`;
     }
 
     table+=`</table>`;
     place.innerHTML=table;
+}
+
+async function ChangeRoleInit(button,select)
+{
+    var button=document.getElementById(button);
+
+    var select=document.getElementById(select);
+    select.disabled=false;
+
+    button.value="Mentés";
+    button.setAttribute("onclick","ChangeRole('"+select.value+"','"+idFromId(select.id)+"');");
+
+    console.log(button);
+}
+function idFromId(txt)
+{
+    var id="";
+    for(var i in txt)
+    {
+
+        if(!isNaN(parseInt(txt[i]))) 
+            {
+                id+=txt[i];
+            }
+    }
+    var i=parseInt(id);
+    return i;
+}
+
+async function ChangeRole(Role,id) 
+{
+    console.log("role: "+Role);
+    console.log("id: "+id);
+
+    const response = await fetch(defaultUrl+"User/RoleChange",{
+        method: "PATCH",
+        headers:{
+            "Content-Type": "application/json",
+            Authorization: "bearer " + JSON.parse(sessionStorage.getItem("data")).token
+        },
+        body: JSON.stringify({userId:id,role:Role})
+    });
+
+}
+
+function addSelect(id,current)
+{
+   const roles=["Admin","Trainer","User"];
+
+   var select=`<select id="role_${id}" class="form-select select" disabled>`;
+
+   for(var e in roles)
+   {
+    select+=`<option value="${roles[e]}" `;
+    if(roles[e]==current) select+= `selected `;
+    select+=`>${roles[e]}</option>`;
+   }
+
+   select+="</select>";
+   
+   return select;
 }
 
 
@@ -275,6 +336,7 @@ const observer = new MutationObserver(() => {
         if (uploadForm.id==="uploadFormT") 
         {
             console.log(uploadForm.id);
+
             uploadForm.addEventListener("submit", async function (event) {
                 event.preventDefault();
 
@@ -290,14 +352,14 @@ const observer = new MutationObserver(() => {
         else if(uploadForm.id==="updateFormT")
         {
             console.log(uploadForm.id);
-            //if(document.getElementById("image").files.length==0) console.log("nem lett kép");
+            
             uploadForm.addEventListener("submit", async function (event) {
                 event.preventDefault();
+
                 await updateTicket(document.getElementById("id").innerHTML, document.getElementById("price").value,document.getElementById("price").name,document.getElementById("image").files);
             });
 
             uploadForm.dataset.listenerAdded = "true";
-
         }
     }
 });
