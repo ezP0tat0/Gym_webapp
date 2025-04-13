@@ -87,6 +87,11 @@ body {
     margin: auto;
     text-align: center;
 }
+.slogen
+{
+    font-size: 22px;
+    font-weight: 300;
+}
 .card
 {
     background-color: #B1A7A6;
