@@ -27,8 +27,8 @@ function userDropdown()
 
     if(userData === null)
     {
-        uls.innerHTML=`  <form class="loginForm"><li><label class="loginLabel navButton">Felhasználónév</label><input id="UsernameS" class="dropdown-item loginField" type="text" placeholder="felhasználónév" aria-label="Username" aria-describedby="basic-addon1"></li>
-                        <li><label class="loginLabel navButton">Jelszó</label><input id="PasswordS" class="dropdown-item loginField" type="password" placeholder="jelszó" aria-label="Password" aria-describedby="basic-addon1"></li>
+        uls.innerHTML=`  <form class="loginForm"><li><label class="loginLabel navButton">Felhasználónév</label><input id="UsernameS" class="dropdown-item loginField" type="text" placeholder="felhasználónév" aria-label="Username" aria-describedby="basic-addon1" autocomplete="username"></li>
+                        <li><label class="loginLabel navButton">Jelszó</label><input id="PasswordS" class="dropdown-item loginField" type="password" placeholder="jelszó" aria-label="Password" aria-describedby="basic-addon1" autocomplete="current-password"></li>
                         <li><p class="reg"><a class="dropdown-item text-end reg" href="registration.html">Regisztráció</a></p></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item loginButton" type="submit" onclick="login()">bejelentkezés</a></li>
@@ -38,8 +38,8 @@ function userDropdown()
                                 <label for="stayLoggedInS">Bejelentkezve&nbsp;marad</label>
                             </div>
                         </li></form>`;
-        ulo.innerHTML=`  <form  class="loginForm"><li><label class="loginLabel navButton">Felhasználónév</label><input id="UsernameO" class="dropdown-item loginField" type="text" placeholder="felhasználónév" aria-label="Username" aria-describedby="basic-addon1"></li>
-                        <li><label class="loginLabel navButton">Jelszó</label><input id="PasswordO" class="dropdown-item loginField" type="password" placeholder="jelszó" aria-label="Password" aria-describedby="basic-addon1"></li>
+        ulo.innerHTML=`  <form  class="loginForm"><li><label class="loginLabel navButton">Felhasználónév</label><input id="UsernameO" class="dropdown-item loginField" type="text" placeholder="felhasználónév" aria-label="Username" aria-describedby="basic-addon1"  autocomplete="username"></li>
+                        <li><label class="loginLabel navButton">Jelszó</label><input id="PasswordO" class="dropdown-item loginField" type="password" placeholder="jelszó" aria-label="Password" aria-describedby="basic-addon1"  autocomplete="current-password"></li>
                         <li><p class="reg"><a class="dropdown-item text-end reg" href="registration.html">Regisztráció</a></p></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item loginLogout  loginButton"  type="submit"  onclick="login()">Bejelentkezés</a></li>

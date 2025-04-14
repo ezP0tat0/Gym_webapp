@@ -23,11 +23,11 @@
             <label class="signUpLabel" for="username">Felhasználónév</label>
             <input type="text" id="username" placeholder="Felhasználónév" required>
             <label class="signUpLabel" for="name">Név</label>
-            <input type="text" id="mame" placeholder="Teljes név" required>
+            <input type="text" id="name" placeholder="Teljes név" required>
             <label class="signUpLabel" for="password">Jelszó</label>
-            <input type="password" id="password" placeholder="Jelszó" required>
+            <input type="password" id="password" placeholder="Jelszó" required autocomplete="off">
             <label class="signUpLabel" for="password2">Jelszó újra</label>
-            <input type="password" id="pwAgain" placeholder="Jelszó megint" required>
+            <input type="password" id="pwAgain" placeholder="Jelszó megint" required autocomplete="off">
             <input type="button" id="submit" value="Regisztráció" onclick="register()">
         </form>
         <div class="login-link">
@@ -36,7 +36,6 @@
     </div>
 
 
-    <script src="api.js"></script>
-    <script src="js.js"></script>
+    <script src="JS/reg.js"></script>
 </body>
 </html>

@@ -90,17 +90,29 @@ form input
 {
     margin: 1%;
 }
-.UserTicketClass .btn
+.spaceFromTop
+{
+    margin-top: 11rem;
+}
+.buttonLeft
+{
+    padding-left: -1rem;
+}
+.buttonColor
 {
     background-color: #660708;
     border-color: #660708;
     color: #F5F3F4;
+    margin-bottom: 2rem;
+    margin-left: 1%;
+    width: 9rem;
 }
-.UserTicketClass .btn:hover
+.buttonColor:hover
 {
     background-color: #E5383B;
     border-color: #E5383B;
 }
+
 #uploadForm
 {
     margin-top: 5%;
@@ -124,5 +136,30 @@ form input
 .changeBtn:hover
 {
     background-color: #0B090A;
+    color: #F5F3F4;
+}
+.container
+{
+    margin: 2%;
+}
+table
+{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.uplBtn
+{
+    margin-top: 1rem;
+    
+    background-color: #660708;
+    border-color: #660708;
+    color: #F5F3F4;
+}
+.uplBtn:hover
+{
+    
+    background-color: #660708;
+    border-color: #660708;
     color: #F5F3F4;
 }

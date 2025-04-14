@@ -69,7 +69,7 @@ function logout()
 
 async function users()
 {
-    const addition= document.getElementById("additional");
+    const addition= document.getElementById("content");
     addition.innerHTML="";
 
     const users= await getData("User/allUser");
@@ -196,7 +196,7 @@ async function newTicketForm()
                                 <td><input class="ImgInput" type="file" id="image" accept="image/*" required><br></td>
                             </tr>
                             <tr>
-                                <td colspan="2"><button class="btn " type="submit">Feltöltés</button></td>
+                                <td colspan="2"><button class="btn uplBtn" type="submit">Feltöltés</button></td>
                             </tr>
                         </table></form>`;
 
