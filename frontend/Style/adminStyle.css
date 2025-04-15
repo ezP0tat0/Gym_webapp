@@ -93,10 +93,15 @@ form input
 .spaceFromTop
 {
     margin-top: 11rem;
+    width: 120%;
 }
 .buttonLeft
 {
     padding-left: -1rem;
+}
+.col-10
+{
+    padding-left: 2rem;
 }
 .buttonColor
 {
@@ -108,6 +113,11 @@ form input
     width: 9rem;
 }
 .buttonColor:hover
+{
+    background-color: #E5383B;
+    border-color: #E5383B;
+}
+.buttonColor::after
 {
     background-color: #E5383B;
     border-color: #E5383B;
@@ -141,6 +151,7 @@ form input
 .container
 {
     margin: 2%;
+    width: 120%;
 }
 table
 {

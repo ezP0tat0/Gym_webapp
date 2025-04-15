@@ -41,7 +41,7 @@ namespace GymWebapp.Services
         public InnerImageDto imgToBytes()
         {
 
-            var imgPath = Path.Combine(Directory.GetCurrentDirectory(), "Images", "PFP.jpg");
+            var imgPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Images", "PFP.jpg");
 
             if (!System.IO.File.Exists(imgPath)) throw new Exception("alap kép nem található");
 

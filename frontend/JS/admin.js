@@ -90,12 +90,10 @@ async function users()
 async function ChangeRoleInit(button,select)
 {
     var button=document.getElementById(button);
-
-    var select=document.getElementById(select);
-    select.disabled=false;
-
+    var selector=document.getElementById(select);
+    selector.disabled=false;
     button.value="Mentés";
-    button.setAttribute("onclick","ChangeRole('"+select.value+"','"+idFromId(select.id)+"');");
+    button.setAttribute("onclick","ChangeRole('"+select+"','"+idFromId(selector.id)+"');");
 
     console.log(button);
 }
@@ -110,12 +108,14 @@ function idFromId(txt)
                 id+=txt[i];
             }
     }
+    console.log(id);
     var i=parseInt(id);
     return i;
 }
 
-async function ChangeRole(Role,id) 
+async function ChangeRole(roleid,id) 
 {
+    var Role=document.getElementById(roleid).value;
     console.log("role: "+Role);
     console.log("id: "+id);
 
@@ -127,6 +127,7 @@ async function ChangeRole(Role,id)
         },
         body: JSON.stringify({userId:id,role:Role})
     });
+    console.log(response);
 
 }
 
