@@ -10,7 +10,7 @@ window.onload=function()
     console.log(userData);
     userDropdown();
     var currentWindow=window.location.pathname.split('/').slice(-1);
-    if(currentWindow[0] != "index.html" && currentWindow[0]!= "aboutUs.html") ShowCards();
+    if(currentWindow[0] != "index.html" && currentWindow[0]!= "aboutUs.html" && currentWindow[0]!="profil.html") ShowCards();
     else if(currentWindow[0] == "index.html")
     {
       showTickets();
@@ -507,6 +507,13 @@ async function img(url)
         console.error("error loading img: ",error);
         return "";
     }
+}
+
+async function getUserData()
+{
+  const data = await getData("User");
+  console.log(data);
+  
 }
 
 
