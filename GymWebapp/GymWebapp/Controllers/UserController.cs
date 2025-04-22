@@ -50,10 +50,15 @@ namespace GymWebapp.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        [HttpDelete("DeleteUser/{id}")]
-        public async Task<IActionResult> deleteUser(int userId)
+        [HttpDelete("DeleteUser")]
+
+        public async Task<IActionResult> deleteUser()
         {
-            await _userService.DeleteUser(userId);
+            var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (int.TryParse(userIdString, out int userId))
+            {
+                await _userService.DeleteUser(userId);
+            }
 
             return Ok("Sikeresen törölve");
         }

@@ -25,6 +25,12 @@ function userDropdown()
     var uls = document.getElementById("userDropdownStandard");
     var ulo = document.getElementById("userDropdownOffCanvas");
 
+    if(!uls && !ulo)
+    {
+      console.error("Dropdown now found");
+      return;
+    }
+
     if(userData === null)
     {
         uls.innerHTML=`  <form class="loginForm"><li><label class="loginLabel navButton">Felhasználónév</label><input id="UsernameS" class="dropdown-item loginField" type="text" placeholder="felhasználónév" aria-label="Username" aria-describedby="basic-addon1" autocomplete="username"></li>
@@ -73,33 +79,33 @@ function userDropdown()
         ulo.innerHTML=uls.innerHTML;
     }
 
+    if(uls)
+    {
+      uls.addEventListener("click", function(event){
+        if(event.target.id!=="stayLoggedInS")event.stopPropagation();
+      });
+
+      const slis=document.getElementById("stayLoggedInS");
+      if(slis)
+        slis.addEventListener("click", function(event){
+          event.stopPropagation();
+        });
+    }
+    if(ulo)
+    {
+      ulo.addEventListener("click", function(event){
+        if(event.target.id!=="stayLoggedInO") event.stopPropagation();
+      });
+
+      const slio=document.getElementById("stayLoggedInO");
+      if(slio)
+        slio.addEventListener("click", function(event){
+          event.stopPropagation();
+        });
+    }
+
+
 }
-document.addEventListener("DOMContentLoaded", function () {
-    // Prevent dropdown from closing when clicking inside
-    document.getElementById("userDropdownStandard").addEventListener("click",function(event){
-        if (event.target.id !== "stayLoggedInS") {
-            event.stopPropagation();
-        }
-    });
-    document.getElementById("userDropdownOffCanvas").addEventListener("click",function(event){
-        if (event.target.id !== "stayLoggedInO") {
-            event.stopPropagation();
-        }
-    })
-
-    // Ensure the checkbox works
-    const slis= document.getElementById("stayLoggedInS");
-
-    if(slis)slis.addEventListener("click", function (event) {
-        event.stopPropagation(); // Stops dropdown from closing
-    });
-
-    const slio=document.getElementById("stayLoggedInO");
-
-    if(slio)slio.addEventListener("click", function (event) {
-        event.stopPropagation(); // Stops dropdown from closing
-    });
-});
 
 function displayUserInfo()
 {
@@ -232,7 +238,8 @@ async function showTrainers()
     
     for(var i=0;i<displayNo;i++)
     {
-      let imgSrc= await img(tickets[i].imgUrl);
+      console.log(trainers[i].imgUrl);
+      let imgSrc= await img(trainers[i].imgUrl);
 
         standardOut+=`
                 <div class="col">
@@ -468,6 +475,7 @@ async function addCorrectCard(data,page)
                   </div>
                 </div>
       `;
+      break;
     case "trainers.html":
       var content=``;
       content+=`
@@ -477,11 +485,12 @@ async function addCorrectCard(data,page)
                     <div class="card-body">
                       <h5 id="name1">${data.name}</h5>
                       <p id="expertise1" class="card-text">${data.expertise}</p>
-                      <p id="phoneNo1" class="card-text">2424234<a href="tel:${data.phoneNumber}">${trainers[i].phoneNumber}</a></p>
+                      <p id="phoneNo1" class="card-text">2424234<a href="tel:${data.phoneNumber}">${data.phoneNumber}</a></p>
                     </div>
                   </div>
                 </div>
         `;
+        break;
     default:
       console.log("Unsupported page: ",page);
       return "";

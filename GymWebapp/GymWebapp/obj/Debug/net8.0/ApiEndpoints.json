@@ -373,22 +373,11 @@
   {
     "ContainingType": "GymWebapp.Controllers.UserController",
     "Method": "deleteUser",
-    "RelativePath": "api/User/DeleteUser/{id}",
+    "RelativePath": "api/User/DeleteUser",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
-    "Parameters": [
-      {
-        "Name": "userId",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "id",
-        "Type": "",
-        "IsRequired": true
-      }
-    ],
+    "Parameters": [],
     "ReturnTypes": []
   },
   {

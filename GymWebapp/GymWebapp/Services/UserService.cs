@@ -45,14 +45,28 @@ namespace GymWebapp.Services
             var user = await _dataContext.Users.FindAsync(rl.UserId);
             if (user == null) throw new Exception("Felhasználó nem található");
 
-            user.Role = rl.Role;
-
-            if (user.Role.Equals("Trainer"))
+            if (user.Role.Equals("Trainer") && rl.Role.Equals("User"))
+                _dataContext.Trainers.Remove(await _dataContext.Trainers.FindAsync(rl.UserId));
+            else
             {
-                var trainer= await _dataContext.Trainers.FindAsync(user.Id);
+                user.Role = rl.Role;
 
-                IImgService _imgService= new ImgService();
-                var convertedImg = _imgService.imgToBytes();
+                if (user.Role.Equals("Trainer"))
+                {
+                    IImgService _imgService = new ImgService();
+                    var convertedImg = _imgService.imgToBytes();
+
+                    var trainer = new Trainer()
+                    {
+                        Id = rl.UserId,
+                        PhoneNumber = "",
+                        Expertise = "",
+                        ImageData = convertedImg.data,
+                        ImageType = convertedImg.type,
+                    };
+
+                    await _dataContext.Trainers.AddAsync(trainer);
+                }
             }
 
             await _dataContext.SaveChangesAsync();

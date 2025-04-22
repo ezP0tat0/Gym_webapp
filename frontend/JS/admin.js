@@ -129,6 +129,8 @@ async function ChangeRole(roleid,id)
     });
     console.log(response);
 
+
+   location.reload();
 }
 
 function addSelect(id,current)
