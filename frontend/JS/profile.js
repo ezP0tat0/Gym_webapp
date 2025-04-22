@@ -19,6 +19,12 @@ async function getUserData()
     content.innerHTML=ihtml;
 }
 
+async function myTickets()
+{
+  const myTickets=await getData("Ticket/myTickets");
+  console.log(myTickets);
+}
+
 async function deleteProfile()
 {
   console.log("in");
@@ -26,13 +32,29 @@ async function deleteProfile()
     //await fetch(defaultUrl+"User/DeleteUser");
 
   window.location="index.html";
+
 }
 
 
 function makeTable(data)
 {
-  var table=`<table>`;
-  for(var i in data)
-  {
-  }
+  const dataArray=Array.isArray(data)?data:[data];
+  console.log(data);
+
+  var table=`<table border="1">`;
+  
+
+  dataArray.forEach(e => {
+    const fields=Object.keys(e);
+
+    fields.forEach(f => {
+      table+=`<tr>
+      <td>${f}</td>
+      <td>${e[f]}</td
+      <tr>`;
+    });
+  });
+  table+=`</table>`;
+
+  return table;
 }
