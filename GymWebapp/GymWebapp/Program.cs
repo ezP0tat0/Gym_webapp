@@ -14,6 +14,7 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IClassService, ClassService>();
 builder.Services.AddScoped<ITicketService, TicketService>();
 builder.Services.AddScoped<IImgService, ImgService>();
+builder.Services.AddScoped<ILoggingService, LoggingService>();
 
 //autoMapper
 builder.Services.AddAutoMapper(typeof(Program).Assembly);

@@ -120,6 +120,80 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "GymWebapp.Controllers.LoggingController",
+    "Method": "addExercise",
+    "RelativePath": "api/Logging/addExercise",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ex",
+        "Type": "GymWebapp.Model.Dtos.ExerciseDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GymWebapp.Controllers.LoggingController",
+    "Method": "addLog",
+    "RelativePath": "api/Logging/addLog",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "l",
+        "Type": "System.Collections.Generic.List\u00601[[GymWebapp.Model.Dtos.LogDto, GymWebapp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GymWebapp.Controllers.LoggingController",
+    "Method": "getExercises",
+    "RelativePath": "api/Logging/getExercises",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GymWebapp.Controllers.LoggingController",
+    "Method": "getLogs",
+    "RelativePath": "api/Logging/getLogs",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "exercise",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GymWebapp.Controllers.LoggingController",
+    "Method": "removeLog",
+    "RelativePath": "api/Logging/removeLog",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "i",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "GymWebapp.Controllers.TicketController",
     "Method": "ListAllTickets",
     "RelativePath": "api/Ticket",

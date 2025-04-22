@@ -39,6 +39,12 @@ namespace GymWebapp.Mapper
             CreateMap<Trainer, TranersDto>().ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.User.Name))
                                             .ForMember(dest=>dest.ImgUrl,opt=>opt.MapFrom(src => $"https://localhost:7157/api/User/Image/{src.Id}"));
 
+
+            //Logging converisons
+            CreateMap<Log, LogDto>();
+            CreateMap<ExerciseDto,Exercise>();
+            CreateMap<Exercise, ExerciseDto>();
+        
         }
 
     }
