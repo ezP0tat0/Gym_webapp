@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Crete+Round:ital@0;1&family=Jura:wght@300..700&family=Quicksand:wght@300..700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <title>Vásárlás</title>
+</head>
+<style>
+    body
+    {
+        font-family: "Jura", serif;
+        padding: 0;
+        background-color: #0B090A;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    .card
+    {
+        margin: auto;
+        border-radius: 10px;
+        background-color: #161A1D;
+        
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+        max-width: 500px;
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+        animation: slideIn 0.8s ease-in-out, borderLight 2s infinite alternate;
+    }
+    @keyframes slideIn 
+    {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes borderLight 
+    {
+        from {
+            box-shadow: 0 0 20px rgba(102, 7, 8, 0.5);
+        }
+        to {
+            box-shadow: 0 0 40px rgba(229, 56, 59, 0.9);
+        }
+    }
+    input 
+    {
+        padding: 10px;
+        margin-bottom: 5%;
+        border: none;
+        border-radius: 12px;
+        background-color: #212529;
+        color: #F5F3F4;
+    }
+    #CardNumber
+    {
+        margin-left: auto;
+        width: 95%;
+    }
+    #name
+    {
+        width: 50%;
+    }
+    #expDate,#cvc
+    {
+        width: 20%;
+    }
+    label
+    {
+        margin-bottom: 10%;
+    }
+    .btn
+    {
+        margin-left: 30%;
+        margin-top: 7%;
+        width: 200px;
+        background-color: #A4161A;
+        font-size: larger;
+        font-family: "Jura","serif";
+        font-weight: 600;
+    }
+</style>
+<script>
+    window.onload=function(){
+        console.log("ticket id: ",window.ticketId);
+    };
+    async function purchase()
+    {
+        
+    }
+</script>
+<body>
+    <div class="container">
+            <form action="">
+                <div class="card">
+                    <label for="cardNo">Kártyaszám:</label>
+                    <input type="text" name="cardNo" id="CardNumber" required>
+                    <label for="Name">Tulajdonos neve:</label><br>
+                    <input type="text" name="Name" id="name" required><br>
+                    <table>
+                        <tr>
+                            <td>
+                                <label for="expDate">Lejárati dátum:</label>
+                            </td>
+                            <td>
+                                <label for="cvc">cvc:</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" name="expDate" id="expDate" required>
+                            </td>
+                            <td>
+                                <input type="text" name="cvc" id="cvc" required>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <input class="btn" type="button" value="Fizetés" onclick="purchase()">
+            </form>
+    </div>
+</body>
+</html>
