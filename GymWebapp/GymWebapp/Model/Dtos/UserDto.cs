@@ -40,6 +40,10 @@
         public int UserId { get; set; }
         public string Role { get; set; }
     }
+    public class DeleteUser
+    {
+        public int UserId { set; get; }
+    }
     public class TranersDto
     {
         public string Name { get; set; }

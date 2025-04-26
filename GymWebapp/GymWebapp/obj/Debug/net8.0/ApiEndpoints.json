@@ -377,7 +377,13 @@
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "user",
+        "Type": "GymWebapp.Model.Dtos.DeleteUser",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {

@@ -80,7 +80,7 @@ async function users()
 
     for(const e of users)
     {
-        table+=`<tr><td>${e.id}</td><td>${e.username}</td><td>${e.name}</td><td>${addSelect(e.id,e.role)}</td><td><input id="changeButton_${e.id}" onclick='ChangeRoleInit("changeButton_${e.id}","role_${e.id}")' type="button" value="Módosítás"></td></tr>`;
+        table+=`<tr><td>${e.id}</td><td>${e.username}</td><td>${e.name}</td><td>${addSelect(e.id,e.role)}</td><td><input id="changeButton_${e.id}" onclick='ChangeRoleInit("changeButton_${e.id}","role_${e.id}")' type="button" value="Módosítás">  <input id="deleteButton_${e.id}" onclick='DeleteUser("${e.id}")' type="button" value="Törlés"></td></tr>`;
     }
 
     table+=`</table>`;
@@ -151,6 +151,23 @@ function addSelect(id,current)
    return select;
 }
 
+async function DeleteUser(id) 
+{
+    if(confirm(`Biztos törli a ${id} azonosítójú fiókot?`))
+    {
+        const response= await fetch(defaultUrl+"User/DeleteUser",{
+            method: "DELETE",
+            headers:{
+                "Content-Type":"application/json",
+                Authorization: "bearer " + JSON.parse(sessionStorage.getItem("data")).token
+            },
+            body: JSON.stringify({userId:id})
+        }) ;
+        console.log(response);
+    }
+
+    location.reload();
+}
 
 async function tickets()
 {
