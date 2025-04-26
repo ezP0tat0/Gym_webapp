@@ -1,0 +1,58 @@
+.container
+{
+    margin-left: 0%;
+    margin-right: 0%;
+    width: 100%;
+    max-width: 100%;
+}
+.btns input
+{
+    width: 100%;
+}
+.btns button
+{
+    width: 100%;
+    word-wrap: break-word;
+}
+input
+{
+    word-wrap: break-word;
+}
+
+
+
+table
+{
+    width: 90%;
+}
+/* top-left border-radius */
+table tr:first-child td:first-child 
+{
+    border-top-left-radius: 12px;
+}
+  
+/* top-right border-radius */
+table tr:first-child td:last-child 
+{
+    border-top-right-radius: 12px;
+}
+  
+/* bottom-left border-radius */
+table tr:last-child td:first-child 
+{
+    border-bottom-left-radius: 12px;
+}
+  
+/* bottom-right border-radius */
+table tr:last-child td:last-child 
+{
+    border-bottom-right-radius: 12px;
+}
+table tr:last-child td
+{
+    border-width: 0;
+}
+table td
+{
+    vertical-align: middle;
+}

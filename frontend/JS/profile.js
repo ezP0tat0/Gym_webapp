@@ -5,7 +5,7 @@ async function getUserData()
   
   const content=document.getElementById("content");
   var ihtml=`
-    <table>
+    <table class='table table-dark table-striped table-hover'>
       <tr>
         <td>Felhasználónév:</td>
         <td>${data.username}</td>

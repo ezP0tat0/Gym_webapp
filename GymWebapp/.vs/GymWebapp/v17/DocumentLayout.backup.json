@@ -95,7 +95,7 @@
               "RelativeDocumentMoniker": "GymWebapp\\Controllers\\UserController.cs",
               "ToolTip": "C:\\Users\\psely\\Documents\\GitHub\\Gym_webapp\\GymWebapp\\GymWebapp\\Controllers\\UserController.cs",
               "RelativeToolTip": "GymWebapp\\Controllers\\UserController.cs",
-              "ViewState": "AgIAAC8AAAAAAAAAAAAQwDgAAABLAAAAAAAAAA==",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAQwDMAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-15T13:58:21.842Z",
               "IsPinned": true,
@@ -115,8 +115,7 @@
               "RelativeToolTip": "GymWebapp\\Model\\Dtos\\UserDto.cs",
               "ViewState": "AgIAABkAAAAAAAAAAAAmwC0AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-22T13:46:24.544Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-22T13:46:24.544Z"
             },
             {
               "$type": "Document",
