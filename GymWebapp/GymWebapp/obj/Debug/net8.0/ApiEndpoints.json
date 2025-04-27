@@ -322,7 +322,7 @@
     "ContainingType": "GymWebapp.Controllers.TicketController",
     "Method": "UseTicket",
     "RelativePath": "api/Ticket/useTicket",
-    "HttpMethod": "DELETE",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [

@@ -180,7 +180,7 @@ async function showTickets()
                       <h4>${tickets[i].name}</h4>
                       <!--<p class="card-text">${tickets[i].description}</p>-->
                       <p class="card-text price">Ár: ${tickets[i].price} ft</p>
-                      <a href="#" class="btn btn-primary btnColor" onclick="">vásárlás</a>
+                      <a href="#" class="btn btn-primary btnColor" onclick="purchaseTicket(${tickets[i].id})">vásárlás</a>
                     </div>
                   </div>
                 </div>
@@ -194,7 +194,7 @@ async function showTickets()
                         <h4>${tickets[i].name}</h4>
                       <!--<p class="card-text">${tickets[i].description}</p>-->
                       <p class="card-text price">Ár: ${tickets[i].price} ft</p>
-                        <a href="#" class="btn btn-primary btnColor" onclick="">vásárlás</a>
+                        <a href="#" class="btn btn-primary btnColor" onclick="purchaseTicket(${tickets[i].id})">vásárlás</a>
                       </div>
                     </div>
                   </div>
@@ -518,7 +518,7 @@ async function img(url)
     }
 }
 
-async function purchaseTicket(id)
+function purchaseTicket(id)
 {
   var wiw= window.open("purchase.html",'','height=500px,width=750px');
   wiw.ticketId=id;

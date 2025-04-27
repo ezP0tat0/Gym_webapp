@@ -26,6 +26,17 @@ table
     width: 90%;
 }
 /* top-left border-radius */
+table tr:first-child th:first-child 
+{
+    border-top-left-radius: 12px;
+}
+  
+/* top-right border-radius */
+table tr:first-child th:last-child 
+{
+    border-top-right-radius: 12px;
+}
+/* top-left border-radius */
 table tr:first-child td:first-child 
 {
     border-top-left-radius: 12px;

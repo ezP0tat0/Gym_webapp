@@ -54,7 +54,7 @@ namespace GymWebapp.Controllers
             else throw new Exception($"Claim User nem talált: {userIdString}");
         }
 
-        [HttpDelete("useTicket")]
+        [HttpPost("useTicket")]
         public async Task<IActionResult> UseTicket(int boughtTicketId)
         {
             var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;

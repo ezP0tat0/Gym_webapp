@@ -9,18 +9,16 @@ edzések és edzők egy odlalon vagy külön?
 
 TO DO:
   Backend:
+    profile+admin page buttons different row if small screen
+    -get my active tickets
     -getMyClasses
-    -ticket purchase
     -felhasználókat hozzáadni
-    -ticketeket hozzáadni
     -classokat létrehozni
     -auth controller átalakítás?
     -user ban?
 
   Frontend:
-    -főoldal serverről kapott adatokkal töltse be az oldalt
-    -külön oldalakat megcsinálni
-    -admin oldalon gombok
+
     -tokent cookie-ba tenni
 
 
