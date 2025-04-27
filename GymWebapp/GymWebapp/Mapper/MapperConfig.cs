@@ -30,7 +30,7 @@ namespace GymWebapp.Mapper
                                                  .ForMember(dest => dest.ImageType, opt => opt.MapFrom(src => _imgService.imgToBytes(src.Image).type));
 
             CreateMap<TicketType, TicketDto>().ForMember(dest => dest.ImgUrl, opt => opt.MapFrom(src => $"https://localhost:7289/api/Ticket/Image/{src.Id}"));
-
+            CreateMap<ActiveTicket, ActiveTicketsDto>();
 
             //User converisons
             CreateMap<User, UserInfoDto>();

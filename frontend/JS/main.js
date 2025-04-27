@@ -269,7 +269,7 @@ async function showTrainers()
     standardOut+=`</div>`;
     carouselOut+=`
             </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselT" data-bs-slide="prev">
+                <button name="nnnnnn" class="carousel-control-prev" type="button" data-bs-target="#carouselT" data-bs-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                   <span class="visually-hidden">Previous</span>
                 </button>

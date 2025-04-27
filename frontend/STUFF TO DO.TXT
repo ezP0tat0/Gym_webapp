@@ -16,6 +16,7 @@ TO DO:
     -classokat létrehozni
     -auth controller átalakítás?
     -user ban?
+    -TRAINER carousel controls bad??????
 
   Frontend:
 

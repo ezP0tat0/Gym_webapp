@@ -29,4 +29,14 @@
     {
         public IFormFile Image { get; set; }
     }
+    public class ActiveTicketsDto
+    { 
+        public int BoughtTicketId { get; set; }
+        public int AccessCode { get; set; }
+        public DateTime ExpDate { get; set; }
+    }
+    public class UseTicketDto
+    {
+        public int BoughtTicketId { get; set; }
+    }
 }

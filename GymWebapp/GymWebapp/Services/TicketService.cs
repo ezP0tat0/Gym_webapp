@@ -18,6 +18,7 @@ namespace GymWebapp.Services
         Task ChangeTicketPrice(int ticketId, int price);
         Task<Tuple<byte[], string>> GetImage(int id);
         Task ChangeImage(int id,IFormFile image);
+        Task <List<ActiveTicketsDto>> GetActiveTickets(int userId);
 
     }
     public class TicketService : ITicketService
@@ -43,7 +44,7 @@ namespace GymWebapp.Services
         public async Task<List<MyTicketsDto>> getMyTickets(int userId)
         {
             //átgondolni
-            var myTickets = _dataContext.BougthTickets.Include(x => x.TicketType).Where(x => x.UserId == userId && !x.Duration.Equals("0"));
+            var myTickets = _dataContext.BougthTickets.Include(x => x.TicketType).Where(x => x.UserId == userId);
             var result = _mapper.Map<List<MyTicketsDto>>(myTickets);
             return result;
         }
@@ -77,6 +78,7 @@ namespace GymWebapp.Services
             var ActiveTicket = new ActiveTicket()
             {
                 AccessCode = AccessCode,
+                BougthTicketId=usedTicket.Id,
                 UserId = userId,
                 ExpireDate = DateTime.Now.AddHours(24)
             };
@@ -106,6 +108,16 @@ namespace GymWebapp.Services
             await _dataContext.SaveChangesAsync();
 
         }
+        public async Task<List<ActiveTicketsDto>> GetActiveTickets(int userId)
+        {
+            var at=new List<ActiveTicketsDto>();
+            var ActiveTickets=_dataContext.ActiveTickets.ToList().Where(x=>x.UserId==userId);
+
+            foreach (var e in ActiveTickets)
+                at.Add(_mapper.Map<ActiveTicketsDto>(e));
+
+            return at;
+        }
 
         private string AccessCodeGenerate()
         {
@@ -115,6 +127,7 @@ namespace GymWebapp.Services
 
             return $"{RandomNumber}";
         }
+
 
         public async Task<Tuple<byte[],string>> GetImage(int id)
         {

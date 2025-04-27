@@ -55,16 +55,28 @@ namespace GymWebapp.Controllers
         }
 
         [HttpPost("useTicket")]
-        public async Task<IActionResult> UseTicket(int boughtTicketId)
+        public async Task<IActionResult> UseTicket(UseTicketDto ut)
         {
             var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (int.TryParse(userIdString, out int userId))
             {
-                var result = await _ticketService.UseTicket(boughtTicketId,userId);
+                var result = await _ticketService.UseTicket(ut.BoughtTicketId  , userId);
                 return Ok(result);
             }
             else throw new Exception($"Claim User nem talált: {userIdString}");
-            
+
+        }
+        [HttpGet("activeTickets")]
+        public async Task<IActionResult> GetActiveTickets()
+        {
+            var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (int.TryParse(userIdString, out int userId))
+            {
+                var result = await _ticketService.GetActiveTickets(userId);
+                return Ok(result);
+            }
+            else throw new Exception($"Claim User nem talált: {userIdString}");
+
         }
 
         [Authorize(Roles ="Admin")]

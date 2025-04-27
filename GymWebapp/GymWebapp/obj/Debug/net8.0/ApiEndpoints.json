@@ -205,6 +205,16 @@
   },
   {
     "ContainingType": "GymWebapp.Controllers.TicketController",
+    "Method": "GetActiveTickets",
+    "RelativePath": "api/Ticket/activeTickets",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GymWebapp.Controllers.TicketController",
     "Method": "ChangeImage",
     "RelativePath": "api/Ticket/ChangeImage/{ticketId}",
     "HttpMethod": "PATCH",
@@ -327,9 +337,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "boughtTicketId",
-        "Type": "System.Int32",
-        "IsRequired": false
+        "Name": "ut",
+        "Type": "GymWebapp.Model.Dtos.UseTicketDto",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
