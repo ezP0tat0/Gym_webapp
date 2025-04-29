@@ -1,6 +1,6 @@
 var user=sessionStorage.getItem('data');
 
-if(localStorage.getItem('data')!= null) user=localStorage.getItem('data');
+//if(localStorage.getItem('data')!= null) user=localStorage.getItem('data');
 
 var userData=JSON.parse(user);
 var defaultUrl= "https://localhost:7289/api/";
@@ -253,7 +253,7 @@ async function showTrainers()
                   </div>
                 </div>
         `;
-        carouselOut=`
+        carouselOut+=`
                     <div class="carousel-item  ${i==0?"active":""}">
                       <div class="card carouselCard">
                         <img class="card-img-top card cardImgs" src="${imgSrc}" alt="card image cap">         
@@ -520,6 +520,11 @@ async function img(url)
 
 function purchaseTicket(id)
 {
+  if(user==null) 
+  {
+    alert("Elöbb be kell jelentkeznie!");
+    return;  
+  }
   var wiw= window.open("purchase.html",'','height=500px,width=750px');
   wiw.ticketId=id;
 }

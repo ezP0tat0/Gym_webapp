@@ -3,7 +3,7 @@
     public class LogDto
     {
         public int Id { get; set; }    
-        public int ExerciseId { get; set; }
+        public string Exercise { get; set; }
         public DateTime Date { get; set; }
         public int setGroupId { get; set; }
         public int Repetition {  get; set; }

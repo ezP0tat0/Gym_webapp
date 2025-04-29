@@ -75,7 +75,7 @@ async function activeTickets(tickets)
       console.log(activeTickets[e].boughtTicketId,"----",tickets[i].boughtTicketId);
       if(activeTickets[e].boughtTicketId==tickets[i].boughtTicketId)
       {
-        aciveT[i].innerHTML=`${e.accessCode}`;
+        aciveT[i].innerHTML=`${activeTickets[e].accessCode}`;
         break;
       }
       else aciveT[i].innerHTML=`nem aktív`;
@@ -100,5 +100,26 @@ async function deleteProfile()
 
     window.location="index.html";
   }
+}
+
+function exerciseLog()
+{
+  const content=document.getElementById('content');
+  content.innerHTML=`
+    <div class="row">
+    <div class="col">
+      <input class="buttonColor btn btn-primary" type="button" value="Gyakorlat felvitele" onclick="addExercise()">
+      <input class="buttonColor btn btn-primary" type="button" value="Edzések listázása" onclick="getExerciseLogs()">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div id="stuff">
+
+      </div>
+    </div>
+  </div>
+  `;
+  
 }
 

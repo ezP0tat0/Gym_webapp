@@ -33,7 +33,7 @@ namespace GymWebapp.Services
                 {
                     SetGroupId = setg,
                     UserId = userId,
-                    ExerciseId = log.ExerciseId,
+                    ExerciseId = _dataContext.Exercises.FirstOrDefault(x => x.Name.Equals(log.Exercise)).Id,
                     Date = log.Date,
                     Repetition = log.Repetition,
                 };

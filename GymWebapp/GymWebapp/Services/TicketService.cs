@@ -43,16 +43,44 @@ namespace GymWebapp.Services
 
         public async Task<List<MyTicketsDto>> getMyTickets(int userId)
         {
-            //átgondolni
+
+            activeTicketCheck(userId)
+
             var myTickets = _dataContext.BougthTickets.Include(x => x.TicketType).Where(x => x.UserId == userId);
-            var result = _mapper.Map<List<MyTicketsDto>>(myTickets);
+            var result= new List<MyTicketsDto>();
+            
+            foreach(var t in myTickets)
+                if(ticketValidityCheck(t)) result.Add(_mapper.Map<MyTicketsDto>(t));
+
             return result;
+        }
+
+        private bool ticketValidityCheck(BougthTicket t)
+        {
+            if(t.Duration.Equals(0))
+            {
+                if (_dataContext.ActiveTickets.Where(x=>x.UserId==t.UserId).Union(_dataContext.ActiveTickets.Where(x =>x.BougthTicketId==t.Id)==null) return false;
+            }
+
+            return true;
+        }
+
+        private async void activeTicketCheck(int userId)
+        {
+            var activeT=_dataContext.ActiveTickets.Where(x => x.UserId == userId);
+            
+            if(activeT!=null)
+                foreach(var t in activeT)
+                {
+                    if(t.ExpireDate<DateTime.Now) 
+                        _dataContext.ActiveTickets.Remove(t);
+                }
+
+            await _dataContext.SaveChangesAsync();
         }
 
         public async Task TicketPurchase(int ticketId, int userId)
         {
-            //purchase change!!!!!!!!!!
-           //id,ticketID,userId, duration
             var ticketType= await _dataContext.TicketTypes.FindAsync(ticketId);
             var newBoughtTicket = new BougthTicket
             {

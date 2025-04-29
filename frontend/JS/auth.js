@@ -21,7 +21,7 @@ async function login() {
         await postData("Auth/login", data, false)
             .then(async (data) => {
                 if (await data.token) {
-                    if(stayLoggedIn)  localStorage.setItem("data",JSON.stringify(data));
+                    //if(stayLoggedIn)  localStorage.setItem("data",JSON.stringify(data));
                     sessionStorage.setItem("data", JSON.stringify(data));
                     location.reload();
                     console.log(data);
