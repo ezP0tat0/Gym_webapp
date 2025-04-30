@@ -16,12 +16,25 @@ async function getUserData()
       <tr>
         <td>Név:</td>
         <td>${data.name}</td>
+        ${data.role=="Trainer"?await trainerData():""}
     </table>
 
     `;
     content.innerHTML=ihtml;
 }
-
+async function trainerData()
+{
+  var text=`<tr>
+    <td>Szakosodás:</td>
+    <td></td>
+    </tr>
+    <tr>
+    <td>tel:</td>
+    <td></td>
+    </tr>
+  `;
+  return text;
+}
 async function myTickets()
 {
   const content=document.getElementById("content");
