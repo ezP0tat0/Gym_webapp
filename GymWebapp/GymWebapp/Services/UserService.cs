@@ -18,6 +18,7 @@ namespace GymWebapp.Services
         Task<List<TranersDto>> getAllTrainers();
         Task<Tuple<byte[], string>> GetImage(int id);
         Task AddExpertise(string expertise,int userId);
+        Task<TranersDto> getTrainer(int userId);
     }
     public class UserService : IUserService
     {
@@ -127,6 +128,15 @@ namespace GymWebapp.Services
 
             trainer.Expertise = expertise;
             await _dataContext.SaveChangesAsync();
+        }
+        public async Task<TranersDto> getTrainer(int userId) 
+        {
+            var trainer = await _dataContext.Trainers.FindAsync(userId);
+            if (trainer == null) throw new Exception("edző nem található");
+
+            var response = _mapper.Map<TranersDto>(trainer);
+
+            return response;
         }
     }
 }
