@@ -44,10 +44,17 @@ namespace GymWebapp.Services
 
             if (!boughtTickets.Any()) throw new Exception("Nincs jegyed edzésfelvételhez");
 
-            boughtTickets.First().Duration = Convert.ToString(int.Parse(boughtTickets.First().Duration)-1);
+            if (boughtTickets.All(x => x.Duration.Equals(0))) throw new Exception("Nincs jegyed edzésfelvételhez");
 
-            if(boughtTickets.First().Duration.Equals(0))
-                _dataContext.BougthTickets.Remove(boughtTickets.First());
+             boughtTickets.First(x=>!x.Duration.Equals(0)).Duration = Convert.ToString(int.Parse(boughtTickets.First().Duration)-1);
+            
+             var joining = new ClassAttendee()
+             {
+                 ClassId = classId,
+                 UserId = personId,
+             };
+
+             _dataContext.classAttendees.Add(joining);
 
             _dataContext.SaveChanges();
         }
