@@ -69,9 +69,9 @@ function userDropdown()
     } 
     else
     {
-        uls.innerHTML=`  <li><a class="dropdown-item" href="profil.html">Profil</a></li>
-                        <li><a class="dropdown-item " href="jegyeim.html">Jegyeim</a></li>
-                        ${userData.role=="Admin"?`<li><a class="dropdown-item" href="adminPage.html">Admin oldal</a></li>`:""}
+        uls.innerHTML=`  <li><a class="dropdown-item format" href="profil.html">Profil</a></li>
+                        <li><a class="dropdown-item  format" onclick="myTicketsShortcut()">Jegyeim</a></li>
+                        ${userData.role=="Admin"?`<li><a class="dropdown-item format" href="adminPage.html">Admin oldal</a></li>`:""}
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item logout" onclick="logout()">Kijelentkezés</a></li>`;
         
@@ -527,6 +527,11 @@ function purchaseTicket(id)
   }
   var wiw= window.open("purchase.html",'','height=500px,width=750px');
   wiw.ticketId=id;
+}
+
+async function myTicketsShortcut()
+{
+  window.location.href="profil.html";
 }
 
 
