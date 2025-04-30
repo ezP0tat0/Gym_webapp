@@ -52,7 +52,7 @@ namespace GymWebapp.Controllers
         [Authorize(Roles = "Admin")]
         [HttpDelete("DeleteUser")]
 
-        public async Task<IActionResult> deleteUser(DeleteUser user)
+        public async Task<IActionResult> deleteUser(Userid user)
         {
             if (user.UserId != 0) await _userService.DeleteUser(user.UserId);
             else
@@ -96,9 +96,9 @@ namespace GymWebapp.Controllers
             var response = await _userService.getAllTrainers();
             return Ok(response);
         }
-        public async Task<IActionResult> getTrainer(int userId) 
+        public async Task<IActionResult> getTrainer(Userid u) 
         {
-            var trainer = await _userService.getTrainer(userId);
+            var trainer = await _userService.getTrainer(u.UserId);
             return Ok(trainer);
         }
         [HttpGet("Image/{id}")]
