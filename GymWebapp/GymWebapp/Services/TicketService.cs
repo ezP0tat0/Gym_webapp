@@ -57,9 +57,9 @@ namespace GymWebapp.Services
 
         private bool ticketValidityCheck(BougthTicket t)
         {
-            if(t.Duration.Equals(0))
+            if(t.Duration.Equals("0"))
             {
-                if (_dataContext.ActiveTickets.Where(x=>x.UserId==t.UserId).Union(_dataContext.ActiveTickets.Where(x =>x.BougthTicketId==t.Id)==null) return false;
+                if (!_dataContext.ActiveTickets.Where(x=>x.BougthTicketId==t.Id).Any()) return false;
             }
 
             return true;
