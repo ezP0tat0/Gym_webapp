@@ -24,6 +24,8 @@ async function getUserData()
 }
 async function trainerData()
 {
+  const data=await getData("User/oneTrainer/"+id);
+  console.log(data);
   var text=`<tr>
     <td>Szakosodás:</td>
     <td></td>
