@@ -68,24 +68,24 @@ namespace GymWebapp.Controllers
         }
 
         [HttpPatch("AddPhoneNo")]
-        public async Task<IActionResult> AddPhoneNumber(string phoneNo)
+        public async Task<IActionResult> AddPhoneNumber(UpdateTrainerInfo phoneNo)
         {
             var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (int.TryParse(userIdString, out int userId))
             {
-                await _userService.AddPhoneNo(phoneNo, userId);
+                await _userService.AddPhoneNo(phoneNo.text, userId);
                 return Ok("Sikeresen hozzáadva");
             }
             else throw new Exception($"Claim User nem talált: {userIdString}");
 
         }
         [HttpPatch("Expertise")]
-        public async Task<IActionResult> AddExpertise(string expertise)
+        public async Task<IActionResult> AddExpertise(UpdateTrainerInfo expertise)
         {
             var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (int.TryParse(userIdString, out int userId))
             {
-                await _userService.AddExpertise(expertise, userId);
+                await _userService.AddExpertise(expertise.text, userId);
                 return Ok("Sikeresen hozzáadva");
             }
             else throw new Exception($"Claim User nem talált: {userIdString}");
@@ -99,7 +99,7 @@ namespace GymWebapp.Controllers
         [HttpGet("oneTrainer/{id}")]
         public async Task<IActionResult> getTrainer(int id) 
         {
-            var trainer = await _userService.getTrainer(u.UserId);
+            var trainer = await _userService.getTrainer(id);
             return Ok(trainer);
         }
         [HttpGet("Image/{id}")]

@@ -123,15 +123,16 @@ namespace GymWebapp.Services
 
         public async Task AddExpertise(string expertise, int userId)
         {
-            var trainer =await _dataContext.Trainers.FindAsync(userId);
+            var trainer = await _dataContext.Trainers.FirstAsync(x => x.Id == userId);
             if (trainer == null) throw new Exception("edző nem található");
 
             trainer.Expertise = expertise;
+            if (expertise == null) throw new Exception("BAJ VAN");
             await _dataContext.SaveChangesAsync();
         }
         public async Task<TranersDto> getTrainer(int userId) 
         {
-            var trainer = await _dataContext.Trainers.FindAsync(userId);
+            var trainer = await _dataContext.Trainers.FirstAsync(x=>x.Id == userId);
             if (trainer == null) throw new Exception("edző nem található");
 
             var response = _mapper.Map<TranersDto>(trainer);

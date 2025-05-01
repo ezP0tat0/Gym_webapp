@@ -40,7 +40,7 @@
         public int UserId { get; set; }
         public string Role { get; set; }
     }
-    public class DeleteUser
+    public class Userid
     {
         public int UserId { set; get; }
     }
@@ -50,5 +50,9 @@
         public string phoneNumber { get; set; }
         public string ImgUrl { get; set; }
         public string Expertise {get;set;}
+    }
+    public class UpdateTrainerInfo
+    {
+        public string text { get; set; }
     }
 }

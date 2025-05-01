@@ -44,7 +44,7 @@ namespace GymWebapp.Services
         public async Task<List<MyTicketsDto>> getMyTickets(int userId)
         {
 
-            activeTicketCheck(userId)
+            activeTicketCheck(userId);
 
             var myTickets = _dataContext.BougthTickets.Include(x => x.TicketType).Where(x => x.UserId == userId);
             var result= new List<MyTicketsDto>();

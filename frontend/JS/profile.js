@@ -12,30 +12,71 @@ async function getUserData()
       <tr>
         <td>Felhasználónév:</td>
         <td>${data.username}</td>
+        <td></td>
       <tr>
       <tr>
         <td>Név:</td>
         <td>${data.name}</td>
-        ${data.role=="Trainer"?await trainerData():""}
+        <td></td>
+        ${data.role=="Trainer"?await trainerData(data.id):""}
+
     </table>
 
     `;
     content.innerHTML=ihtml;
 }
-async function trainerData()
+async function trainerData(id)
 {
   const data=await getData("User/oneTrainer/"+id);
   console.log(data);
   var text=`<tr>
     <td>Szakosodás:</td>
-    <td></td>
+    <td id="Exptd">${data.expertise==''?'Nincs megadva':data.expertise}</td>
+    <td>
+      <input class="buttonColor btn btn-primary" id="changeExp" onclick='changeInit("Exptd")' type="button" value="Módosítás">
+    </td>
     </tr>
     <tr>
     <td>tel:</td>
-    <td></td>
+    <td id="PNtd">${data.phoneNumber==''?'Nincs megadva':data.phoneNumber}</td>
+    <td>
+      <input class="buttonColor btn btn-primary" id="changePN" onclick='changeInit("PNtd")' type="button" value="Módosítás">
+    </td>
     </tr>
   `;
   return text;
+}
+function changeInit(id)
+{
+  const td=document.getElementById(id);
+  td.innerHTML=`
+    <input id="${id}Input" type="text" value="${td.innerHTML}">
+  `;
+  const button=document.getElementById(id==="Exptd"?"changeExp":"changePN");
+  button.setAttribute("onclick",`updateTrainerInfo('${id}');`);
+  button.value="Mentés";
+
+}
+
+async function updateTrainerInfo(tdId) 
+{
+  if(tdId==="Exptd")
+  {
+    const exp=document.getElementById('ExptdInput').value;
+    console.log(exp);
+
+    const response=await patchData("User/Expertise",{text:exp});
+    console.log(response);
+  }
+  else if(tdId==="PNtd")
+  {
+    const pn=document.getElementById('PNtdInput').value;
+    console.log(pn);
+
+    const response=await patchData("User/AddPhoneNo",{text:pn});
+    console.log(response);
+  }
+
 }
 async function myTickets()
 {
