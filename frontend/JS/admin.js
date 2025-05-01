@@ -242,7 +242,7 @@ async function classes()
     for(const e of classes)
     {
         let imgSrc=await img(e.imgUrl);
-        table+=`<tr><td>${e.id}</td><td>${imgSrc}</td><td>${e.name}</td><td>${e.description}</td><td>${new Date(e.date)}</td><td>${e.price}</td><td>${e.trainerName}</td><td><a class="btn btn-dark">Módosítás</a></td></tr>`;
+        table+=`<tr><td>${e.id}</td><td><img style="width:70%;height:auto;max-width:10rem" src="${imgSrc}"></td><td>${e.name}</td><td>${e.description}</td><td>${new Date(e.date)}</td><td>${e.price}</td><td>${e.trainerName}</td><td><a class="btn btn-dark">Módosítás</a></td></tr>`;
     }
 
     table+=`<tr><td colspan="8"> <a class="btn btn-dark newClass" onclick="newClassForm()">Új edzés hozzáadása</a></td></tr>`;
@@ -269,10 +269,7 @@ function newClassForm()
                                 <td class="text-end"><label>Dátum:</label></td>
                                 <td><input class="input" type="datetime-local" id="date" required><br></td>
                             </tr>
-                            <tr>
-                                <td class="text-end"><label >Ár:</label></td>
-                                <td><input class="input" type="number" id="price" required><br></td>
-                            </tr>
+                            
                             <tr>
                                 <td class="text-end"><label>Edző:</label></td>
                                 <td><input class="input" type="text" id="trainer" required><br></td>
@@ -344,10 +341,6 @@ async function ChangeTicket(id,name,duration, price)
     else addition.innerHTML=``;
 }
 
-
-
-
-
 const observer = new MutationObserver(() => {
     const uploadForm = document.getElementById("uploadFormT")?document.getElementById("uploadFormT"):document.getElementById("uploadFormC")?document.getElementById("uploadFormC"):document.getElementById("updateFormT");
 
@@ -366,8 +359,14 @@ const observer = new MutationObserver(() => {
             uploadForm.dataset.listenerAdded = "true";
         }
         else if(uploadForm.id==="uploadFormC")
-        {
-            console.log(uploadForm.id);
+        { 
+            uploadForm.addEventListener("submit", async function (event) {
+            event.preventDefault();
+
+            await uploadClass();
+            });
+
+            uploadForm.dataset.listenerAdded = "true";
         }
         else if(uploadForm.id==="updateFormT")
         {
@@ -383,6 +382,33 @@ const observer = new MutationObserver(() => {
         }
     }
 });
+
+async function uploadClass()
+{
+    //name  description   date     trainer       image
+    const name=document.getElementById('name').value;
+    const description=document.getElementById('description').value;
+    const date=document.getElementById('date').value;
+    const trainer=document.getElementById('trainer').value;
+    const image=document.getElementById('image').files[0];
+
+    const formData= new FormData();
+    formData.append('Name',name);
+    formData.append('description',description);
+    formData.append('date',date);
+    formData.append('TrainerName',trainer);
+    formData.append('image',image);
+
+    const response =  await fetch(defaultUrl+"Class/newClass",{
+        method:"POST",
+        headers:{
+            Authorization: "bearer " + JSON.parse(sessionStorage.getItem("data")).token
+        },
+        body: formData
+    });
+
+    console.log(response);
+}
 
 async function uploadTicket()
 {

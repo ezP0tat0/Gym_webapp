@@ -62,8 +62,9 @@ namespace GymWebapp.Services
         {
             var newClass = _mapper.Map<Class>(classDto);
             var trainer = await _dataContext.Users.FirstOrDefaultAsync(x => x.Name.Equals(classDto.TrainerName));
-            if (trainer != null) throw new Exception($"Edző nem található ezzel a névvel: {classDto.TrainerName}");
-            newClass.TrainerId = trainer!.Id;
+            if (trainer == null) throw new Exception($"Edző nem található: {classDto.TrainerName}");
+
+            newClass.TrainerId = trainer.Id;
 
             await _dataContext.Classes.AddAsync(newClass);
             await _dataContext.SaveChangesAsync();

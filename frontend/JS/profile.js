@@ -1,8 +1,9 @@
 async function getUserData()
 {
 
-  const content=document.getElementById("content");
-  content.innerHTML=``;
+  const content=document.getElementsByClassName("content");
+  content[0].innerHTML=``;
+  content[1].innerHTML=``;
 
   const data = await getData("User");
   console.log(data);
@@ -23,7 +24,8 @@ async function getUserData()
     </table>
 
     `;
-    content.innerHTML=ihtml;
+    content[0].innerHTML=ihtml;
+    content[1].innerHTML=ihtml;
 }
 async function img(url) 
 {
@@ -127,8 +129,10 @@ async function updateTrainerInfo(tdId)
 }
 async function myTickets()
 {
-  const content=document.getElementById("content");
-  content.innerHTML=``;
+  
+  const content=document.getElementsByClassName("content");
+  content[0].innerHTML=``;
+  content[1].innerHTML=``;
 
   const myTickets=await getData("Ticket/myTickets");
 
@@ -151,7 +155,8 @@ async function myTickets()
 
     table+=`</table>`;
 
-    content.innerHTML=table;
+    content[0].innerHTML=table;
+    content[1].innerHTML=table;
 }
 
 async function useTicket(id) 
@@ -207,8 +212,11 @@ async function deleteProfile()
 
 function exerciseLog()
 {
-  const content=document.getElementById('content');
-  content.innerHTML=`
+  const content=document.getElementsByClassName("content");
+  content[0].innerHTML=``;
+  content[1].innerHTML=``;
+  
+  var text=`
     <div class="row">
     <div class="col">
       <input class="buttonColor btn btn-primary" type="button" value="Gyakorlat felvitele" onclick="addExercise()">
@@ -223,6 +231,8 @@ function exerciseLog()
     </div>
   </div>
   `;
+  content[0].innerHTML=text;
+  content[1].innerHTML=text;
   
 }
 

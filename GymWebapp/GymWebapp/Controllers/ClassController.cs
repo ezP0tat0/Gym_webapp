@@ -25,7 +25,7 @@ namespace GymWebapp.Controllers
         }
         [Authorize(Roles ="Admin,Trainer")]
         [HttpPost("newClass")]
-        public async Task<IActionResult> CreateClass(NewClassDto newClass)
+        public async Task<IActionResult> CreateClass([FromForm]NewClassDto newClass)
         {
             await _classService.CreateClass(newClass);
 
