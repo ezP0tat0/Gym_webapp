@@ -248,7 +248,7 @@ async function showTrainers()
                     <div class="card-body">
                       <h5 id="name1">${trainers[i].name}</h5>
                       <p id="expertise1" class="card-text">${trainers[i].expertise}</p>
-                      <p id="phoneNo1" class="card-text">2424234<a href="tel:${trainers[i].phoneNumber}">${trainers[i].phoneNumber}</a></p>
+                      <p id="phoneNo1" class="card-text"><a href="tel:${trainers[i].phoneNumber}">${trainers[i].phoneNumber===''?'Nem adott meg telefonszámot':trainers[i].phoneNumber}</a></p>
                     </div>
                   </div>
                 </div>
@@ -260,7 +260,7 @@ async function showTrainers()
                         <div class="card-body">
                           <h5 id="name1">${trainers[i].name}</h5>
                           <p id="expertise1" class="card-text">${trainers[i].expertise}</p>
-                          <p id="phoneNo1" class="card-text">2424234<a href="tel:${trainers[i].phoneNumber}">${trainers[i].phoneNumber}</a></p>
+                          <p id="phoneNo1" class="card-text"><a href="tel:${trainers[i].phoneNumber}">${trainers[i].phoneNumber===''?'Nem adott meg telefonszámot':trainers[i].phoneNumber}</a></p>
                         </div>
                       </div>
                     </div>
@@ -485,7 +485,7 @@ async function addCorrectCard(data,page)
                     <div class="card-body">
                       <h5 id="name1">${data.name}</h5>
                       <p id="expertise1" class="card-text">${data.expertise}</p>
-                      <p id="phoneNo1" class="card-text">2424234<a href="tel:${data.phoneNumber}">${data.phoneNumber}</a></p>
+                      <p id="phoneNo1" class="card-text"><a href="tel:${data.phoneNumber}">${data.phoneNumber===''?'Nem adott meg telefonszámot':data.phoneNumber}</a></p>
                     </div>
                   </div>
                 </div>
