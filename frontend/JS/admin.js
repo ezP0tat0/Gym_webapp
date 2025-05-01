@@ -423,12 +423,14 @@ async function updateTicket(id,newPrice,oldPrice,file)
     }
     if(file.lenght>0)
     {
+        const formData=new FormData();
+        formData.append('Image',file[0]);
         const response = await fetch(defaultUrl+"Ticket/ChangeImage/"+id,{
             method: "PATCH",
             headers:{
                 Authorization: "bearer " + JSON.parse(sessionStorage.getItem("data")).token
             },
-            body: file[0]
+            body: formData
         });
     }
 

@@ -5,6 +5,7 @@ using GymWebapp.Mapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http.HttpResults;
 using GymWebapp.Model.Data;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace GymWebapp.Services
 {
@@ -19,6 +20,7 @@ namespace GymWebapp.Services
         Task<Tuple<byte[], string>> GetImage(int id);
         Task AddExpertise(string expertise,int userId);
         Task<TranersDto> getTrainer(int userId);
+        Task changeImg(IFormFile img,int userId);
     }
     public class UserService : IUserService
     {
@@ -138,6 +140,20 @@ namespace GymWebapp.Services
             var response = _mapper.Map<TranersDto>(trainer);
 
             return response;
+        }
+
+        public async Task changeImg(IFormFile img, int userId)
+        {
+            IImgService _imgService = new ImgService();
+            var convertedImg = _imgService.imgToBytes(img);
+
+            var trainer = await _dataContext.Trainers.FindAsync(userId);
+            if (trainer == null) throw new Exception("Edző nem található");
+
+            trainer.ImageData=convertedImg.data;
+            trainer.ImageType=convertedImg.type;
+
+            await _dataContext.SaveChangesAsync();
         }
     }
 }

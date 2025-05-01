@@ -90,6 +90,17 @@ namespace GymWebapp.Controllers
             }
             else throw new Exception($"Claim User nem talált: {userIdString}");
         }
+        [HttpPatch("ChangeImg")]
+        public async Task<IActionResult> ChangeImg([FromForm]NewPicture image)
+        {
+            var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (int.TryParse(userIdString, out int userId))
+            {
+                await _userService.changeImg(image.Image,userId);
+                return Ok("Sikeresen hozzáadva");
+            }
+            else throw new Exception($"Claim User nem talált: {userIdString}");
+        }
         [HttpGet("Trainers")]
         public async Task<IActionResult> getTrainers()
         {

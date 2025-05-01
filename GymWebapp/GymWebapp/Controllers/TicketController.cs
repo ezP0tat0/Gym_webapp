@@ -96,7 +96,7 @@ namespace GymWebapp.Controllers
         }
         [Authorize(Roles ="Admin")]
         [HttpPatch("ChangeImage/{ticketId}")]
-        public async Task<IActionResult> ChangeImage(int ticketId, [FromBody]NewPicture image)
+        public async Task<IActionResult> ChangeImage(int ticketId, [FromForm]NewPicture image)
         {
             await _ticketService.ChangeImage(ticketId, image.Image);
             return Ok("Kép sikeresen változtatva");

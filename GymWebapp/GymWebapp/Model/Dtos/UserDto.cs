@@ -55,4 +55,8 @@
     {
         public string text { get; set; }
     }
+    public class  TrainerImg
+    {
+        public IFormFile img { get; set; }
+    }
 }

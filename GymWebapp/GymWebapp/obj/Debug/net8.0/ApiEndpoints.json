@@ -227,9 +227,9 @@
         "IsRequired": true
       },
       {
-        "Name": "image",
-        "Type": "GymWebapp.Model.Dtos.NewPicture",
-        "IsRequired": true
+        "Name": "Image",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -378,6 +378,22 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GymWebapp.Controllers.UserController",
+    "Method": "ChangeImg",
+    "RelativePath": "api/User/ChangeImg",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Image",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {

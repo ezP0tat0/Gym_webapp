@@ -25,10 +25,30 @@ async function getUserData()
     `;
     content.innerHTML=ihtml;
 }
+async function img(url) 
+{
+    console.log(url);
+    try
+    {
+        const imgResponse=await fetch(url);
+
+        const blob=await imgResponse.blob();
+
+        const blobUrl=URL.createObjectURL(blob);
+
+        return blobUrl;
+    }
+    catch(error)
+    {
+        console.error("error loading img: ",error);
+        return "";
+    }
+}
 async function trainerData(id)
 {
   const data=await getData("User/oneTrainer/"+id);
   console.log(data);
+  let imgSrc=await img(data.imgUrl);
   var text=`<tr>
     <td>Szakosodás:</td>
     <td id="Exptd">${data.expertise==''?'Nincs megadva':data.expertise}</td>
@@ -43,16 +63,28 @@ async function trainerData(id)
       <input class="buttonColor btn btn-primary" id="changePN" onclick='changeInit("PNtd")' type="button" value="Módosítás">
     </td>
     </tr>
+      <tr>
+        <td>Kép:</td>
+        <td id="Imgtd"><img style="width:70%;height:auto;max-width:10rem" src="${imgSrc}"></td>
+        <td>
+          <input class="buttonColor btn btn-primary" id="changeImg" onclick='changeInit("Imgtd")' type="button" value="Módosítás">
+        </td>
+      <tr>
   `;
   return text;
 }
 function changeInit(id)
 {
   const td=document.getElementById(id);
-  td.innerHTML=`
-    <input id="${id}Input" type="text" value="${td.innerHTML}">
-  `;
-  const button=document.getElementById(id==="Exptd"?"changeExp":"changePN");
+  if(id==="Imgtd")
+    td.innerHTML=`
+      <input id="${id}Input" type="file" accept="image/*">
+     `;
+  else
+    td.innerHTML=`
+      <input id="${id}Input" type="text" value="${td.innerHTML}">
+    `;
+  const button=document.getElementById(id==="Exptd"?"changeExp":id==="changePN"?"changePN":"changeImg");
   button.setAttribute("onclick",`updateTrainerInfo('${id}');`);
   button.value="Mentés";
 
@@ -76,7 +108,22 @@ async function updateTrainerInfo(tdId)
     const response=await patchData("User/AddPhoneNo",{text:pn});
     console.log(response);
   }
+  else if(tdId==="Imgtd")
+  {
+    const file=document.getElementById('ImgtdInput').files;
+    const formData = new FormData();
+    formData.append('Image',file[0]);
 
+    const response = await fetch(defaultUrl+"User/ChangeImg",{
+      method: "PATCH",
+      headers:{
+          Authorization: "bearer " + JSON.parse(sessionStorage.getItem("data")).token
+      },
+      body: formData
+  });
+    console.log(response);
+  }
+  location.reload();
 }
 async function myTickets()
 {
