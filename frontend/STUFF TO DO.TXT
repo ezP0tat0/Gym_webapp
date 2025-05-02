@@ -1,8 +1,9 @@
 
 TO DO:
   Backend:
-     
     -getMyClasses
+
+
     -classokat létrehozni
     -auth controller átalakítás?
     -user ban?
@@ -11,6 +12,7 @@ TO DO:
 
     -tokent cookie-ba tenni
     profile+admin page make buttons work with the layout change
+    new class submit button!
 
 
 

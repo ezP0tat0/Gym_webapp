@@ -51,9 +51,9 @@ namespace GymWebapp.Controllers
             var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (int.TryParse(userIdString, out int userId))
             {
-                await _classService.GetMyClasses(userId);
+                var result= await _classService.GetMyClasses(userId);
 
-                return Ok("Sikeres csatlakozás");
+                return Ok(result);
             }
             else throw new Exception($"Claim User nem talált: {userIdString}");
         }

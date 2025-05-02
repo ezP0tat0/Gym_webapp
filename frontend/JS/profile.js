@@ -7,7 +7,6 @@ async function getUserData()
 
   const data = await getData("User");
   console.log(data);
-  
   var ihtml=`
     <table class='table table-dark table-striped table-hover'>
       <tr>
@@ -234,5 +233,107 @@ function exerciseLog()
   content[0].innerHTML=text;
   content[1].innerHTML=text;
   
+}
+async function myClasses()
+{
+  const content=document.getElementsByClassName("content");
+  content[0].innerHTML=``;
+  content[1].innerHTML=``;
+
+  const myClasses=await getData("Class/MyClasses");
+  console.log(myClasses);
+  var table=`<table class='table table-dark table-striped table-hover'>
+        <tr>
+        <th>Kép</th>
+        <th>Megnevezés</th>
+        <th>Leírás</th>
+        <th>Dátum</th>
+        <th>Időtartam</th>
+        <th>Edző</th>
+        </tr>`;
+    myClasses.forEach(e => {
+      let imgSrc=img=(e.imgUrl);
+      table+=`<tr>
+        <td><img style="width:70%;height:auto;max-width:10rem" src="${imgSrc}"></td>
+        <td>${e.name}</td>
+        <td>${e.description}</td>
+        <td>${e.date}</td>
+        <td>${e.trainerName}</td>
+        </tr>`;
+    });
+
+
+    table+=`</table>`;
+    content[0].innerHTML=table;
+    content[1].innerHTML=table;
+
+    if(userData.role==="Trainer")
+    {
+      const newClassDiv=document.getElementsByClassName('newClass');
+      newClassDiv[0].innerHTML=`<input class="buttonColor btn btn-primary" id="newClassInitBtn" onclick='newClassInit()' type="button" value="Új edzés felvétele">`;
+      newClassDiv[1].innerHTML=`<input class="buttonColor btn btn-primary" id="newClassInitBtn" onclick='newClassInit()' type="button" value="Új edzés felvétele">`;
+    }
+
+}
+
+function newClassInit()
+{
+  const newClassDiv=document.getElementsByClassName('newClass');
+  var form=`<form>
+                        <table>
+                            <tr>
+                                <td class="text-end"><label>Elnevezés:</label></td>
+                                <td><input class="input" type="text" id="name" required><br></td>
+                            </tr>
+                            <tr>
+                                <td class="text-end"><label>Leírás:</label></td>
+                                <td><input class="input" type="text" id="description" required><br></td>
+                            </tr>
+                            <tr>
+                                <td class="text-end"><label>Dátum:</label></td>
+                                <td><input class="input" type="datetime-local" id="date" required><br></td>
+                            </tr>
+                            
+                            <tr>
+                                <td class="text-end"><label>Edző:</label></td>
+                                <td><input class="input" type="text" id="trainer" required><br></td>
+                            </tr>
+                            <tr>
+                                <td class="text-end"><label>Képe:</label></td>
+                                <td><input class="ImgInput" type="file" id="image" accept="image/*" required><br></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><button class="btn " type="button" onclick="uploadClass()">Feltöltés</button></td>
+                            </tr>
+                        </table></form>`;
+                  
+  newClassDiv[0].innerHTML=form;
+  newClassDiv[1].innerHTML=form;
+}
+
+async function uploadClass() //ez sem jó
+{
+  const name=document.getElementById('name').value;
+    const description=document.getElementById('description').value;
+    const date=document.getElementById('date').value;
+    const trainer=document.getElementById('trainer').value;
+    const image=document.getElementById('image').files[0];
+
+    const formData= new FormData();
+    formData.append('Name',name);
+    formData.append('description',description);
+    formData.append('date',date);
+    formData.append('TrainerName',trainer);
+    formData.append('image',image);
+
+    const response =  await fetch(defaultUrl+"Class/newClass",{
+        method:"POST",
+        headers:{
+            Authorization: "bearer " + JSON.parse(sessionStorage.getItem("data")).token
+        },
+        body: formData
+    });
+
+    console.log(response);
 }
 
