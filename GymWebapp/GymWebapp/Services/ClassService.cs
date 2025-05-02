@@ -5,6 +5,8 @@ using GymWebapp.Model.Dtos;
 using GymWebapp.Mapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http.HttpResults;
+using System.Runtime.CompilerServices;
+using GymWebapp.Middlewares;
 
 
 namespace GymWebapp.Services
@@ -15,6 +17,7 @@ namespace GymWebapp.Services
         Task joinToClass(int classId, int personId);
         Task CreateClass(NewClassDto classDto);
         Task<Tuple<byte[], string>> GetImage(int id);
+        Task<List<MyClassesDto>> GetMyClasses(int userId);
 
     }
     public class ClassService : IClassService
@@ -33,11 +36,27 @@ namespace GymWebapp.Services
 
             var result = new List<ClassDto>();
 
-            foreach (var e in classes) result.Add(_mapper.Map<ClassDto>(e));
+            foreach (var e in classes)
+            {
+                if (!checkClassDate(e)) continue;
+
+                result.Add(_mapper.Map<ClassDto>(e));
+            }
 
             return result;
         }
+        private bool checkClassDate(Class c)
+        {
+            if (c.Date < DateTime.Now)
+            {
+                _dataContext.Remove(c);
+                _dataContext.SaveChanges();
 
+                return false;
+            }
+            else return true;
+
+        }
         public async Task joinToClass(int classId, int personId)
         {
             var boughtTickets = _dataContext.BougthTickets.Where(x => x.TicketType.Name.Equals("Edzés jegy"));
@@ -46,15 +65,15 @@ namespace GymWebapp.Services
 
             if (boughtTickets.All(x => x.Duration.Equals(0))) throw new Exception("Nincs jegyed edzésfelvételhez");
 
-             boughtTickets.First(x=>!x.Duration.Equals(0)).Duration = Convert.ToString(int.Parse(boughtTickets.First().Duration)-1);
-            
-             var joining = new ClassAttendee()
-             {
-                 ClassId = classId,
-                 UserId = personId,
-             };
+            boughtTickets.First(x => !x.Duration.Equals(0)).Duration = Convert.ToString(int.Parse(boughtTickets.First().Duration) - 1);
 
-             _dataContext.classAttendees.Add(joining);
+            var joining = new ClassAttendee()
+            {
+                ClassId = classId,
+                UserId = personId,
+            };
+
+            _dataContext.classAttendees.Add(joining);
 
             _dataContext.SaveChanges();
         }
@@ -69,6 +88,17 @@ namespace GymWebapp.Services
             await _dataContext.Classes.AddAsync(newClass);
             await _dataContext.SaveChangesAsync();
         }
+        public async Task<List<MyClassesDto>> GetMyClasses(int userId) 
+        {
+            var userClasses=_dataContext.classAttendees.Where(x=>x.UserId == userId).ToList();
+            var response= new List<MyClassesDto>();
+
+            foreach (var c in _dataContext.Classes)
+                foreach (var uc in userClasses)
+                    if (c.Id == uc.ClassId) _mapper.Map<MyClassesDto>(c);
+
+            return response;
+        }
 
         public async Task<Tuple<byte[], string>> GetImage(int id)
         {
@@ -80,5 +110,6 @@ namespace GymWebapp.Services
 
             return Img;
         }
+
     }
 }

@@ -2,9 +2,6 @@
 TO DO:
   Backend:
      
-
-    createClass-ban nem találja név szerint az edzőt
-
     -getMyClasses
     -classokat létrehozni
     -auth controller átalakítás?

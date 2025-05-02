@@ -75,6 +75,16 @@
   },
   {
     "ContainingType": "GymWebapp.Controllers.ClassController",
+    "Method": "GetMyClasses",
+    "RelativePath": "api/Class/MyClasses",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GymWebapp.Controllers.ClassController",
     "Method": "CreateClass",
     "RelativePath": "api/Class/newClass",
     "HttpMethod": "POST",

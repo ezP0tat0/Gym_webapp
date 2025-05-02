@@ -20,6 +20,8 @@ namespace GymWebapp.Mapper
             CreateMap<Class, ClassDto>().ForMember(dest => dest.TrainerName, opt => opt.MapFrom(src => src.Trainer.User.Name))
                                         .ForMember(dest => dest.ImgUrl, opt => opt.MapFrom(src => $"https://localhost:7289/api/Class/Image/{src.Id}"));
 
+            CreateMap<Class,MyClassesDto>().ForMember(dest => dest.TrainerName, opt => opt.MapFrom(src => src.Trainer.User.Name))
+                                           .ForMember(dest => dest.ImgUrl, opt => opt.MapFrom(src => $"https://localhost:7289/api/Class/Image/{src.Id}"));
 
             //ticket conversions
             CreateMap<BougthTicket, MyTicketsDto>().ForMember(dest => dest.TicketName, opt => opt.MapFrom(src => src.TicketType.Name))

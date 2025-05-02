@@ -453,7 +453,7 @@ async function addCorrectCard(data,page)
                       <h4>${data.name}</h4>
                       <!--<p class="card-text">${data.description}</p>-->
                       <p class="card-text price">Ár: ${data.price} ft</p>
-                      <a href="#" class="btn btn-primary btnColor" onclick="purchaseTicket('${tickets[i].id}')">vásárlás</a>
+                      <a href="#" class="btn btn-primary btnColor" onclick="purchaseTicket('${data.id}')">vásárlás</a>
                     </div>
                   </div>
                 </div>
@@ -470,7 +470,7 @@ async function addCorrectCard(data,page)
                       <p id="classTheme1" class="card-text">${data.description}</p>
                       <p id="classTrainer1" class="card-text">${data.trainerName}</p>
                       <p class="card-text">${data.date}</p>
-                      <a href="#" class="btn btn-primary btnColor" onclick="purchaseTicket('${tickets[i].id}')">jelentkezés</a>
+                      <a href="#" class="btn btn-primary btnColor" onclick="joinClass('${data.id}')">jelentkezés</a>
                     </div>
                   </div>
                 </div>
@@ -532,6 +532,12 @@ function purchaseTicket(id)
 async function myTicketsShortcut()
 {
   window.location.href="profil.html";
+}
+
+async function joinClass(classId) 
+{
+  const response=await postData("Class/Join",classId);
+  console.log(response);
 }
 
 

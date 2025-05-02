@@ -1,4 +1,5 @@
-﻿using GymWebapp.Model.Dtos;
+﻿using GymWebapp.Model.Data;
+using GymWebapp.Model.Dtos;
 using GymWebapp.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -43,6 +44,18 @@ namespace GymWebapp.Controllers
             }
             else throw new Exception($"Claim User nem talált: {userIdString}");
 
+        }
+        [HttpGet("MyClasses")]
+        public async Task<IActionResult> GetMyClasses()
+        {
+            var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (int.TryParse(userIdString, out int userId))
+            {
+                await _classService.GetMyClasses(userId);
+
+                return Ok("Sikeres csatlakozás");
+            }
+            else throw new Exception($"Claim User nem talált: {userIdString}");
         }
         [HttpGet("Image/{id}")]
         public async Task<IActionResult> getImage(int id)
