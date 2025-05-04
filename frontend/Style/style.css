@@ -162,6 +162,11 @@ body {
     margin-left: 1%;
     width: 12rem;
 }
+.buttonColor:active
+{
+    background-color: #E5383B;
+    border-color: #E5383B;
+}
 .buttonColor:hover
 {
     background-color: #E5383B;

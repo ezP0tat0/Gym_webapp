@@ -93,9 +93,9 @@ namespace GymWebapp.Services
             var userClasses=_dataContext.classAttendees.Where(x=>x.UserId == userId).ToList();
             var response= new List<MyClassesDto>();
 
-            foreach (var c in _dataContext.Classes)
+            foreach (var c in await _dataContext.Classes.Include(x=>x.Trainer).ThenInclude(x=>x.User).ToListAsync())
                 foreach (var uc in userClasses)
-                    if (c.Id == uc.ClassId) _mapper.Map<MyClassesDto>(c);
+                    if (c.Id == uc.ClassId) response.Add(_mapper.Map<MyClassesDto>(c));
 
             return response;
         }

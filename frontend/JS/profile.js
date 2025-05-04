@@ -146,7 +146,7 @@ async function myTickets()
       table+=`<tr>
         <td>${e.ticketName}</td>
         <td>${e.ticketDuration}</td>
-        <td><input type="button" value="felhasználás" onclick="useTicket(${e.boughtTicketId})"></td>
+        <td><input class="buttonColor btn btn-primary useTicketBtn" type="button" value="felhasználás" onclick="useTicket(${e.boughtTicketId})"></td>
         <td class="activeTicket"></td>
         </tr>`;
     });
@@ -211,9 +211,8 @@ async function deleteProfile()
 
 function exerciseLog()
 {
-  const content=document.getElementsByClassName("content");
-  content[0].innerHTML=``;
-  content[1].innerHTML=``;
+  const content=document.getElementById("exLog");
+  content.innerHTML=``;
   
   var text=`
     <div class="row">
@@ -230,8 +229,7 @@ function exerciseLog()
     </div>
   </div>
   `;
-  content[0].innerHTML=text;
-  content[1].innerHTML=text;
+  content.innerHTML=text;
   
 }
 async function myClasses()
@@ -258,6 +256,7 @@ async function myClasses()
         <td>${e.name}</td>
         <td>${e.description}</td>
         <td>${e.date}</td>
+        <td>${e.duration}</td>
         <td>${e.trainerName}</td>
         </tr>`;
     });

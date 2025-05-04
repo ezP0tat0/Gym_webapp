@@ -19,7 +19,10 @@ input
     word-wrap: break-word;
 }
 
-
+.useTicketBtn
+{
+    width: 8rem;
+}
 
 table
 {

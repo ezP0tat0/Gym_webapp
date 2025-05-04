@@ -47,7 +47,6 @@ async function getExerciseLogs()
 {
     const stuff=document.getElementById('stuff');
     stuff.innerHTML=``;
-    const logs=await getData("Logging/getLogs");
     console.log(logs);
     var text=`
         <table class='table table-dark table-striped table-hover'>
@@ -77,18 +76,34 @@ async function getExerciseLogs()
 function oneMore()
 {
     const setGroup=document.getElementById('setGroup');
-    var sets = document.getElementsByClassName('sets').length;
-    sets++;
-    setGroup.innerHTML+=`
-        <div class="row sets">
-            <div class="col">
-              <p id="No${sets}">${sets}.</p>
-            </div>
-            <div class="col">
-              <input type="number" name="reps" id="reps${sets}" value='0'>
-            </div>
-        </div>
-    `;
+    var sets = document.getElementsByClassName('sets');
+    var text=``;
+    for(var i=0;i<sets.length;i++)
+    {
+      const value=document.getElementById(`reps${i+1}`).value;
+      text+=`
+          <div class="row sets">
+              <div class="col">
+                <p id="No${i+1}">${i+1}.</p>
+              </div>
+              <div class="col">
+                <input type="number" name="reps" id="reps${i+1}" value='${value}'>
+              </div>
+          </div>
+      `;
+  }
+  text+=`
+          <div class="row sets">
+              <div class="col">
+                <p id="No${i+1}">${i+1}.</p>
+              </div>
+              <div class="col">
+                <input type="number" name="reps" id="reps${i+1}" value='0'>
+              </div>
+          </div>
+      `;
+    
+      setGroup.innerHTML=text;
 }
 function oneLess()
 {
@@ -114,6 +129,11 @@ function oneLess()
         `;
     }
     setGroup.innerHTML=text;
+}
+function writeInnerHtml(place,text)
+{
+  place[0].innerHTML=text;
+  place[1].innerHTML=text;
 }
 
 async function logIt()
