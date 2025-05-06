@@ -59,4 +59,8 @@
     {
         public IFormFile img { get; set; }
     }
+    public class defaultResponse
+    {
+        public string msg { get; set; }
+    }
 }

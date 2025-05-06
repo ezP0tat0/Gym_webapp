@@ -11,7 +11,7 @@ namespace GymWebapp.Middlewares
         {
             _request = request;
         }
-        public async void Invoke(HttpContext context)
+        public async Task InvokeAsync(HttpContext context)
         {
             try
             {

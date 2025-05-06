@@ -6,7 +6,6 @@ using GymWebapp.Mapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http.HttpResults;
 using System.Runtime.CompilerServices;
-using GymWebapp.Middlewares;
 
 
 namespace GymWebapp.Services

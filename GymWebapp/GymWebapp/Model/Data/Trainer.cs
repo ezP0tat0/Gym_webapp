@@ -5,7 +5,7 @@ namespace GymWebapp.Model.Data
     public class Trainer
     {
         [ForeignKey("User")]
-        public int Id { get; set; } //Id=user?? id=foreign key?
+        public int Id { get; set; }
         public User User { get; set; }
         public string PhoneNumber { get; set; }
         public string Expertise { get; set; }

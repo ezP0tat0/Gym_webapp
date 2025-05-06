@@ -1,3 +1,13 @@
+
+window.onload=function(){
+  console.log(quickAccess);
+  if(quickAccess)
+  {
+    quickAccess=false;
+    myTickets();
+  }
+};
+
 async function getUserData()
 {
 
@@ -6,7 +16,6 @@ async function getUserData()
   content[1].innerHTML=``;
 
   const data = await getData("User");
-  console.log(data);
   var ihtml=`
     <table class='table table-dark table-striped table-hover'>
       <tr>
@@ -48,7 +57,6 @@ async function img(url)
 async function trainerData(id)
 {
   const data=await getData("User/oneTrainer/"+id);
-  console.log(data);
   let imgSrc=await img(data.imgUrl);
   var text=`<tr>
     <td>Szakosodás:</td>
@@ -104,7 +112,6 @@ async function updateTrainerInfo(tdId)
   else if(tdId==="PNtd")
   {
     const pn=document.getElementById('PNtdInput').value;
-    console.log(pn);
 
     const response=await patchData("User/AddPhoneNo",{text:pn});
     console.log(response);
@@ -160,7 +167,6 @@ async function myTickets()
 
 async function useTicket(id) 
 {
-  console.log(id);
   const response=await postData("Ticket/useTicket",{boughtTicketId: id});
 
   console.log(response);
@@ -171,15 +177,11 @@ async function activeTickets(tickets)
   const aciveT=document.getElementsByClassName('activeTicket');
   const activeTickets= await getData("Ticket/activeTickets");
  
-  console.log(tickets);
-  console.log(activeTickets);
   for(var i=0;i<tickets.length;i++)
   {
     var code;
     for(var e in activeTickets)
     {
-      console.log("e: ",e," i: ",i);
-      console.log(activeTickets[e].boughtTicketId,"----",tickets[i].boughtTicketId);
       if(activeTickets[e].boughtTicketId==tickets[i].boughtTicketId)
       {
         aciveT[i].innerHTML=`${activeTickets[e].accessCode}`;
@@ -188,7 +190,6 @@ async function activeTickets(tickets)
       else aciveT[i].innerHTML=`nem aktív`;
     }
   }
-  //get active tickets funvction to backend!!!!!!!
 }
 
 async function deleteProfile()
@@ -219,7 +220,9 @@ function exerciseLog()
     <div class="col">
       <input class="buttonColor btn btn-primary" type="button" value="Gyakorlat felvitele" onclick="addExercise()">
       <input class="buttonColor btn btn-primary" type="button" value="Edzések listázása" onclick="getExerciseLogs()">
-    </div>
+      <input class="buttonColor btn btn-primary" type="button" value="Új gyakorlat típus" onclick="addExType()">
+    
+      </div>
   </div>
   <div class="row">
     <div class="col">
@@ -239,7 +242,6 @@ async function myClasses()
   content[1].innerHTML=``;
 
   const myClasses=await getData("Class/MyClasses");
-  console.log(myClasses);
   var table=`<table class='table table-dark table-striped table-hover'>
         <tr>
         <th>Kép</th>
@@ -292,11 +294,6 @@ function newClassInit()
                                 <td class="text-end"><label>Dátum:</label></td>
                                 <td><input class="input" type="datetime-local" id="date" required><br></td>
                             </tr>
-                            
-                            <tr>
-                                <td class="text-end"><label>Edző:</label></td>
-                                <td><input class="input" type="text" id="trainer" required><br></td>
-                            </tr>
                             <tr>
                                 <td class="text-end"><label>Képe:</label></td>
                                 <td><input class="ImgInput" type="file" id="image" accept="image/*" required><br></td>
@@ -310,19 +307,18 @@ function newClassInit()
   newClassDiv[1].innerHTML=form;
 }
 
-async function uploadClass() //ez sem jó
+async function uploadClass()
 {
   const name=document.getElementById('name').value;
     const description=document.getElementById('description').value;
     const date=document.getElementById('date').value;
-    const trainer=document.getElementById('trainer').value;
     const image=document.getElementById('image').files[0];
 
     const formData= new FormData();
     formData.append('Name',name);
     formData.append('description',description);
     formData.append('date',date);
-    formData.append('TrainerName',trainer);
+    formData.append('TrainerName',userData.name);
     formData.append('image',image);
 
     const response =  await fetch(defaultUrl+"Class/newClass",{

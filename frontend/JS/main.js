@@ -7,7 +7,7 @@ var defaultUrl= "https://localhost:7289/api/";
 
 window.onload=function()
 {
-    console.log(userData);
+    ////console.log(userData);
     userDropdown();
     var currentWindow=window.location.pathname.split('/').slice(-1);
     if(currentWindow[0] != "index.html" && currentWindow[0]!= "aboutUs.html" && currentWindow[0]!="profil.html") ShowCards();
@@ -133,41 +133,10 @@ async function showTickets()
     var div = document.getElementById("tickets");
     var displayNo=3;
 
-    /*
-                <div class="col">
-                  <div class="card">
-                    <img class="card-img-top card cardImgs" src="Imgs/1alk.jpg" alt="card image cap">
-                    <div class="card-body">
-                      <h4>1 Alkalmas</h4>
-                      <p class="card-text">Egyszeri bejutásra jogosít fel.</p>
-                      <p class="card-text price">Ár: <span>2000</span>ft</p>
-                      <a href="#" class="btn btn-primary btnColor" onclick="">vásárlás</a>
-                    </div>
-                  </div>
-                </div>
-
-
-
-
-                <div class="carousel-item active">
-                    <div class="card carouselCard">
-                      <img class="card-img-top card cardImgs" src="Imgs/1alk.jpg" alt="card image cap">
-                      <div class="card-body">
-                        <h4>1 Alkalmas</h4>
-                        <p class="card-text">Egyszeri bejutásra jogosít fel.</p>
-                        <p class="card-text price">Ár: <span>2000</span>ft</p>
-                        <a href="#" class="btn btn-primary btnColor" onclick="">vásárlás</a>
-                      </div>
-                    </div>
-                  </div>
-
-    */
-
     var tickets=await getData("Ticket",false);
     var standardOut=`<div class="row d-none d-lg-flex">`;
     var carouselOut=`<div class="row d-lg-none"><div class="col"> <div id="carousel" class="carousel slide"><div class="carousel-inner">`;
 
-    console.log(tickets);
 
     for(var i=0;i<displayNo;i++)
     {
@@ -238,7 +207,6 @@ async function showTrainers()
     
     for(var i=0;i<displayNo;i++)
     {
-      console.log(trainers[i].imgUrl);
       let imgSrc= await img(trainers[i].imgUrl);
 
         standardOut+=`
@@ -289,19 +257,6 @@ async function showTrainers()
 
 async function showClasses()
 {
-  /*
-                <div class="col">
-                  <div class="card">
-                    <img id="classImg1" class="card-img-top" src="https://via.placeholder.com/300x150" alt="card image cap">
-                    <div class="card-body">
-                      <h5 id="className1">Név</h5>
-                      <p id="classTheme1" class="card-text">tematika</p>
-                      <p id="classTrainer1" class="card-texr">Edző neve</p>
-                      <a href="#" class="btn btn-primary btnColor" onclick="">jelentkezés</a>
-                    </div>
-                  </div>
-                </div>
-   */
   var div = document.getElementById("classes");
   
   
@@ -384,6 +339,8 @@ async function ShowCards()
       apiPath="Ticket";
       break;
     case "classes.html":
+      if(userData!=null)
+        if(userData.role==="Trainer") addTrainerButton();
       apiPath="Class";
       break;
     case "trainers.html":
@@ -394,9 +351,6 @@ async function ShowCards()
       return;
   }
 
-  //var classes=await getData("Class",false);
-  //var trainers=await getData("User/Trainers",false);
-  //var div = document.getElementById("tickets");
   var data=await getData(apiPath,false); 
 
   //check if there is any data to display
@@ -437,6 +391,66 @@ async function ShowCards()
     }
   }
   div.innerHTML=content;
+}
+function addTrainerButton()
+{
+  const place=document.getElementById('trainerBtn');
+  place.innerHTML=`<input class="buttonColor btn btn-primary" type="button" value="Edzés hozzáadása" onclick="addNewClass()">`
+}
+function addNewClass()
+{
+  const place=document.getElementById('newClassForm');
+  var text=`
+    <form>
+                        <table>
+                            <tr>
+                                <td class="text-end"><label>Elnevezés:</label></td>
+                                <td><input class="input" type="text" id="name" required><br></td>
+                            </tr>
+                            <tr>
+                                <td class="text-end"><label>Leírás:</label></td>
+                                <td><input class="input" type="text" id="description" required><br></td>
+                            </tr>
+                            <tr>
+                                <td class="text-end"><label>Dátum:</label></td>
+                                <td><input class="input" type="datetime-local" id="date" required><br></td>
+                            </tr>
+                            <tr>
+                                <td class="text-end"><label>Képe:</label></td>
+                                <td><input class="ImgInput" type="file" id="image" accept="image/*" required><br></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><button class=" buttonColor btn btn-primary " type="button" onclick="uploadClass()">Feltöltés</button></td>
+                            </tr>
+                        </table></form>`;
+
+    place.innerHTML=text;
+}
+async function uploadClass()
+{
+  const name=document.getElementById('name').value;
+  const description=document.getElementById('description').value;
+  const date=document.getElementById('date').value;
+  const image=document.getElementById('image').files[0];
+
+  const formData= new FormData();
+  formData.append('Name',name);
+  formData.append('description',description);
+  formData.append('date',date);
+  formData.append('TrainerName',userData.name);
+  formData.append('image',image);
+
+  const response =  await fetch(defaultUrl+"Class/newClass",{
+      method:"POST",
+      headers:{
+          Authorization: "bearer " + JSON.parse(sessionStorage.getItem("data")).token
+      },
+      body: formData
+  });
+
+  console.log(response);
+
+  location.reload();
 }
 
 async function addCorrectCard(data,page)
@@ -528,9 +542,12 @@ function purchaseTicket(id)
   var wiw= window.open("purchase.html",'','height=500px,width=750px');
   wiw.ticketId=id;
 }
+let quickAccess=false;
 
 async function myTicketsShortcut()
 {
+  quickAccess=true;
+  console.log(quickAccess);
   window.location.href="profil.html";
 }
 

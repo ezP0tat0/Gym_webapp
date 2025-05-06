@@ -19,7 +19,7 @@ namespace GymWebapp.Controllers
         }
 
         [HttpPost("addLog")]
-        public async Task<IActionResult> addLog(List<LogDto> l)
+        public async Task<IActionResult> addLog(List<addLogDto> l)
         {
             var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (int.TryParse(userIdString, out int userId))

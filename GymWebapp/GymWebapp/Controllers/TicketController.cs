@@ -10,9 +10,6 @@ using System.Security.Claims;
 namespace GymWebapp.Controllers
 {
 
-
-    // X alkalmas jegyek ?????????
-
     [Route("api/[controller]")]
     [ApiController]
     public class TicketController : Controller

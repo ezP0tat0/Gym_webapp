@@ -1,7 +1,6 @@
 async function addExercise()
 {
     const exercises= await getData("Logging/getExercises");
-    console.log(exercises);
     const stuffDiv=document.getElementById('stuff');
 
     var text=`
@@ -47,6 +46,7 @@ async function getExerciseLogs()
 {
     const stuff=document.getElementById('stuff');
     stuff.innerHTML=``;
+    const logs=await getData("Logging/getLogs");
     console.log(logs);
     var text=`
         <table class='table table-dark table-striped table-hover'>
@@ -60,17 +60,51 @@ async function getExerciseLogs()
         text+=`
             <tr>
                 <td>${e.exercise}</td>
-                <td>${e.date}</td>
                 <td>${e.repetition}</td>
+                <td>${e.date}</td>
             </tr>
         `
-
-
-        //settek külön legyenek
     })
     text+=`</table>`;
     stuff.innerHTML=text;
 
+}
+
+function addExType()
+{
+  const stuffDiv=document.getElementById('stuff');
+  var text=`
+    <form>
+       <table>
+             <tr>
+                 <td class="text-end"><label>Elnevezés:</label></td>
+                <td><input class="input" type="text" id="name" required><br></td>
+            </tr>
+            <tr>
+                <td class="text-end"><label>Izom csoport:</label></td>
+                <td><input class="input" type="text" id="muscle" required><br></td>
+            </tr>
+            <tr>
+            <td colspan="2">
+            <input class="buttonColor btn btn-primary" type="button" value="Hozzáad" onclick="addEx()">
+            </td>
+            </tr>
+        </table>
+    </form>
+  `;
+  stuffDiv.innerHTML=text;
+}
+async function addEx()
+{
+  const name=document.getElementById("name").value;
+  const muscle=document.getElementById("muscle").value;
+
+  var ex={
+    Name:name,
+    TargetMuscle:muscle
+  };
+
+  const resposne=await postData("Logging/addExercise",ex);
 }
 
 function oneMore()
@@ -116,7 +150,6 @@ function oneLess()
         console.log(`No${i+1}`);
         var setNo=document.getElementById(`No${i+1}`).innerHTML;
         var reps=document.getElementById(`reps${i+1}`).value;
-        console.log(`reps${i+1} value: `,reps);
         text+=`
             <div class="row sets">
             <div class="col">
@@ -130,13 +163,26 @@ function oneLess()
     }
     setGroup.innerHTML=text;
 }
-function writeInnerHtml(place,text)
-{
-  place[0].innerHTML=text;
-  place[1].innerHTML=text;
-}
 
 async function logIt()
 {
-    //get the data then send it
+  const ex=document.getElementById('exerciseSelect').value;
+  const sets=document.getElementsByClassName('sets');
+  var list=[];
+
+  
+  for(var i=0;i<sets.length;i++)
+  {
+    const rep=document.getElementById(`reps${i+1}`).value;
+    const data={
+      Exercise:ex,
+      Repetition:rep
+    };
+
+    list.push(data);
+  }
+
+
+  const response= await postData("Logging/addLog",list);
+  console.log(response);
 }

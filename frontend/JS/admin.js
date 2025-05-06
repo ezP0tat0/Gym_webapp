@@ -2,7 +2,7 @@ var user=sessionStorage.getItem('data');
 var userData=JSON.parse(user);
 window.onload=function()
 {
-    console.log(userData);
+    ////console.log(userData);
     userDropdown();
 }
 
@@ -94,8 +94,6 @@ async function ChangeRoleInit(button,select)
     selector.disabled=false;
     button.value="Mentés";
     button.setAttribute("onclick","ChangeRole('"+select+"','"+idFromId(selector.id)+"');");
-
-    console.log(button);
 }
 function idFromId(txt)
 {
@@ -108,7 +106,6 @@ function idFromId(txt)
                 id+=txt[i];
             }
     }
-    console.log(id);
     var i=parseInt(id);
     return i;
 }
@@ -116,8 +113,6 @@ function idFromId(txt)
 async function ChangeRole(roleid,id) 
 {
     var Role=document.getElementById(roleid).value;
-    console.log("role: "+Role);
-    console.log("id: "+id);
 
     const response = await fetch(defaultUrl+"User/RoleChange",{
         method: "PATCH",
@@ -223,9 +218,6 @@ async function newTicketForm()
     else addition.innerHTML=``;
     
 }
-
-
-
 
 
 async function classes()
@@ -348,7 +340,6 @@ const observer = new MutationObserver(() => {
     {
         if (uploadForm.id==="uploadFormT") 
         {
-            console.log(uploadForm.id);
 
             uploadForm.addEventListener("submit", async function (event) {
                 event.preventDefault();
@@ -370,7 +361,6 @@ const observer = new MutationObserver(() => {
         }
         else if(uploadForm.id==="updateFormT")
         {
-            console.log(uploadForm.id);
             
             uploadForm.addEventListener("submit", async function (event) {
                 event.preventDefault();
@@ -385,7 +375,6 @@ const observer = new MutationObserver(() => {
 
 async function uploadClass()
 {
-    //name  description   date     trainer       image
     const name=document.getElementById('name').value;
     const description=document.getElementById('description').value;
     const date=document.getElementById('date').value;

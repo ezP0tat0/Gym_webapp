@@ -2,12 +2,13 @@
 using GymWebapp.Model;
 using GymWebapp.Model.Data;
 using GymWebapp.Model.Dtos;
+using Microsoft.EntityFrameworkCore;
 
 namespace GymWebapp.Services
 {
     public interface ILoggingService
     {
-        Task addLog(List<LogDto> l, int userId);
+        Task addLog(List<addLogDto> l, int userId);
         Task removeLog(int i);
         Task<List<LogDto>> getLogs(string exercise);
         Task addExercise(ExerciseDto exercise);
@@ -23,25 +24,25 @@ namespace GymWebapp.Services
             _dataContext = dataContext;
             _mapper = mapper;
         }
-        public async Task addLog(List<LogDto> l, int userId)
+        public async Task addLog(List<addLogDto> l, int userId)
         {
-            var last = _dataContext.Logs.LastOrDefault().SetGroupId;
-            int setg = last == null ? 0 : last + 1;
-            foreach (LogDto log in l)
-            {
-                var c = new Log()
+            var last = _dataContext.Logs.OrderBy(x=>x.SetGroupId).LastOrDefault();
+            int setg = last == null ? 0 : last.SetGroupId + 1;
+            
+                for (int i = 0; i < l.Count(); i++)
                 {
-                    SetGroupId = setg,
-                    UserId = userId,
-                    ExerciseId = _dataContext.Exercises.FirstOrDefault(x => x.Name.Equals(log.Exercise)).Id,
-                    Date = log.Date,
-                    Repetition = log.Repetition,
-                };
+                    var lo = new Log()
+                    {
+                        SetGroupId = setg,
+                        UserId = userId,
+                        ExerciseId = _dataContext.Exercises.FirstOrDefault(x => x.Name.Equals(l[i].Exercise)).Id,
+                        Date = DateTime.Now,
+                        Repetition = l[i].Repetition
+                    };
+                    await _dataContext.Logs.AddAsync(lo);
 
-                await _dataContext.Logs.AddAsync(c);
-
-            }
-            await _dataContext.SaveChangesAsync();
+                    await _dataContext.SaveChangesAsync();
+                }
         }
 
         public async Task removeLog(int i)
@@ -58,7 +59,7 @@ namespace GymWebapp.Services
         {
             var logList = new List<LogDto>();
 
-            foreach(var e in _dataContext.Logs)
+            foreach(var e in _dataContext.Logs.Include(x=>x.Exercise))
                 logList.Add(_mapper.Map<LogDto>(e));
 
             return logList;
